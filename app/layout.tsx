@@ -3,10 +3,10 @@ import Header from "@/components/Header";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import { Unbounded } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const unbounded = Unbounded({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
@@ -14,13 +14,13 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "DashPilot — Turn your phone into a real-time car dashboard",
+  title: "DashKit — The open CAN-FD brain for your Tesla",
   description:
-    "subtitle",
+    "DashKit is an open, hackable dual CAN-FD device for your Tesla. Control your car, build automations, and turn your phone into a real-time dashboard with DashPilot. Features built by the open-source community.",
   openGraph: {
-    title: "DashKit",
+    title: "DashKit — The open CAN-FD brain for your Tesla",
     description:
-      "the DashKit + the DashPilot app — a live dashboard on your phone.",
+      "An open dual CAN-FD device for your Tesla. Control, automate, and visualize — powered by the open-source community.",
     type: "website",
   },
 };
@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${unbounded.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`${spaceGrotesk.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
         <Header />
         <main>{children}</main>
         <Footer />

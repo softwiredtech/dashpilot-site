@@ -17,11 +17,14 @@ export default function Header() {
         </Link>
         <div className="nav-right">
           <div className="nav-links">
+            <Link href="/specs" className={isActive("/specs")}>
+              Specs
+            </Link>
+            <Link href="/#features" className="">
+              Features
+            </Link>
             <Link href="/dashboards" className={isActive("/dashboards")}>
               Dashboards
-            </Link>
-            <Link href="/privacy-policy" className={isActive("/privacy-policy")}>
-              Privacy Policy
             </Link>
           </div>
           <Link href="/order" className="nav-cta">
