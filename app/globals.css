@@ -760,9 +760,152 @@ footer {
   margin-bottom: 10px;
 }
 
+.feature-tag {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
 .feature-card p {
   color: var(--text-dim);
   font-size: 15px;
+}
+
+/* ---------- SPOTLIGHT (auto-wiper automation) ---------- */
+.spotlight {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+  background: linear-gradient(160deg, var(--surface), var(--bg-elev));
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 48px;
+}
+
+@media (max-width: 860px) {
+  .spotlight {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+}
+
+.spotlight-copy h2 {
+  margin-bottom: 18px;
+}
+
+.spotlight-lead {
+  color: var(--text-dim);
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.spotlight-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.spotlight-list li {
+  color: var(--text-dim);
+  font-size: 15px;
+  padding-left: 26px;
+  position: relative;
+}
+
+.spotlight-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+}
+
+.spotlight-list li::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 11px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.spotlight-list span {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.spotlight-demo {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.demo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.demo-label {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.demo-state {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.demo-state--on {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+}
+
+.demo-state--off {
+  color: var(--text-mute);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.demo-rule {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.demo-rule-key {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ---------- SPLIT (device / install) ---------- */

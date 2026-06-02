@@ -52,23 +52,27 @@ export default function Home() {
       {/* ---------- FEATURES ---------- */}
       <section className="section" id="features">
         <div className="container">
-          <p className="eyebrow">What you can do</p>
-          <h2>One small device. A Tesla that listens.</h2>
+          <p className="eyebrow">What DashKit does</p>
+          <h2>
+            Three things: <span className="accent">Dashboard</span>,{" "}
+            <span className="accent">Automation</span>,{" "}
+            <span className="accent">Controls</span>.
+          </h2>
 
           <div className="feature-grid">
             <div className="feature-card">
               <div className="feature-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="10" rx="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  <circle cx="12" cy="16" r="1.5" />
+                  <rect x="5" y="2" width="14" height="20" rx="2.5" />
+                  <path d="M9 6h6M9 10h6M9 14h3" />
                 </svg>
               </div>
-              <h3>Control your Tesla</h3>
+              <p className="feature-tag">Dashboard</p>
+              <h3>Every signal, live on your phone</h3>
               <p>
-                Read and send messages on both CAN-FD buses. Lock and unlock,
-                trigger functions, and reach the controls your Tesla already has
-                — now under your command.
+                Pair over Bluetooth and turn your phone into a real-time
+                dashboard with the DashPilot app. Live gauges, custom readouts,
+                and every signal off the bus — rendered as you drive.
               </p>
             </div>
 
@@ -78,27 +82,81 @@ export default function Home() {
                   <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
                 </svg>
               </div>
-              <h3>Automations</h3>
+              <p className="feature-tag">Automation</p>
+              <h3>Your car reacts to context</h3>
               <p>
-                Make your car react to context. Keep the wipers off while
-                openpilot is active, run rules on the bus, and chain conditions
-                into behaviors the factory never shipped.
+                Keep the auto wipers off the moment Autopilot or adaptive cruise
+                engages, run rules on the bus, and chain conditions into
+                behaviors the factory never shipped.
               </p>
             </div>
 
             <div className="feature-card">
               <div className="feature-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2.5" />
-                  <path d="M9 6h6M9 10h6M9 14h3" />
+                  <rect x="3" y="11" width="18" height="10" rx="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  <circle cx="12" cy="16" r="1.5" />
                 </svg>
               </div>
-              <h3>DashPilot dashboard</h3>
+              <p className="feature-tag">Controls</p>
+              <h3>Reach controls the car already has</h3>
               <p>
-                Pair over Bluetooth and turn your phone into a real-time
-                dashboard. Live gauges, custom readouts, and every signal off
-                the bus — rendered as you drive.
+                Read and send messages on both CAN-FD buses. Lock and unlock,
+                trigger functions, and reach the controls your Tesla already has
+                — now under your command.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- SPOTLIGHT: AUTO-WIPER AUTOMATION ---------- */}
+      <section className="section">
+        <div className="container">
+          <div className="spotlight">
+            <div className="spotlight-copy">
+              <p className="eyebrow">The automation people buy it for</p>
+              <h2>
+                Auto wipers, <span className="accent">off</span> the instant you
+                engage Autopilot.
+              </h2>
+              <p className="spotlight-lead">
+                Tesla&apos;s auto wipers love to swipe a dry windshield while
+                you&apos;re on Autopilot or adaptive cruise — distracting, and
+                impossible to disable from the factory. DashKit watches the bus
+                and shuts them off automatically the moment you engage, then
+                hands control back when you take over.
+              </p>
+              <ul className="spotlight-list">
+                <li>
+                  <span>Detects engagement</span> reads Autopilot / ACC state
+                  straight off the CAN bus
+                </li>
+                <li>
+                  <span>Silences the wipers</span> no more phantom swipes on a
+                  dry screen
+                </li>
+                <li>
+                  <span>Hands control back</span> wipers return to normal the
+                  moment you disengage
+                </li>
+              </ul>
+            </div>
+            <div className="spotlight-demo" aria-hidden="true">
+              <div className="demo-row">
+                <span className="demo-label">Autopilot</span>
+                <span className="demo-state demo-state--on">ENGAGED</span>
+              </div>
+              <div className="demo-row">
+                <span className="demo-label">Auto wipers</span>
+                <span className="demo-state demo-state--off">OFF</span>
+              </div>
+              <div className="demo-rule">
+                <span className="demo-rule-key">WHEN</span> autopilot.engaged
+                <br />
+                <span className="demo-rule-key">SET</span> wipers.auto = false
+              </div>
             </div>
           </div>
         </div>
