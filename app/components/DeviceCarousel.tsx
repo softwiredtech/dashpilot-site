@@ -11,26 +11,25 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    src: "/images/dashkit_product.jpeg",
-    alt: "DashKit device — top and side view showing the enclosure and status LED",
-    label: "Top / side",
+    src: "/images/dashkit_angle.png",
+    alt: "DashKit device — angled view showing the enclosure and status LED",
+    label: "Angle",
   },
-  // TODO: re-enable once better photos are available
-  // {
-  //   src: "/images/full_top_view.jpeg",
-  //   alt: "DashKit device — full top-down view of the board and enclosure",
-  //   label: "Top view",
-  // },
-  // {
-  //   src: "/images/harness_connector_view.jpeg",
-  //   alt: "DashKit device — CAN-FD harness connector",
-  //   label: "Harness",
-  // },
-  // {
-  //   src: "/images/usb_c_view.jpeg",
-  //   alt: "DashKit device — USB-C port view",
-  //   label: "USB-C",
-  // },
+  {
+    src: "/images/dashkit_top.png",
+    alt: "DashKit device — full top-down view of the board and enclosure",
+    label: "Top view",
+  },
+  {
+    src: "/images/dashkit_harness_conn.png",
+    alt: "DashKit device — CAN-FD harness connector",
+    label: "Harness",
+  },
+  {
+    src: "/images/dashkit_usb_c.png",
+    alt: "DashKit device — USB-C port view",
+    label: "USB-C",
+  },
 ];
 
 export default function DeviceCarousel() {
