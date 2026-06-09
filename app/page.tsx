@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import DeviceCarousel from "./components/DeviceCarousel";
 
 export default function Home() {
   return (
@@ -33,19 +34,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="hero-media">
-            <div className="device-frame">
-              <Image
-                src="/images/dashkit-device.jpg"
-                alt="The DashKit device — a compact round module with a status LED and CAN-FD harness"
-                width={3072}
-                height={4080}
-                className="device-photo"
-                priority
-              />
-            </div>
-            <span className="device-badge">Actual hardware</span>
-          </div>
+          <DeviceCarousel />
         </div>
       </section>
 
