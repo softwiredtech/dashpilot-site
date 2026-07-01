@@ -9,10 +9,10 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">For Tesla · 2× CAN-FD</p>
+            <p className="eyebrow">For Tesla · 2× CAN</p>
             <h1>
-              The open <span className="accent">CAN-FD</span> brain for your
-              Tesla
+              The open source <span className="accent">Bluetooth</span> dongle
+              for your Tesla
             </h1>
             <p className="hero-sub">
               DashKit plugs into your Tesla&apos;s CAN buses and opens them up to
@@ -30,7 +30,7 @@ export default function Home() {
             </div>
 
             <p className="hero-note">
-              Works with Tesla · 2× CAN-FD · BLE 5 · Open source
+              Works with Tesla · 2× CAN · BLE 5 · Open source
             </p>
           </div>
 
@@ -75,8 +75,8 @@ export default function Home() {
               <h3>Your car reacts to context</h3>
               <p>
                 Keep the auto wipers off the moment Autopilot or adaptive cruise
-                engages, run rules on the bus, and chain conditions into
-                behaviors the factory never shipped.
+                engages, or map multi-finger infotainment touch gestures to
+                actions like opening the glovebox or toggling the rear fan.
               </p>
             </div>
 
@@ -91,7 +91,7 @@ export default function Home() {
               <p className="feature-tag">Controls</p>
               <h3>Reach controls the car already has</h3>
               <p>
-                Read and send messages on both CAN-FD buses. Lock and unlock,
+                Read and send messages on both CAN buses. Lock and unlock,
                 trigger functions, and reach the controls your Tesla already has
                 — now under your command.
               </p>
@@ -100,51 +100,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- SPOTLIGHT: AUTO-WIPER AUTOMATION ---------- */}
+      {/* ---------- SPOTLIGHT: AUTOMATIONS ---------- */}
       <section className="section">
         <div className="container">
           <div className="spotlight">
             <div className="spotlight-copy">
-              <p className="eyebrow">The automation people buy it for</p>
+              <p className="eyebrow">Automations that actually help</p>
               <h2>
-                Auto wipers, <span className="accent">off</span> the instant you
-                engage Autopilot.
+                Turn <span className="accent">finger taps</span> on the screen
+                into real controls.
               </h2>
               <p className="spotlight-lead">
-                Tesla&apos;s auto wipers love to swipe a dry windshield while
-                you&apos;re on Autopilot or adaptive cruise — distracting, and
-                impossible to disable from the factory. DashKit watches the bus
-                and shuts them off automatically the moment you engage, then
-                hands control back when you take over.
+                Assign three-, four-, and five-finger taps on the infotainment
+                screen to actions your Tesla hides deep in menus — pop the
+                glovebox, toggle the rear fan, and more, all from a quick
+                gesture. And when Autopilot or adaptive cruise engages, DashKit
+                silences the auto wipers so they stop swiping a dry windshield.
               </p>
               <ul className="spotlight-list">
                 <li>
-                  <span>Detects engagement</span> reads Autopilot / ACC state
-                  straight off the CAN bus
+                  <span>Three-finger tap</span> map it to an action like opening
+                  the glovebox
                 </li>
                 <li>
-                  <span>Silences the wipers</span> no more phantom swipes on a
-                  dry screen
+                  <span>Four-finger tap</span> toggle the rear fan or any control
+                  you reach on the bus
                 </li>
                 <li>
-                  <span>Hands control back</span> wipers return to normal the
-                  moment you disengage
+                  <span>Five-finger tap</span> another gesture, another
+                  action — your rules, your car
+                </li>
+                <li>
+                  <span>Auto wipers, off</span> silenced the instant Autopilot or
+                  ACC engages, restored when you take over
                 </li>
               </ul>
             </div>
             <div className="spotlight-demo" aria-hidden="true">
               <div className="demo-row">
-                <span className="demo-label">Autopilot</span>
-                <span className="demo-state demo-state--on">ENGAGED</span>
+                <span className="demo-label">3-finger tap</span>
+                <span className="demo-state demo-state--on">GLOVEBOX</span>
+              </div>
+              <div className="demo-row">
+                <span className="demo-label">4-finger tap</span>
+                <span className="demo-state demo-state--on">REAR FAN</span>
               </div>
               <div className="demo-row">
                 <span className="demo-label">Auto wipers</span>
                 <span className="demo-state demo-state--off">OFF</span>
-              </div>
-              <div className="demo-rule">
-                <span className="demo-rule-key">WHEN</span> autopilot.engaged
-                <br />
-                <span className="demo-rule-key">SET</span> wipers.auto = false
               </div>
             </div>
           </div>
@@ -169,13 +172,13 @@ export default function Home() {
             <p className="eyebrow">The hardware</p>
             <h2>Built to live inside your Tesla</h2>
             <p>
-              A compact, sealed module with two independent CAN-FD interfaces, an
+              A compact, sealed module with two independent CAN interfaces, an
               RGB status LED, and Bluetooth Low Energy. It taps straight into the
               Tesla harness and disappears behind the trim — no screens to bolt
               on, no clutter on the dash.
             </p>
             <ul className="spec-list">
-              <li><span>2× CAN-FD</span> independent buses, up to 64-byte frames</li>
+              <li><span>2× CAN</span> two independent buses</li>
               <li><span>BLE 5</span> wireless link to DashPilot on your phone</li>
               <li><span>ESP32-S3</span> with 16&nbsp;MB flash and OTA updates</li>
             </ul>
