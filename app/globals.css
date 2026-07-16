@@ -1335,3 +1335,141 @@ footer {
 .dash-features {
   gap: 18px;
 }
+
+/* ---------- INSTALL PAGE ---------- */
+.install-head {
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+.install-head h1 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 52px);
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.install-head .hero-sub {
+  margin: 0;
+}
+
+.install-fit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--text-dim);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+}
+
+.install-fit strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.install-fit::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.install-steps {
+  margin-top: 72px;
+}
+
+.install-steps h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 3.5vw, 34px);
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: step;
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 26px;
+}
+
+.step-num {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.step-body h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.step-body p {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.install-cta {
+  margin-top: 72px;
+  text-align: center;
+}
+
+.install-cta .hero-sub {
+  margin: 0 auto 28px;
+}
+
+@media (max-width: 560px) {
+  .step-item {
+    padding: 20px;
+    gap: 16px;
+  }
+}

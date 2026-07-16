@@ -26,6 +26,9 @@ export default function Header() {
             <Link href="/dashboards" className={isActive("/dashboards")}>
               Dashboards
             </Link>
+            <Link href="/install" className={isActive("/install")}>
+              Install
+            </Link>
           </div>
           <Link href="/order" className="nav-cta">
             Order DashKit
