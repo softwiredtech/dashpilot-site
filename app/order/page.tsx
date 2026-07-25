@@ -2,13 +2,21 @@
 
 import { useState, type FormEvent } from "react";
 
+import { VEHICLE_MODELS } from "./vehicles";
+
 export default function OrderPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sameAddress, setSameAddress] = useState(true);
   const [isCompany, setIsCompany] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [harness, setHarness] = useState("");
+  const [model, setModel] = useState("");
+  const [variant, setVariant] = useState("");
+
+  const selectedModel = VEHICLE_MODELS.find((m) => m.code === model);
+  const selectedVariant = selectedModel?.variants.find(
+    (v) => v.code === variant
+  );
 
   const price = process.env.NEXT_PUBLIC_PRICE_EUR || "149";
   const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
@@ -36,7 +44,8 @@ export default function OrderPage() {
         ? val("shipping_address")
         : val("billing_address"),
       ...(isCompany && { tax_number: val("tax_number") }),
-      harness,
+      model,
+      variant,
     };
 
     try {
@@ -86,36 +95,94 @@ export default function OrderPage() {
             </button>
           </div>
 
-          {/* Harness selection */}
-          <div className="field">
-            <label htmlFor="harness">Harness type</label>
-            <select
-              id="harness"
-              name="harness"
-              required
-              value={harness}
-              onChange={(e) => setHarness(e.target.value)}
-            >
-              <option value="" disabled>
-                Choose a harness type…
-              </option>
-              <option value="tesla_hw3">Tesla HW3 (Model 3/Y)</option>
-              <option value="tesla_hw4">Tesla HW4 (Model 3/Y)</option>
-              <option value="other">Other</option>
-            </select>
+          {/* Harness selection — pick the car, we ship the matching harness */}
+          <div className="picker">
+            {/* Step 1 — model */}
+            <div className="picker-step">
+              <div className="picker-head">
+                <span className={`picker-badge ${model ? "done" : ""}`}>
+                  {model ? "✓" : "1"}
+                </span>
+                <h2>{selectedModel ? selectedModel.name : "Select your model"}</h2>
+                {model && (
+                  <button
+                    type="button"
+                    className="picker-change"
+                    onClick={() => {
+                      setModel("");
+                      setVariant("");
+                    }}
+                  >
+                    Change
+                  </button>
+                )}
+              </div>
+
+              {!model && (
+                <div className="picker-body picker-grid">
+                  {VEHICLE_MODELS.map((m) => (
+                    <button
+                      key={m.code}
+                      type="button"
+                      className="picker-card"
+                      onClick={() => {
+                        setModel(m.code);
+                        setVariant("");
+                      }}
+                    >
+                      <span className="picker-card-title">{m.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Step 2 — variant */}
+            {selectedModel && (
+              <div className="picker-step">
+                <div className="picker-head">
+                  <span className={`picker-badge ${variant ? "done" : ""}`}>
+                    {variant ? "✓" : "2"}
+                  </span>
+                  <h2>
+                    {selectedVariant
+                      ? selectedVariant.name
+                      : "Select your variant"}
+                  </h2>
+                  {variant && (
+                    <button
+                      type="button"
+                      className="picker-change"
+                      onClick={() => setVariant("")}
+                    >
+                      Change
+                    </button>
+                  )}
+                </div>
+
+                {!variant && (
+                  <div className="picker-body picker-grid">
+                    {selectedModel.variants.map((v) => (
+                      <button
+                        key={v.code}
+                        type="button"
+                        className="picker-card"
+                        onClick={() => setVariant(v.code)}
+                      >
+                        <span className="picker-card-title">{v.name}</span>
+                        <span className="picker-card-desc">{v.description}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
-          {harness === "other" && (
-            <div className="notice">
-              <p className="notice-title">
-                Only Tesla HW3 and HW4 harnesses are in stock right now.
-              </p>
-              <p>
-                For any other vehicle, please get in touch:{" "}
-                <a href="mailto:info@softwiredtech.com">info@softwiredtech.com</a>
-              </p>
-            </div>
-          )}
+          <p className="form-hint picker-hint">
+            Driving something else? Get in touch at{" "}
+            <a href="mailto:info@softwiredtech.com">info@softwiredtech.com</a>
+          </p>
 
           {/* Name / Company name */}
           <div className="field">
@@ -239,7 +306,7 @@ export default function OrderPage() {
           <button
             type="submit"
             className="cta-primary submit-btn"
-            disabled={loading || !acceptedTerms || harness === "other" || !harness}
+            disabled={loading || !acceptedTerms || !selectedVariant}
           >
             {loading ? "Processing…" : `Pay ${formattedPrice}`}
           </button>

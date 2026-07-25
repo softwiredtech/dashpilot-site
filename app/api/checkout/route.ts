@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+import { findVehicle } from "@/app/order/vehicles";
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest) {
@@ -17,7 +19,8 @@ export async function POST(req: NextRequest) {
       billing_city,
       billing_address,
       tax_number,
-      harness,
+      model,
+      variant,
     } = await req.json();
 
     if (
@@ -30,7 +33,8 @@ export async function POST(req: NextRequest) {
       !billing_zip ||
       !billing_city ||
       !billing_address ||
-      !harness
+      !model ||
+      !variant
     ) {
       return NextResponse.json(
         { error: "All fields are required." },
@@ -38,11 +42,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!["tesla_hw3", "tesla_hw4"].includes(harness)) {
+    const vehicle = findVehicle(model, variant);
+
+    if (!vehicle) {
       return NextResponse.json(
         {
           error:
-            "Only Tesla HW3 and HW4 harnesses are currently available. For anything else, please get in touch.",
+            "We don't have a harness for that vehicle yet. Please get in touch and we'll help you out.",
         },
         { status: 400 }
       );
@@ -60,9 +66,7 @@ export async function POST(req: NextRequest) {
             currency: "eur",
             product_data: {
               name: "DashKit",
-              description: `DashKit — Bluetooth device + DashPilot app (${
-                harness === "tesla_hw3" ? "Tesla HW3" : "Tesla HW4"
-              } harness)`,
+              description: `DashKit — Bluetooth device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)`,
             },
             unit_amount: priceEur * 100, // Stripe expects the amount in cents
           },
@@ -83,7 +87,9 @@ export async function POST(req: NextRequest) {
         billing_city,
         billing_address,
         ...(tax_number && { tax_number }),
-        harness,
+        vehicle_model: vehicle.model.code,
+        vehicle_variant: vehicle.variant.code,
+        harness: `Tesla ${vehicle.model.name} — ${vehicle.variant.name}`,
       },
     });
 
