@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
+
 export const metadata: Metadata = {
   title: "Dashboards — DashPilot dash apps",
   description:
@@ -220,12 +222,13 @@ export default function Dashboards() {
         <div className="container">
           <h2>Get the dash on your phone.</h2>
           <p className="hero-sub">
-            Order DashKit, pair over Bluetooth, and pick the dash that fits your
-            drive.
+            {ORDERS_OPEN
+              ? "Order DashKit, pair over Bluetooth, and pick the dash that fits your drive."
+              : "Pair DashKit over Bluetooth and pick the dash that fits your drive. First batch ships end of August 2026."}
           </p>
           <div className="cta-row">
             <Link href="/order" className="cta-primary">
-              Order DashKit
+              {ORDER_CTA_LABEL}
             </Link>
           </div>
         </div>

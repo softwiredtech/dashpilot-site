@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { ORDER_CTA_LABEL } from "@/lib/flags";
+
 export const metadata: Metadata = {
   title: "DashKit Specs — Dual CAN-FD hardware for Tesla",
   description:
@@ -73,7 +75,7 @@ export default function Specs() {
             </p>
             <div className="cta-row cta-row--left">
               <Link href="/order" className="cta-primary">
-                Order DashKit
+                {ORDER_CTA_LABEL}
               </Link>
             </div>
           </div>

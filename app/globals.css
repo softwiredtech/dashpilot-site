@@ -813,6 +813,236 @@ h1 .accent {
   color: var(--text-mute);
 }
 
+/* ---------- LEGAL PAGES ---------- */
+.legal {
+  padding: 72px 0 96px;
+}
+
+.legal-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.legal-inner h1 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.legal-updated {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--text-mute);
+  padding-bottom: 32px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-inner h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 40px 0 12px;
+}
+
+.legal-inner p,
+.legal-inner li {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.legal-inner p + p {
+  margin-top: 14px;
+}
+
+.legal-inner strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.legal-inner ul {
+  margin-top: 14px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-inner li::marker {
+  color: var(--accent);
+}
+
+.legal-inner a {
+  color: var(--text);
+  border-bottom: 1px solid var(--accent-line);
+  transition: border-color 0.2s;
+}
+
+.legal-inner a:hover {
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .legal-inner {
+    padding: 0 20px;
+  }
+
+  .legal-inner h1 {
+    font-size: 30px;
+  }
+}
+
+/* ---------- PRE-LAUNCH ORDER PAGE ---------- */
+.prelaunch {
+  padding: 72px 0 96px;
+}
+
+.prelaunch-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.prelaunch-inner h1 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+}
+
+.prelaunch-sub {
+  color: var(--text-dim);
+  font-size: 17px;
+  margin-bottom: 40px;
+}
+
+.prelaunch-sub strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.prelaunch-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 40px 32px 32px;
+  text-align: left;
+}
+
+.prelaunch-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.prelaunch-amount {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.prelaunch-unit {
+  color: var(--text-dim);
+  font-size: 16px;
+}
+
+.prelaunch-vat {
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.prelaunch-list {
+  list-style: none;
+  margin: 32px 0;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.prelaunch-list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.prelaunch-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+.prelaunch-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.prelaunch-cta .cta-primary {
+  width: 100%;
+  text-align: center;
+}
+
+.prelaunch-cta .form-hint {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.prelaunch-note {
+  margin-top: 28px;
+  color: var(--text-mute);
+  font-size: 14px;
+}
+
+.prelaunch-note a {
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.prelaunch-note a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .prelaunch-inner {
+    padding: 0 20px;
+  }
+
+  .prelaunch-inner h1 {
+    font-size: 32px;
+  }
+
+  .prelaunch-card {
+    padding: 32px 22px 26px;
+  }
+
+  .prelaunch-amount {
+    font-size: 42px;
+  }
+}
+
 /* ---------- PLACEHOLDER PAGE ---------- */
 .placeholder {
   display: flex;
@@ -928,6 +1158,13 @@ footer {
 }
 
 /* ---------- FEATURES ---------- */
+/* Overview video sits between the section heading and the feature cards —
+   narrower than the grid so it reads as a demo, not a hero. */
+.features-video {
+  max-width: 860px;
+  margin: -12px auto 56px;
+}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
