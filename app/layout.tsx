@@ -13,15 +13,30 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const TITLE = "DashKit — The open source Bluetooth dongle for your Tesla";
+const DESCRIPTION =
+  "DashKit plugs into your Tesla's CAN buses and opens them up to you. Control your car, build your own automations, and stream live data to your phone — all on open, community-built software.";
+
 export const metadata: Metadata = {
-  title: "DashKit — The open CAN-FD brain for your Tesla",
-  description:
-    "DashKit is an open, hackable dual CAN-FD device for your Tesla. Control your car, build automations, and turn your phone into a real-time dashboard with DashPilot. Features built by the open-source community.",
+  // Makes the opengraph-image URL absolute, which every social scraper requires.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000")
+  ),
+  title: TITLE,
+  description: DESCRIPTION,
   openGraph: {
-    title: "DashKit — The open CAN-FD brain for your Tesla",
-    description:
-      "An open dual CAN-FD device for your Tesla. Control, automate, and visualize — powered by the open-source community.",
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: "DashKit",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
