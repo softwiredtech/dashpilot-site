@@ -2,10 +2,22 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
 import { findVehicle } from "@/app/order/vehicles";
+import { ORDERS_OPEN } from "@/lib/flags";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+let stripe: Stripe | null = null;
+function getStripe(): Stripe {
+  stripe ??= new Stripe(process.env.STRIPE_SECRET_KEY!);
+  return stripe;
+}
 
 export async function POST(req: NextRequest) {
+  if (!ORDERS_OPEN) {
+    return NextResponse.json(
+      { error: "Ordering hasn't opened yet. DashKit ships end of August 2026." },
+      { status: 503 }
+    );
+  }
+
   try {
     const {
       name,
@@ -54,10 +66,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 149;
+    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 139;
     const origin = req.nextUrl.origin;
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       payment_method_types: ["card"],
       customer_email: email,
       line_items: [

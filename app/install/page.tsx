@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
+
 export const metadata: Metadata = {
   title: "Install DashKit — Video guide & step-by-step",
   description:
@@ -118,11 +120,13 @@ export default function Install() {
 
         <div className="install-cta">
           <p className="hero-sub">
-            Don&apos;t have DashKit yet? Order one and start building.
+            {ORDERS_OPEN
+              ? "Don't have DashKit yet? Order one and start building."
+              : "Don't have DashKit yet? The first batch ships end of August 2026."}
           </p>
           <div className="cta-row">
             <Link href="/order" className="cta-primary">
-              Order DashKit
+              {ORDER_CTA_LABEL}
             </Link>
             <Link href="/specs" className="cta-secondary">
               View specs

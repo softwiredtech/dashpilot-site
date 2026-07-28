@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+
+import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
+
 import DeviceCarousel from "./components/DeviceCarousel";
+
+const OVERVIEW_VIDEO_ID = "J97PuWTH-S4";
 
 export default function Home() {
   return (
@@ -22,7 +27,7 @@ export default function Home() {
 
             <div className="cta-row cta-row--left">
               <Link href="/order" className="cta-primary">
-                Order DashKit
+                {ORDER_CTA_LABEL}
               </Link>
               <Link href="/specs" className="cta-secondary">
                 View specs
@@ -30,7 +35,9 @@ export default function Home() {
             </div>
 
             <p className="hero-note">
-              Works with Tesla · 2× CAN · BLE 5 · Open source
+              {ORDERS_OPEN
+                ? "Works with Tesla · 2× CAN · BLE 5 · Open source"
+                : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
             </p>
           </div>
 
@@ -47,6 +54,17 @@ export default function Home() {
             <span className="accent">Automation</span>,{" "}
             <span className="accent">Controls</span>.
           </h2>
+
+          <div className="features-video">
+            <div className="video-frame">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${OVERVIEW_VIDEO_ID}`}
+                title="DashKit — an open-source Bluetooth dongle for your Tesla"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
 
           <div className="feature-grid">
             <div className="feature-card">
@@ -237,11 +255,13 @@ export default function Home() {
         <div className="container">
           <h2>Open up your Tesla.</h2>
           <p className="hero-sub">
-            Get the DashKit device and join the community building on top of it.
+            {ORDERS_OPEN
+              ? "Get the DashKit device and join the community building on top of it."
+              : "The first batch ships end of August 2026. See what it costs and get a heads-up when ordering opens."}
           </p>
           <div className="cta-row">
             <Link href="/order" className="cta-primary">
-              Order DashKit
+              {ORDER_CTA_LABEL}
             </Link>
           </div>
         </div>

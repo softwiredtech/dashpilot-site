@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 
+import { ORDERS_OPEN } from "@/lib/flags";
+
 import { VEHICLE_MODELS } from "./vehicles";
 
 export default function OrderPage() {
@@ -18,8 +20,62 @@ export default function OrderPage() {
     (v) => v.code === variant
   );
 
-  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "149";
+  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "139";
   const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
+
+  if (!ORDERS_OPEN) {
+    return (
+      <section className="order prelaunch">
+        <div className="prelaunch-inner">
+          <p className="eyebrow">Pricing &amp; availability</p>
+          <h1>DashKit is almost here</h1>
+          <p className="prelaunch-sub">
+            The first batch ships <strong>end of August 2026</strong>. Here&apos;s
+            what it costs and what you get.
+          </p>
+
+          <div className="prelaunch-card">
+            <div className="prelaunch-price">
+              <span className="prelaunch-amount">{formattedPrice}</span>
+              <span className="prelaunch-unit">excl. VAT</span>
+            </div>
+            <p className="prelaunch-vat">
+              VAT and shipping calculated at checkout · Ships across the EU
+            </p>
+
+            <ul className="prelaunch-list">
+              <li>DashKit device — dual CAN-FD, BLE 5, OTA updates</li>
+              <li>
+                Plug-and-play harness for your exact car — nothing to splice or
+                solder
+              </li>
+              <li>DashPilot companion app — free, no subscription</li>
+              <li>Open firmware you can build on</li>
+            </ul>
+
+            <div className="prelaunch-cta">
+              <a
+                className="cta-primary"
+                href="mailto:info@softwiredtech.com?subject=Notify%20me%20when%20DashKit%20orders%20open&body=Let%20me%20know%20when%20I%20can%20order%20a%20DashKit."
+              >
+                Email me when orders open
+              </a>
+              <p className="form-hint">
+                No payments or pre-orders are being taken yet — ordering opens
+                when the first batch ships.
+              </p>
+            </div>
+          </div>
+
+          <p className="prelaunch-note">
+            Driving something other than a Tesla, or want a batch for a fleet?
+            Get in touch at{" "}
+            <a href="mailto:info@softwiredtech.com">info@softwiredtech.com</a>
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -72,7 +128,9 @@ export default function OrderPage() {
     <section className="order">
       <div className="order-inner">
         <h1>Order DashKit</h1>
-        <p className="order-price">DashKit — {formattedPrice}</p>
+        <p className="order-price">
+          DashKit — {formattedPrice} excl. VAT
+        </p>
 
         {error && <div className="form-error">{error}</div>}
 
