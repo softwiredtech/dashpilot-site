@@ -29,10 +29,16 @@ export default function PrivacyPolicy() {
 
         <h2>What we collect</h2>
         <p>
-          <strong>Browsing this site.</strong> We do not run analytics,
-          advertising, or tracking cookies. We set no cookies of our own. Our
-          hosting provider keeps standard server logs (IP address, browser user
-          agent, requested page) for security and troubleshooting.
+          <strong>Browsing this site.</strong> We set no cookies of our own and
+          run no advertising or cross-site tracking. We use{" "}
+          <a href="https://umami.is" target="_blank" rel="noreferrer">
+            Umami
+          </a>{" "}
+          to count page views. It uses no cookies, does not follow you across
+          other websites, and records only aggregate figures — page visited,
+          referrer, country, browser and device type. It does not store your IP
+          address. Our hosting provider keeps standard server logs (IP address,
+          browser user agent, requested page) for security and troubleshooting.
         </p>
         <p>
           <strong>If you email or call us.</strong> We keep your message and
