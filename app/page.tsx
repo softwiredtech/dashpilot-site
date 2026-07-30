@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import GithubIcon from "@/components/GithubIcon";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
+import { GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
 
 import DeviceCarousel from "./components/DeviceCarousel";
 
@@ -246,6 +248,33 @@ export default function Home() {
                 not a product you&apos;re locked out of.
               </p>
             </div>
+          </div>
+
+          <div className="os-repos">
+            <a
+              href={GITHUB_FIRMWARE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="repo-link"
+            >
+              <GithubIcon />
+              <span>
+                <strong>dashkit-firmware</strong>
+                <em>The firmware running on the device</em>
+              </span>
+            </a>
+            <a
+              href={GITHUB_APP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="repo-link"
+            >
+              <GithubIcon />
+              <span>
+                <strong>dashpilot</strong>
+                <em>The companion phone app</em>
+              </span>
+            </a>
           </div>
         </div>
       </section>

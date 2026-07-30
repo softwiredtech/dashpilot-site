@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { ORDER_CTA_LABEL } from "@/lib/flags";
 
+import GithubMenu from "./GithubMenu";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -33,6 +34,7 @@ export default function Header() {
               Install
             </Link>
           </div>
+          <GithubMenu />
           <Link href="/order" className="nav-cta">
             {ORDER_CTA_LABEL}
           </Link>

@@ -1,4 +1,8 @@
 import Link from "next/link";
+
+import { GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
+
+import GithubIcon from "./GithubIcon";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -30,6 +34,34 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/privacy-policy">Privacy policy</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Source</h4>
+            <ul>
+              <li>
+                <a
+                  href={GITHUB_FIRMWARE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-gh"
+                >
+                  <GithubIcon />
+                  dashkit-firmware
+                </a>
+              </li>
+              <li>
+                <a
+                  href={GITHUB_APP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-gh"
+                >
+                  <GithubIcon />
+                  dashpilot
+                </a>
               </li>
             </ul>
           </div>
