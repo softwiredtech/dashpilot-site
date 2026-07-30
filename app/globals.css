@@ -241,7 +241,7 @@ nav {
   }
 
   .nav-right {
-    gap: 18px;
+    gap: 16px;
   }
 }
 
@@ -252,7 +252,46 @@ nav {
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
+  /* The label is the widest thing in the nav; letting it wrap collapses the
+     row and the marks ride over the brand. */
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: transform 0.15s, background 0.2s;
+}
+
+.nav-cta-short {
+  display: none;
+}
+
+/* Phone width: trim the nav to brand + marks + a short CTA so the row still
+   fits on a 360px screen. */
+@media (max-width: 600px) {
+  nav {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+
+  .brand {
+    gap: 9px;
+    font-size: 16px;
+  }
+
+  .brand-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-cta {
+    padding: 8px 14px;
+  }
+
+  .nav-cta-long {
+    display: none;
+  }
+
+  .nav-cta-short {
+    display: inline;
+  }
 }
 
 .nav-cta:hover {

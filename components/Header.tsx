@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { ORDER_CTA_LABEL } from "@/lib/flags";
+import { ORDER_CTA_LABEL, ORDER_CTA_LABEL_SHORT } from "@/lib/flags";
 import { DISCORD } from "@/lib/links";
 
 import GithubMenu from "./GithubMenu";
@@ -47,8 +47,13 @@ export default function Header() {
             <span>Discord</span>
           </a>
           <GithubMenu />
-          <Link href="/order" className="nav-cta">
-            {ORDER_CTA_LABEL}
+          <Link href="/order" className="nav-cta" aria-label={ORDER_CTA_LABEL}>
+            {/* Both labels ship and CSS picks one, so the swap happens at the
+                real viewport width instead of after a client-side measure. */}
+            <span className="nav-cta-long">{ORDER_CTA_LABEL}</span>
+            <span className="nav-cta-short" aria-hidden="true">
+              {ORDER_CTA_LABEL_SHORT}
+            </span>
           </Link>
         </div>
       </nav>

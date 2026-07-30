@@ -12,3 +12,7 @@ export const ORDERS_OPEN = process.env.NEXT_PUBLIC_ORDERS_OPEN === "true";
 export const ORDER_CTA_LABEL = ORDERS_OPEN
   ? "Order DashKit"
   : "Pricing & availability";
+
+/** The same entry point, trimmed for the phone-width nav where the full label
+ *  wraps onto two lines and pushes the brand under the social marks. */
+export const ORDER_CTA_LABEL_SHORT = ORDERS_OPEN ? "Order" : "Pricing";
