@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import GithubIcon from "@/components/GithubIcon";
+import { DiscordIcon } from "@/components/SocialIcons";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
-import { GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
+import { DISCORD, GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
 
 import DeviceCarousel from "./components/DeviceCarousel";
 
@@ -276,6 +277,25 @@ export default function Home() {
               </span>
             </a>
           </div>
+
+          {/* The repos are where the code lives; Discord is where the people
+              are. It gets its own full-width row so it doesn't read as a
+              third repository. */}
+          <a
+            href={DISCORD}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="repo-link os-discord"
+          >
+            <DiscordIcon />
+            <span>
+              <strong>Join the Discord</strong>
+              <em>
+                Where the community decodes signals, trades dashboards and helps
+                you get set up
+              </em>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -288,10 +308,19 @@ export default function Home() {
               ? "Get the DashKit device and join the community building on top of it."
               : "The first batch ships end of August 2026. See what it costs and get a heads-up when ordering opens."}
           </p>
-          <div className="cta-row">
+          <div className="cta-row cta-row--center">
             <Link href="/order" className="cta-primary">
               {ORDER_CTA_LABEL}
             </Link>
+            <a
+              href={DISCORD}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-secondary cta-secondary--icon"
+            >
+              <DiscordIcon />
+              Join the Discord
+            </a>
           </div>
         </div>
       </section>

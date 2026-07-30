@@ -1,9 +1,16 @@
 import Link from "next/link";
 
-import { GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
+import {
+  DISCORD,
+  GITHUB_APP,
+  GITHUB_FIRMWARE,
+  X_TWITTER,
+  YOUTUBE,
+} from "@/lib/links";
 
 import GithubIcon from "./GithubIcon";
 import Logo from "./Logo";
+import { DiscordIcon, XIcon, YoutubeIcon } from "./SocialIcons";
 
 export default function Footer() {
   return (
@@ -61,6 +68,45 @@ export default function Footer() {
                 >
                   <GithubIcon />
                   dashpilot
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Community</h4>
+            <ul>
+              <li>
+                <a
+                  href={DISCORD}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-gh"
+                >
+                  <DiscordIcon />
+                  Discord
+                </a>
+              </li>
+              <li>
+                <a
+                  href={YOUTUBE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-gh"
+                >
+                  <YoutubeIcon />
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a
+                  href={X_TWITTER}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-gh"
+                >
+                  <XIcon />
+                  X
                 </a>
               </li>
             </ul>

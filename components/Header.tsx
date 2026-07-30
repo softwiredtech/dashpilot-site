@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { ORDER_CTA_LABEL } from "@/lib/flags";
+import { DISCORD } from "@/lib/links";
 
 import GithubMenu from "./GithubMenu";
 import Logo from "./Logo";
+import { DiscordIcon } from "./SocialIcons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -34,6 +36,16 @@ export default function Header() {
               Install
             </Link>
           </div>
+          <a
+            href={DISCORD}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-social"
+            aria-label="Join the DashKit Discord"
+          >
+            <DiscordIcon />
+            <span>Discord</span>
+          </a>
           <GithubMenu />
           <Link href="/order" className="nav-cta">
             {ORDER_CTA_LABEL}
