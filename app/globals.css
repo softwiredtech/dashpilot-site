@@ -814,6 +814,60 @@ h1 .accent {
   accent-color: var(--accent);
 }
 
+.order-inner .eyebrow {
+  margin-bottom: 10px;
+}
+
+.dev-notice {
+  background: rgba(136, 224, 166, 0.07);
+  border: 1px solid rgba(136, 224, 166, 0.35);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dev-notice strong {
+  color: var(--text);
+}
+
+.dev-notice-title {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.order-summary {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-summary-total {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  color: var(--text);
+  font-weight: 600;
+}
+
 .notice {
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.3);

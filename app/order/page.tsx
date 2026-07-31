@@ -3,8 +3,16 @@
 import { useState, type FormEvent } from "react";
 
 import { ORDERS_OPEN } from "@/lib/flags";
+import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
+import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
 
 import { VEHICLE_MODELS } from "./vehicles";
+
+const euro = (cents: number) =>
+  `€${(cents / 100).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 
 export default function OrderPage() {
   const [loading, setLoading] = useState(false);
@@ -12,6 +20,9 @@ export default function OrderPage() {
   const [sameAddress, setSameAddress] = useState(true);
   const [isCompany, setIsCompany] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [devAcknowledged, setDevAcknowledged] = useState(false);
+  const [shippingCountry, setShippingCountry] = useState("");
+  const [taxNumber, setTaxNumber] = useState("");
   const [model, setModel] = useState("");
   const [variant, setVariant] = useState("");
 
@@ -22,6 +33,25 @@ export default function OrderPage() {
 
   const price = process.env.NEXT_PUBLIC_PRICE_EUR || "139";
   const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
+
+  const country = findCountry(shippingCountry);
+  const priceCents = Number(price) * 100;
+  const shippingCents = country ? SHIPPING_EUR[country.market] * 100 : 0;
+  // EU companies with a VAT number from another member state get the 0%
+  // intra-community reverse charge. Mirrors the server's decision; the number
+  // itself is verified against VIES server-side.
+  const reverseCharge =
+    isCompany &&
+    country?.market === "EU" &&
+    qualifiesForReverseCharge(parseEuVat(taxNumber));
+  // Stripe applies the tax rate per line item and rounds each, so mirror that
+  // here to keep the preview cent-exact with the Stripe checkout page.
+  const vatCents =
+    country?.vatRate && !reverseCharge
+      ? Math.round((priceCents * country.vatRate) / 100) +
+        Math.round((shippingCents * country.vatRate) / 100)
+      : 0;
+  const totalCents = priceCents + shippingCents + vatCents;
 
   if (!ORDERS_OPEN) {
     return (
@@ -40,7 +70,8 @@ export default function OrderPage() {
               <span className="prelaunch-unit">excl. VAT</span>
             </div>
             <p className="prelaunch-vat">
-              VAT and shipping calculated at checkout · Ships across the EU
+              VAT and shipping calculated at checkout · Ships to the EU, UK
+              &amp; US
             </p>
 
             <ul className="prelaunch-list">
@@ -91,9 +122,12 @@ export default function OrderPage() {
       email: val("email"),
       phone: val("phone"),
       is_company: isCompany,
+      dev_acknowledged: devAcknowledged,
+      shipping_country: shippingCountry,
       shipping_zip: val("shipping_zip"),
       shipping_city: val("shipping_city"),
       shipping_address: val("shipping_address"),
+      billing_country: sameAddress ? shippingCountry : val("billing_country"),
       billing_zip: sameAddress ? val("shipping_zip") : val("billing_zip"),
       billing_city: sameAddress ? val("shipping_city") : val("billing_city"),
       billing_address: sameAddress
@@ -127,10 +161,20 @@ export default function OrderPage() {
   return (
     <section className="order">
       <div className="order-inner">
+        <p className="eyebrow">Developer early access</p>
         <h1>Order DashKit</h1>
         <p className="order-price">
           DashKit — {formattedPrice} excl. VAT
         </p>
+        <div className="dev-notice">
+          <p className="dev-notice-title">⚠ Developer early access</p>
+          <p>
+            This batch is for <strong>developers</strong>: open-firmware
+            hardware for people who want to build on it. Expect rough edges, a
+            hands-on install, and features that are still evolving with the
+            community — not a finished consumer product.
+          </p>
+        </div>
 
         {error && <div className="form-error">{error}</div>}
 
@@ -250,14 +294,23 @@ export default function OrderPage() {
 
           {isCompany && (
             <div className="field">
-              <label htmlFor="tax_number">Tax number</label>
+              <label htmlFor="tax_number">Tax / VAT number</label>
               <input
                 id="tax_number"
                 name="tax_number"
                 type="text"
                 required
-                placeholder="EU123456789"
+                placeholder="DE123456789"
+                value={taxNumber}
+                onChange={(e) => setTaxNumber(e.target.value)}
               />
+              {country?.market === "EU" && (
+                <p className="form-hint">
+                  {reverseCharge
+                    ? "EU VAT number — the 0% reverse charge applies. We verify the number against VIES."
+                    : "EU companies outside Hungary: enter your VAT number with the country prefix (e.g. DE123456789) to buy at 0% VAT under the reverse charge."}
+                </p>
+              )}
             </div>
           )}
 
@@ -274,6 +327,25 @@ export default function OrderPage() {
           {/* Shipping address */}
           <fieldset>
             <legend>Shipping address</legend>
+            <div className="field">
+              <label htmlFor="shipping_country">Country</label>
+              <select
+                id="shipping_country"
+                name="shipping_country"
+                required
+                value={shippingCountry}
+                onChange={(e) => setShippingCountry(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select your country
+                </option>
+                {COUNTRIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="field-row">
               <div className="field field-zip">
                 <label htmlFor="shipping_zip">ZIP / Postcode</label>
@@ -319,6 +391,24 @@ export default function OrderPage() {
           {!sameAddress && (
             <fieldset>
               <legend>Billing address</legend>
+              <div className="field">
+                <label htmlFor="billing_country">Country</label>
+                <select
+                  id="billing_country"
+                  name="billing_country"
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select your country
+                  </option>
+                  {COUNTRIES.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div className="field-row">
                 <div className="field field-zip">
                   <label htmlFor="billing_zip">ZIP / Postcode</label>
@@ -351,6 +441,57 @@ export default function OrderPage() {
             </fieldset>
           )}
 
+          {/* Price summary — updates with the shipping country */}
+          {country && (
+            <div className="order-summary">
+              <div className="order-summary-row">
+                <span>DashKit — Developer Early Access</span>
+                <span>{euro(priceCents)}</span>
+              </div>
+              <div className="order-summary-row">
+                <span>Shipping ({country.name})</span>
+                <span>{euro(shippingCents)}</span>
+              </div>
+              {reverseCharge ? (
+                <>
+                  <div className="order-summary-row">
+                    <span>VAT — reverse charge</span>
+                    <span>{euro(0)}</span>
+                  </div>
+                  <p className="form-hint">
+                    VAT to be accounted for by the recipient (Art. 196 EU VAT
+                    Directive).
+                  </p>
+                </>
+              ) : country.vatRate ? (
+                <div className="order-summary-row">
+                  <span>VAT ({country.vatRate}%)</span>
+                  <span>{euro(vatCents)}</span>
+                </div>
+              ) : (
+                <p className="form-hint">
+                  Prices exclude tax. Import duties and taxes may be collected
+                  by the carrier on delivery.
+                </p>
+              )}
+              <div className="order-summary-row order-summary-total">
+                <span>Total</span>
+                <span>{euro(totalCents)}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Developer early access acknowledgement */}
+          <label className="checkbox-row">
+            <input
+              type="checkbox"
+              checked={devAcknowledged}
+              onChange={(e) => setDevAcknowledged(e.target.checked)}
+            />
+            I understand this is a developer early-access device intended for
+            development purposes, not a finished consumer product.
+          </label>
+
           {/* Terms checkbox */}
           <label className="checkbox-row">
             <input
@@ -364,9 +505,19 @@ export default function OrderPage() {
           <button
             type="submit"
             className="cta-primary submit-btn"
-            disabled={loading || !acceptedTerms || !selectedVariant}
+            disabled={
+              loading ||
+              !acceptedTerms ||
+              !devAcknowledged ||
+              !selectedVariant ||
+              !country
+            }
           >
-            {loading ? "Processing…" : `Pay ${formattedPrice}`}
+            {loading
+              ? "Processing…"
+              : country
+                ? `Pay ${euro(totalCents)}`
+                : `Pay ${formattedPrice}`}
           </button>
 
           <p className="form-hint">

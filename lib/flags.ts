@@ -1,16 +1,16 @@
 /**
- * Ordering is closed until the first batch ships. While closed, /order shows
- * price and availability instead of the checkout form, and /api/checkout
- * refuses to create Stripe sessions.
- *
- * Set NEXT_PUBLIC_ORDERS_OPEN=true to open ordering. Anything else (including
- * unset) keeps it closed, so a forgotten env var fails safe.
+ * Developer early access ordering opened 2026-07-31 (EU, UK, US), so orders
+ * are ON by default. Set NEXT_PUBLIC_ORDERS_OPEN=false to close ordering
+ * again: /order falls back to the pricing & availability page and
+ * /api/checkout refuses to create Stripe sessions.
  */
-export const ORDERS_OPEN = process.env.NEXT_PUBLIC_ORDERS_OPEN === "true";
+export const ORDERS_OPEN = process.env.NEXT_PUBLIC_ORDERS_OPEN !== "false";
 
-/** Label for every "buy" entry point, so they stay consistent site-wide. */
+/** Label for every "buy" entry point, so they stay consistent site-wide.
+ *  "Early access" is in the label so nobody reaches checkout expecting a
+ *  finished consumer product. */
 export const ORDER_CTA_LABEL = ORDERS_OPEN
-  ? "Order DashKit"
+  ? "Get early access"
   : "Pricing & availability";
 
 /** The same entry point, trimmed for the phone-width nav where the full label
