@@ -814,6 +814,11 @@ h1 .accent {
   accent-color: var(--accent);
 }
 
+.checkbox-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .order-inner .eyebrow {
   margin-bottom: 10px;
 }

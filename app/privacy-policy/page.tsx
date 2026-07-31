@@ -46,11 +46,11 @@ export default function PrivacyPolicy() {
           ordering opens if you asked us to.
         </p>
         <p>
-          <strong>If you place an order.</strong> Ordering is not open yet. Once
-          it is, placing an order means giving us your name, email address,
-          phone number, shipping and billing address, your vehicle model, and —
-          for business customers — a company name and tax number. We need this
-          to fulfil the sale and to issue a compliant invoice.
+          <strong>If you place an order.</strong> Placing an order means giving
+          us your name, email address, phone number, shipping and billing
+          address, your vehicle model, and — for business customers — a company
+          name and tax number. We need this to fulfil the sale and to issue a
+          compliant invoice.
         </p>
         <p>
           We never see or store your card details. Payments are handled entirely

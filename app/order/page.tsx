@@ -499,7 +499,17 @@ export default function OrderPage() {
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
             />
-            I have read and accept the Terms &amp; Conditions
+            <span>
+              I have read and accept the{" "}
+              <a
+                href="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="checkbox-link"
+              >
+                Terms &amp; Conditions
+              </a>
+            </span>
           </label>
 
           <button

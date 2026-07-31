@@ -40,6 +40,9 @@ export default function Footer() {
                 <a href="tel:+36308838435">+36 30 883 8435</a>
               </li>
               <li>
+                <Link href="/terms">Terms &amp; conditions</Link>
+              </li>
+              <li>
                 <Link href="/privacy-policy">Privacy policy</Link>
               </li>
             </ul>
@@ -118,6 +121,7 @@ export default function Footer() {
               <li>Nagy Lajos király útja 14.</li>
               <li>fszt. 3.</li>
               <li>7622 Pécs, Hungary</li>
+              <li>EU VAT: HU32065558</li>
             </ul>
           </div>
         </div>
