@@ -4,15 +4,15 @@
  * - EU countries: the net price is charged plus the destination country's
  *   standard VAT rate (OSS-style destination taxation). VAT also applies to
  *   shipping, as tax follows the goods.
- * - UK and US: the net price is charged with no tax collected — import
- *   duties/taxes are the customer's responsibility on delivery.
+ * - UK, US and Canada: the net price is charged with no tax collected —
+ *   import duties/taxes are the customer's responsibility on delivery.
  *
  * VAT rates are standard rates as of July 2026. They change rarely but do
  * change (e.g. Estonia 2025, Romania 2025) — review this table when a member
  * state announces a rate change.
  */
 
-export type Market = "EU" | "UK" | "US";
+export type Market = "EU" | "UK" | "US" | "CA";
 
 export type Country = {
   /** ISO 3166-1 alpha-2, what Stripe expects. */
@@ -28,6 +28,7 @@ export const SHIPPING_EUR: Record<Market, number> = {
   EU: 12,
   UK: 20,
   US: 20,
+  CA: 20,
 };
 
 export const COUNTRIES: Country[] = [
@@ -58,6 +59,7 @@ export const COUNTRIES: Country[] = [
   { code: "SI", name: "Slovenia", market: "EU", vatRate: 22 },
   { code: "ES", name: "Spain", market: "EU", vatRate: 21 },
   { code: "SE", name: "Sweden", market: "EU", vatRate: 25 },
+  { code: "CA", name: "Canada", market: "CA" },
   { code: "GB", name: "United Kingdom", market: "UK" },
   { code: "US", name: "United States", market: "US" },
 ];

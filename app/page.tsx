@@ -39,7 +39,7 @@ export default function Home() {
 
             <p className="hero-note">
               {ORDERS_OPEN
-                ? "Developer early access · Ships to EU, UK & US · Open source"
+                ? "Developer early access · Ships to EU, UK, US & Canada · Open source"
                 : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
             </p>
           </div>

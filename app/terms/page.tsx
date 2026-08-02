@@ -50,16 +50,16 @@ export default function Terms() {
           your country&apos;s VAT is added at checkout. EU businesses ordering
           with a valid VAT number from a member state other than Hungary are
           charged 0% VAT under the reverse-charge mechanism (Art. 196 EU VAT
-          Directive) and account for VAT themselves. For deliveries to the UK
-          and US, prices are net of tax — any import duties or taxes are
-          collected from you by the carrier and are your responsibility.
+          Directive) and account for VAT themselves. For deliveries to the UK,
+          US and Canada, prices are net of tax — any import duties or taxes
+          are collected from you by the carrier and are your responsibility.
           Payment is handled by Stripe; we never see your card details. The
           contract is concluded when your payment is confirmed.
         </p>
 
         <h2>Shipping</h2>
         <p>
-          We ship to the EU (€12), and to the UK and US (€20). Dispatch
+          We ship to the EU (€12), and to the UK, US and Canada (€20). Dispatch
           estimates are shown at the time of ordering; early-access batches are
           produced in limited runs, so dates are estimates rather than
           guarantees. If we cannot ship your order within 30 days of the

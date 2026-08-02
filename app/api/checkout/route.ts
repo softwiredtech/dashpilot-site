@@ -149,7 +149,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "We currently only ship to the EU, the United Kingdom and the United States.",
+            "We currently only ship to the EU, the United Kingdom, the United States and Canada.",
         },
         { status: 400 }
       );
