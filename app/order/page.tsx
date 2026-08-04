@@ -161,18 +161,19 @@ export default function OrderPage() {
   return (
     <section className="order">
       <div className="order-inner">
-        <p className="eyebrow">Developer early access</p>
+        <p className="eyebrow">Alpha tester batch</p>
         <h1>Order DashKit</h1>
         <p className="order-price">
           DashKit — {formattedPrice} excl. VAT
         </p>
         <div className="dev-notice">
-          <p className="dev-notice-title">⚠ Developer early access</p>
+          <p className="dev-notice-title">⚠ Alpha tester batch</p>
           <p>
-            This batch is for <strong>developers</strong>: open-firmware
-            hardware for people who want to build on it. Expect rough edges, a
-            hands-on install, and features that are still evolving with the
-            community — not a finished consumer product.
+            This batch is for <strong>alpha testers</strong>: open-firmware
+            hardware for people who want to build on it. Expect rough edges and
+            features that are still evolving with the community — not a
+            finished consumer product. Not for you after all? Every order comes
+            with a <strong>14-day money-back guarantee</strong>.
           </p>
         </div>
 
@@ -445,7 +446,7 @@ export default function OrderPage() {
           {country && (
             <div className="order-summary">
               <div className="order-summary-row">
-                <span>DashKit — Developer Early Access</span>
+                <span>DashKit — Alpha Tester Batch</span>
                 <span>{euro(priceCents)}</span>
               </div>
               <div className="order-summary-row">
@@ -481,15 +482,15 @@ export default function OrderPage() {
             </div>
           )}
 
-          {/* Developer early access acknowledgement */}
+          {/* Alpha batch acknowledgement */}
           <label className="checkbox-row">
             <input
               type="checkbox"
               checked={devAcknowledged}
               onChange={(e) => setDevAcknowledged(e.target.checked)}
             />
-            I understand this is a developer early-access device intended for
-            development purposes, not a finished consumer product.
+            I understand this is an alpha-batch device intended for testers and
+            developers, not a finished consumer product.
           </label>
 
           {/* Terms checkbox */}
@@ -532,6 +533,16 @@ export default function OrderPage() {
 
           <p className="form-hint">
             You&apos;ll be redirected to Stripe&apos;s secure payment page.
+            14-day money-back guarantee — see the{" "}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="checkbox-link"
+            >
+              Terms
+            </a>{" "}
+            for details.
           </p>
         </form>
       </div>

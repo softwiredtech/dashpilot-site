@@ -138,7 +138,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Please confirm you understand this is developer early-access hardware.",
+            "Please confirm you understand this is alpha-batch hardware.",
         },
         { status: 400 }
       );
@@ -209,8 +209,8 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "eur",
             product_data: {
-              name: "DashKit — Developer Early Access",
-              description: `Early-access hardware for developers — dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
+              name: "DashKit — Alpha Tester Batch",
+              description: `Alpha-batch hardware for testers and developers — dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
                 reverseCharge
                   ? " · Reverse charge: VAT to be accounted for by the recipient (Art. 196 EU VAT Directive)"
                   : ""
