@@ -7,7 +7,7 @@ import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 export const metadata: Metadata = {
   title: "Dashboards — DashPilot dash apps",
   description:
-    "DashPilot turns your phone into a live car dashboard. Swap between dash apps — Vanilla, Ambient, Analog, Retro, Expo and Rive — each in light and dark, each with blind spot monitoring, assist status, battery telemetry and more.",
+    "DashPilot turns your phone into a live car dashboard. Swap between dash apps — Vanilla, Ambient, Analog and Retro — each in light and dark, each with blind spot monitoring, assist status, battery telemetry and more.",
 };
 
 type DashApp = {
@@ -50,22 +50,6 @@ const apps: DashApp[] = [
     description:
       "Fourteen-segment displays with ghosted off-segments and a CRT glow, flanked by a blind-spot LED tape running down each side.",
     tags: ["14-segment LED", "CRT glow", "Light & dark"],
-  },
-  {
-    name: "Expo",
-    image: "/dash-apps/preview_expo.jpg",
-    aspect: [2280, 1080],
-    description:
-      "A modern, component-built layout — a sweeping speed arc, steering indicator, and a speed limit sign with distance.",
-    tags: ["Speed arc", "Steering", "Limit distance"],
-  },
-  {
-    name: "Rive",
-    image: "/dash-apps/preview_rive.jpg",
-    aspect: [2280, 1080],
-    description:
-      "A widget-grid layout powered by Rive vector animation: speed limit, gear, steering angle, upcoming lights and stop signs, time and temperature.",
-    tags: ["Widget grid", "Traffic light", "Stop sign"],
   },
 ];
 
