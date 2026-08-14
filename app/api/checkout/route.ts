@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 139;
+    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 159;
     const shippingEur = SHIPPING_EUR[country.market];
     const origin = req.nextUrl.origin;
 

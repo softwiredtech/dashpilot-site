@@ -31,7 +31,7 @@ export default function OrderPage() {
     (v) => v.code === variant
   );
 
-  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "139";
+  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "159";
   const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
 
   const country = findCountry(shippingCountry);
