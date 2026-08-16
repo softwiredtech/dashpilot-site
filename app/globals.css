@@ -800,6 +800,46 @@ h1 .accent {
   color: #0a0a0c;
 }
 
+.qty-picker {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.qty-picker input {
+  max-width: 80px;
+  text-align: center;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.qty-picker input::-webkit-outer-spin-button,
+.qty-picker input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-btn {
+  width: 44px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.qty-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.qty-btn:disabled {
+  color: var(--text-dim);
+  opacity: 0.5;
+  cursor: default;
+}
+
 .checkbox-row {
   display: flex;
   align-items: flex-start;

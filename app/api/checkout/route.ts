@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import { findVehicle } from "@/app/order/vehicles";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { findCountry, SHIPPING_EUR, type Country } from "@/lib/markets";
+import { BULK_DISCOUNT_PCT, BULK_MIN_QTY, MAX_QTY, unitPriceEur } from "@/lib/pricing";
 import {
   parseEuVat,
   qualifiesForReverseCharge,
@@ -111,6 +112,7 @@ export async function POST(req: NextRequest) {
       tax_number,
       model,
       variant,
+      quantity: rawQuantity,
     } = await req.json();
 
     if (
@@ -130,6 +132,16 @@ export async function POST(req: NextRequest) {
     ) {
       return NextResponse.json(
         { error: "All fields are required." },
+        { status: 400 }
+      );
+    }
+
+    const quantity = Number(rawQuantity ?? 1);
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QTY) {
+      return NextResponse.json(
+        {
+          error: `Quantity must be between 1 and ${MAX_QTY}. For larger fleet orders, get in touch at info@softwiredtech.com.`,
+        },
         { status: 400 }
       );
     }
@@ -167,7 +179,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 159;
+    const basePriceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 159;
+    const priceEur = unitPriceEur(basePriceEur, quantity);
+    const bulkDiscount = priceEur !== basePriceEur;
     const shippingEur = SHIPPING_EUR[country.market];
     const origin = req.nextUrl.origin;
 
@@ -211,6 +225,10 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: "DashKit — Alpha Tester Batch",
               description: `Alpha-batch hardware for testers and developers — dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
+                bulkDiscount
+                  ? ` · ${BULK_DISCOUNT_PCT}% volume discount (${BULK_MIN_QTY}+ units)`
+                  : ""
+              }${
                 reverseCharge
                   ? " · Reverse charge: VAT to be accounted for by the recipient (Art. 196 EU VAT Directive)"
                   : ""
@@ -218,7 +236,7 @@ export async function POST(req: NextRequest) {
             },
             unit_amount: priceEur * 100, // Stripe expects the amount in cents
           },
-          quantity: 1,
+          quantity,
           ...(taxRates && { tax_rates: taxRates }),
         },
         {
@@ -239,6 +257,8 @@ export async function POST(req: NextRequest) {
       metadata: {
         order_type: "developer_early_access",
         dev_acknowledged: "true",
+        quantity: String(quantity),
+        ...(bulkDiscount && { bulk_discount_pct: String(BULK_DISCOUNT_PCT) }),
         customer_name: name,
         is_company: is_company ? "true" : "false",
         phone,
