@@ -2187,6 +2187,85 @@ footer {
   box-shadow: 0 0 8px var(--accent-glow);
 }
 
+.install-app {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  margin-bottom: 48px;
+  padding: 28px 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.install-app-copy {
+  max-width: 460px;
+}
+
+.install-app-copy h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.02em;
+  margin: 6px 0 10px;
+}
+
+.install-app-copy p {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.app-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px 10px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.app-badge:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-1px);
+}
+
+.app-badge svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.app-badge-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.app-badge-text small {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .video-frame {
   position: relative;
   width: 100%;

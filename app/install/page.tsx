@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 
 const VIDEO_ID = "ooZZbKPaV5I";
 
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.softwiredtech.dashpilot";
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/hXTwZmh5";
+
 type Step = {
   title: string;
   detail: string;
@@ -91,6 +95,48 @@ export default function Install() {
             This guide is for the <strong>Model 3 and Model Y</strong> with the
             blue A-pillar connector.
           </p>
+        </div>
+
+        <div className="install-app">
+          <div className="install-app-copy">
+            <p className="eyebrow">Before you start</p>
+            <h2>Get the DashPilot app</h2>
+            <p>
+              DashPilot is the companion app for DashKit — you&apos;ll use it to
+              set up your device after installing it in the car. Download it on
+              your phone before you begin.
+            </p>
+          </div>
+          <div className="app-badges">
+            <a
+              href={PLAY_STORE_URL}
+              className="app-badge"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path d="M3.6 1.8 13.7 12 3.6 22.2c-.37-.2-.6-.6-.6-1.1V2.9c0-.5.23-.9.6-1.1Zm11.2 9.1L5.6 1.6l11.1 6.4-1.9 2.9Zm2.9-1.5 2.9 1.7c.9.5.9 1.8 0 2.3l-2.9 1.7L14.8 12l2.9-2.6ZM5.6 22.4l9.2-9.3 1.9 2.9-11.1 6.4Z" />
+              </svg>
+              <span className="app-badge-text">
+                <small>Get it on</small>
+                Google Play
+              </span>
+            </a>
+            <a
+              href={TESTFLIGHT_URL}
+              className="app-badge"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path d="M17.05 12.54c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.15-.47 7.81 1.31 10.36.86 1.25 1.9 2.65 3.25 2.6 1.31-.05 1.8-.84 3.38-.84 1.58 0 2.02.84 3.4.81 1.4-.02 2.29-1.27 3.15-2.53.99-1.45 1.4-2.85 1.42-2.92-.03-.01-2.73-1.05-2.76-4.15ZM14.46 4.9c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.25 2-1.09 3.18 1.15.09 2.33-.58 3.05-1.45Z" />
+              </svg>
+              <span className="app-badge-text">
+                <small>iOS beta on</small>
+                TestFlight
+              </span>
+            </a>
+          </div>
         </div>
 
         <div className="video-frame">
