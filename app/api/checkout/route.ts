@@ -100,7 +100,6 @@ export async function POST(req: NextRequest) {
       email,
       phone,
       is_company,
-      dev_acknowledged,
       shipping_country,
       shipping_zip,
       shipping_city,
@@ -146,16 +145,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (dev_acknowledged !== true) {
-      return NextResponse.json(
-        {
-          error:
-            "Please confirm you understand this is alpha-batch hardware.",
-        },
-        { status: 400 }
-      );
-    }
-
     const country = findCountry(shipping_country);
     if (!country || !findCountry(billing_country)) {
       return NextResponse.json(
@@ -174,6 +163,16 @@ export async function POST(req: NextRequest) {
         {
           error:
             "We don't have a harness for that vehicle yet. Please get in touch and we'll help you out.",
+        },
+        { status: 400 }
+      );
+    }
+
+    if (vehicle.variant.comingSoon) {
+      return NextResponse.json(
+        {
+          error:
+            "The harness for that variant is coming soon and can't be ordered yet.",
         },
         { status: 400 }
       );
@@ -223,8 +222,8 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "eur",
             product_data: {
-              name: "DashKit — Alpha Tester Batch",
-              description: `Alpha-batch hardware for testers and developers — dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
+              name: "DashKit",
+              description: `Dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
                 bulkDiscount
                   ? ` · ${BULK_DISCOUNT_PCT}% volume discount (${BULK_MIN_QTY}+ units)`
                   : ""
@@ -256,7 +255,6 @@ export async function POST(req: NextRequest) {
       cancel_url: `${origin}/order/cancelled`,
       metadata: {
         order_type: "developer_early_access",
-        dev_acknowledged: "true",
         quantity: String(quantity),
         ...(bulkDiscount && { bulk_discount_pct: String(BULK_DISCOUNT_PCT) }),
         customer_name: name,

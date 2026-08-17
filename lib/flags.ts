@@ -6,11 +6,9 @@
  */
 export const ORDERS_OPEN = process.env.NEXT_PUBLIC_ORDERS_OPEN !== "false";
 
-/** Label for every "buy" entry point, so they stay consistent site-wide.
- *  "Early access" is in the label so nobody reaches checkout expecting a
- *  finished consumer product. */
+/** Label for every "buy" entry point, so they stay consistent site-wide. */
 export const ORDER_CTA_LABEL = ORDERS_OPEN
-  ? "Get early access"
+  ? "Buy now"
   : "Pricing & availability";
 
 /** The same entry point, trimmed for the phone-width nav where the full label

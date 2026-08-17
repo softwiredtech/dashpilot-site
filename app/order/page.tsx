@@ -21,7 +21,6 @@ export default function OrderPage() {
   const [sameAddress, setSameAddress] = useState(true);
   const [isCompany, setIsCompany] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [devAcknowledged, setDevAcknowledged] = useState(false);
   const [shippingCountry, setShippingCountry] = useState("");
   const [taxNumber, setTaxNumber] = useState("");
   const [model, setModel] = useState("");
@@ -127,7 +126,6 @@ export default function OrderPage() {
       email: val("email"),
       phone: val("phone"),
       is_company: isCompany,
-      dev_acknowledged: devAcknowledged,
       shipping_country: shippingCountry,
       shipping_zip: val("shipping_zip"),
       shipping_city: val("shipping_city"),
@@ -167,21 +165,10 @@ export default function OrderPage() {
   return (
     <section className="order">
       <div className="order-inner">
-        <p className="eyebrow">Alpha tester batch</p>
         <h1>Order DashKit</h1>
         <p className="order-price">
           DashKit — {formattedPrice} excl. VAT
         </p>
-        <div className="dev-notice">
-          <p className="dev-notice-title">⚠ Alpha tester batch</p>
-          <p>
-            This batch is for <strong>alpha testers</strong>: open-firmware
-            hardware for people who want to build on it. Expect rough edges and
-            features that are still evolving with the community — not a
-            finished consumer product. Not for you after all? Every order comes
-            with a <strong>14-day money-back guarantee</strong>.
-          </p>
-        </div>
 
         {error && <div className="form-error">{error}</div>}
 
@@ -275,8 +262,12 @@ export default function OrderPage() {
                       <button
                         key={v.code}
                         type="button"
-                        className="picker-card"
-                        onClick={() => setVariant(v.code)}
+                        className={`picker-card${v.comingSoon ? " picker-card-soon" : ""}`}
+                        aria-disabled={v.comingSoon || undefined}
+                        title={v.comingSoon ? "Coming soon" : undefined}
+                        onClick={() => {
+                          if (!v.comingSoon) setVariant(v.code);
+                        }}
                       >
                         <span className="picker-card-title">{v.name}</span>
                         <span className="picker-card-desc">{v.description}</span>
@@ -498,7 +489,7 @@ export default function OrderPage() {
             <div className="order-summary">
               <div className="order-summary-row">
                 <span>
-                  DashKit — Alpha Tester Batch
+                  DashKit
                   {quantity > 1 && ` · ${quantity} × ${euro(unitCents)}`}
                 </span>
                 <span>{euro(priceCents)}</span>
@@ -542,17 +533,6 @@ export default function OrderPage() {
             </div>
           )}
 
-          {/* Alpha batch acknowledgement */}
-          <label className="checkbox-row">
-            <input
-              type="checkbox"
-              checked={devAcknowledged}
-              onChange={(e) => setDevAcknowledged(e.target.checked)}
-            />
-            I understand this is an alpha-batch device intended for testers and
-            developers, not a finished consumer product.
-          </label>
-
           {/* Terms checkbox */}
           <label className="checkbox-row">
             <input
@@ -577,11 +557,7 @@ export default function OrderPage() {
             type="submit"
             className="cta-primary submit-btn"
             disabled={
-              loading ||
-              !acceptedTerms ||
-              !devAcknowledged ||
-              !selectedVariant ||
-              !country
+              loading || !acceptedTerms || !selectedVariant || !country
             }
           >
             {loading

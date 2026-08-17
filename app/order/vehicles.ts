@@ -4,6 +4,8 @@ export type VehicleVariant = {
   description: string;
   /** Path under /public, e.g. "/images/cars/model3-highland.png". */
   image?: string;
+  /** Shown greyed out and not orderable yet. */
+  comingSoon?: boolean;
 };
 
 export type VehicleModel = {
@@ -22,6 +24,7 @@ export const VEHICLE_MODELS: VehicleModel[] = [
         name: "Without Heat-Pump [2018–2020]",
         description:
           "Manufactured from 2018 until late 2020 with a piano-black center console.",
+        comingSoon: true,
       },
       {
         code: "pre_facelift",
@@ -58,6 +61,7 @@ export const VEHICLE_MODELS: VehicleModel[] = [
         name: "Facelift / Juniper [Premium]",
         description:
           "Manufactured since early 2025, featuring leather seats and an RGB strip (NOT the Long Base 6-seater).",
+        comingSoon: true,
       },
       {
         code: "standard",
@@ -70,6 +74,7 @@ export const VEHICLE_MODELS: VehicleModel[] = [
         name: "6-Seater YL [YYY]",
         description:
           "Manufactured from mid 2025 onward, also known as Long Base (NOT the standard Juniper).",
+        comingSoon: true,
       },
     ],
   },

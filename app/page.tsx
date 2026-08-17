@@ -39,7 +39,7 @@ export default function Home() {
 
             <p className="hero-note">
               {ORDERS_OPEN
-                ? "Developer early access · Ships to EU, UK, US & Canada · Open source"
+                ? "Ships to EU, UK, US & Canada · Open source"
                 : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
             </p>
           </div>
@@ -305,7 +305,7 @@ export default function Home() {
           <h2>Open up your Tesla.</h2>
           <p className="hero-sub">
             {ORDERS_OPEN
-              ? "Developer early access is open — get the DashKit device and join the community building on top of it."
+              ? "Orders are open — get the DashKit device and join the community building on top of it."
               : "The first batch ships end of August 2026. See what it costs and get a heads-up when ordering opens."}
           </p>
           <div className="cta-row cta-row--center">
