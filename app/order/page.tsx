@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 
 import { ORDERS_OPEN } from "@/lib/flags";
 import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
-import { BULK_DISCOUNT_PCT, BULK_MIN_QTY, MAX_QTY, unitPriceEur } from "@/lib/pricing";
 import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
 
 import { VEHICLE_MODELS } from "./vehicles";
@@ -25,21 +24,17 @@ export default function OrderPage() {
   const [taxNumber, setTaxNumber] = useState("");
   const [model, setModel] = useState("");
   const [variant, setVariant] = useState("");
-  const [quantity, setQuantity] = useState(1);
 
   const selectedModel = VEHICLE_MODELS.find((m) => m.code === model);
   const selectedVariant = selectedModel?.variants.find(
     (v) => v.code === variant
   );
 
-  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "159";
+  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "139";
   const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
 
   const country = findCountry(shippingCountry);
-  // 20% volume discount at 5+ units — mirrors the server's pricing.
-  const unitCents = unitPriceEur(Number(price), quantity) * 100;
-  const bulkDiscount = unitCents !== Number(price) * 100;
-  const priceCents = unitCents * quantity;
+  const priceCents = Number(price) * 100;
   const shippingCents = country ? SHIPPING_EUR[country.market] * 100 : 0;
   // EU companies with a VAT number from another member state get the 0%
   // intra-community reverse charge. Mirrors the server's decision; the number
@@ -139,7 +134,6 @@ export default function OrderPage() {
       ...(isCompany && { tax_number: val("tax_number") }),
       model,
       variant,
-      quantity,
     };
 
     try {
@@ -283,51 +277,6 @@ export default function OrderPage() {
             Driving something else? Get in touch at{" "}
             <a href="mailto:info@softwiredtech.com">info@softwiredtech.com</a>
           </p>
-
-          {/* Quantity — all units ship with the same harness */}
-          <div className="field">
-            <label htmlFor="quantity">Quantity</label>
-            <div className="qty-picker">
-              <button
-                type="button"
-                className="qty-btn"
-                aria-label="Decrease quantity"
-                disabled={quantity <= 1}
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              >
-                −
-              </button>
-              <input
-                id="quantity"
-                name="quantity"
-                type="number"
-                inputMode="numeric"
-                min={1}
-                max={MAX_QTY}
-                value={quantity}
-                onChange={(e) => {
-                  const q = Math.floor(Number(e.target.value));
-                  if (Number.isFinite(q)) {
-                    setQuantity(Math.min(MAX_QTY, Math.max(1, q)));
-                  }
-                }}
-              />
-              <button
-                type="button"
-                className="qty-btn"
-                aria-label="Increase quantity"
-                disabled={quantity >= MAX_QTY}
-                onClick={() => setQuantity((q) => Math.min(MAX_QTY, q + 1))}
-              >
-                +
-              </button>
-            </div>
-            <p className="form-hint">
-              {bulkDiscount
-                ? `${BULK_DISCOUNT_PCT}% volume discount applied — ${euro(unitCents)} per unit.`
-                : `Order ${BULK_MIN_QTY} or more and get ${BULK_DISCOUNT_PCT}% off — ${euro(unitPriceEur(Number(price), BULK_MIN_QTY) * 100)} per unit.`}
-            </p>
-          </div>
 
           {/* Name / Company name */}
           <div className="field">
@@ -488,18 +437,9 @@ export default function OrderPage() {
           {country && (
             <div className="order-summary">
               <div className="order-summary-row">
-                <span>
-                  DashKit
-                  {quantity > 1 && ` · ${quantity} × ${euro(unitCents)}`}
-                </span>
+                <span>DashKit</span>
                 <span>{euro(priceCents)}</span>
               </div>
-              {bulkDiscount && (
-                <p className="form-hint">
-                  Includes the {BULK_DISCOUNT_PCT}% volume discount for{" "}
-                  {BULK_MIN_QTY}+ units.
-                </p>
-              )}
               <div className="order-summary-row">
                 <span>Shipping ({country.name})</span>
                 <span>{euro(shippingCents)}</span>
