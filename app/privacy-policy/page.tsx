@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — DashKit",
+  title: "Privacy Policy | DashKit",
 };
 
 const LAST_UPDATED = "28 July 2026";
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
             Umami
           </a>{" "}
           to count page views. It uses no cookies, does not follow you across
-          other websites, and records only aggregate figures — page visited,
+          other websites, and records only aggregate figures: page visited,
           referrer, country, browser and device type. It does not store your IP
           address. Our hosting provider keeps standard server logs (IP address,
           browser user agent, requested page) for security and troubleshooting.
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
         <p>
           <strong>If you place an order.</strong> Placing an order means giving
           us your name, email address, phone number, shipping and billing
-          address, your vehicle model, and — for business customers — a company
+          address, your vehicle model and, for business customers, a company
           name and tax number. We need this to fulfil the sale and to issue a
           compliant invoice.
         </p>
@@ -60,19 +60,19 @@ export default function PrivacyPolicy() {
         <h2>Why we&apos;re allowed to use it</h2>
         <ul>
           <li>
-            <strong>Performing a contract</strong> — processing and shipping an
+            <strong>Performing a contract:</strong> processing and shipping an
             order you placed.
           </li>
           <li>
-            <strong>Legal obligation</strong> — retaining invoices and
+            <strong>Legal obligation:</strong> retaining invoices and
             accounting records as Hungarian and EU tax law requires.
           </li>
           <li>
-            <strong>Legitimate interest</strong> — replying to your enquiry,
+            <strong>Legitimate interest:</strong> replying to your enquiry,
             keeping the site secure and working.
           </li>
           <li>
-            <strong>Consent</strong> — emailing you when ordering opens, if you
+            <strong>Consent:</strong> emailing you when ordering opens, if you
             asked us to. You can withdraw it at any time by replying to any
             message from us.
           </li>
@@ -86,17 +86,17 @@ export default function PrivacyPolicy() {
         </p>
         <ul>
           <li>
-            <strong>Stripe</strong> — payment processing and fraud prevention.
+            <strong>Stripe:</strong> payment processing and fraud prevention.
           </li>
           <li>
-            <strong>Our hosting provider</strong> — serving this website.
+            <strong>Our hosting provider:</strong> serving this website.
           </li>
           <li>
-            <strong>Shipping carriers</strong> — the name, address, and phone
+            <strong>Shipping carriers:</strong> the name, address, and phone
             number needed to deliver your parcel.
           </li>
           <li>
-            <strong>Our accountant and tax authorities</strong> — invoice data,
+            <strong>Our accountant and tax authorities:</strong> invoice data,
             where the law requires it.
           </li>
         </ul>
@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
         <p>
           If you think we&apos;ve handled your data badly, you can complain to
           the Hungarian National Authority for Data Protection and Freedom of
-          Information (NAIH), Falk Miksa utca 9-11., 1055 Budapest, Hungary —{" "}
+          Information (NAIH), Falk Miksa utca 9-11., 1055 Budapest, Hungary,{" "}
           <a
             href="https://naih.hu"
             target="_blank"

@@ -12,22 +12,22 @@ type Slide = {
 const slides: Slide[] = [
   {
     src: "/images/dashkit_angle.png",
-    alt: "DashKit device — angled view showing the enclosure and status LED",
+    alt: "DashKit device, angled view showing the enclosure and status LED",
     label: "Angle",
   },
   {
     src: "/images/dashkit_top.png",
-    alt: "DashKit device — full top-down view of the board and enclosure",
+    alt: "DashKit device, full top-down view of the board and enclosure",
     label: "Top view",
   },
   {
     src: "/images/dashkit_harness_conn.png",
-    alt: "DashKit device — CAN-FD harness connector",
+    alt: "DashKit device, CAN-FD harness connector",
     label: "Harness",
   },
   {
     src: "/images/dashkit_usb_c.png",
-    alt: "DashKit device — USB-C port view",
+    alt: "DashKit device, USB-C port view",
     label: "USB-C",
   },
 ];

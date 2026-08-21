@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Payment cancelled — DashKit",
+  title: "Payment cancelled | DashKit",
 };
 
 export default function OrderCancelled() {

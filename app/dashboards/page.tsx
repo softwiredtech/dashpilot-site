@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 
 export const metadata: Metadata = {
-  title: "Dashboards — DashPilot dash apps",
+  title: "Dashboards: DashPilot dash apps",
   description:
-    "DashPilot turns your phone into a live car dashboard. Swap between dash apps — Vanilla, Ambient, Analog and Retro — each in light and dark, each with blind spot monitoring, assist status, battery telemetry and more.",
+    "DashPilot turns your phone into a live car dashboard. Swap between dash apps (Vanilla, Ambient, Analog and Retro), each in light and dark, each with blind spot monitoring, assist status, battery telemetry and more.",
 };
 
 type DashApp = {
@@ -32,7 +32,7 @@ const apps: DashApp[] = [
     image: "/dash-apps/preview_ambient.jpg",
     aspect: [2424, 1080],
     description:
-      "Stripped to the bone. One huge speed readout on a surface that breathes colour — green when you're under the limit, amber and red when you're not.",
+      "Stripped to the bone. One huge speed readout on a surface that breathes colour: green when you're under the limit, amber and red when you're not.",
     tags: ["Minimalist", "Reactive glow", "Light & dark"],
   },
   {
@@ -172,7 +172,7 @@ const callouts: Callout[] = [
     y: 62,
     title: "Side alert",
     description:
-      "The whole edge glows amber — then red if you signal into that side or drift out of your lane.",
+      "The whole edge glows amber, then red if you signal into that side or drift out of your lane.",
   },
 ];
 
@@ -258,7 +258,7 @@ export default function Dashboards() {
           </h2>
           <p className="hero-sub hero-sub--left">
             DashPilot turns your phone into a live dashboard for your car. It
-            ships with a growing set of modular dash apps — swap between them
+            ships with a growing set of modular dash apps. Swap between them
             anytime, each with its own look but the same rich, real-time
             telemetry off the bus.
           </p>
@@ -273,7 +273,7 @@ export default function Dashboards() {
             Countless ways to <span className="accent">read the road</span>
           </h2>
           <p className="dash-lead">
-            These are the dashes riding along today — each one in light and
+            These are the dashes riding along today, each one in light and
             dark, each pulling from the same live signal set. New ones land with
             every update, and because a dash is just a module, nothing stops you
             from forking one or building your own.
@@ -317,7 +317,7 @@ export default function Dashboards() {
           <p className="dash-lead">
             Every dash follows the app theme, so the same layout can go from a
             deep black cluster at night to a bright, glare-proof panel at noon.
-            Same signals, same layout — a completely different car.
+            Same signals, same layout. A completely different car.
           </p>
 
           <div className="theme-grid">
@@ -357,8 +357,8 @@ export default function Dashboards() {
           <p className="eyebrow">Anatomy</p>
           <h2>What you&apos;re actually looking at</h2>
           <p className="dash-lead">
-            Vanilla shows nearly everything DashKit reads. Here it is mid-alert
-            — a car sitting in the left blind spot, the whole left edge lit up
+            Vanilla shows nearly everything DashKit reads. Here it is mid-alert:
+            a car sitting in the left blind spot, the whole left edge lit up
             in warning.
           </p>
 
@@ -407,7 +407,7 @@ export default function Dashboards() {
           <h2>Everything DashPilot can read</h2>
           <p className="dash-lead">
             DashKit pulls these signals straight off your car&apos;s bus. Each
-            dash app surfaces its own selection — the minimalist dashes stay
+            dash app surfaces its own selection. The minimalist dashes stay
             clean and focused, while richer ones like Vanilla show nearly all of
             it. Not every dash shows every readout.
           </p>

@@ -25,7 +25,7 @@ export default function Home() {
             <p className="hero-sub">
               DashKit plugs into your Tesla&apos;s CAN buses and opens them up to
               you. Control your car, build your own automations, and stream live
-              data to your phone — all on open, community-built software.
+              data to your phone, all on open, community-built software.
             </p>
 
             <div className="cta-row cta-row--left">
@@ -62,7 +62,7 @@ export default function Home() {
             <div className="video-frame">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${OVERVIEW_VIDEO_ID}`}
-                title="DashKit — an open-source Bluetooth dongle for your Tesla"
+                title="DashKit: an open-source Bluetooth dongle for your Tesla"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
@@ -82,7 +82,7 @@ export default function Home() {
               <p>
                 Pair over Bluetooth and turn your phone into a real-time
                 dashboard with the DashPilot app. Live gauges, custom readouts,
-                and every signal off the bus — rendered as you drive.
+                and every signal off the bus, rendered as you drive.
               </p>
             </div>
 
@@ -96,8 +96,9 @@ export default function Home() {
               <h3>Your car reacts to context</h3>
               <p>
                 Keep the auto wipers off the moment Autopilot or adaptive cruise
-                engages, or map multi-finger infotainment touch gestures to
-                actions like opening the glovebox or toggling the rear fan.
+                engages, keep the climate running after you leave the car, or
+                map multi-finger touch gestures to actions like opening the
+                glovebox or toggling the rear fan.
               </p>
             </div>
 
@@ -113,8 +114,8 @@ export default function Home() {
               <h3>Reach controls the car already has</h3>
               <p>
                 Read and send messages on both CAN buses. Lock and unlock,
-                trigger functions, and reach the controls your Tesla already has
-                — now under your command.
+                trigger functions, and reach the controls your Tesla already has,
+                now under your command.
               </p>
             </div>
           </div>
@@ -128,47 +129,71 @@ export default function Home() {
             <div className="spotlight-copy">
               <p className="eyebrow">Automations that actually help</p>
               <h2>
-                Turn <span className="accent">finger taps</span> on the screen
-                into real controls.
+                Your Tesla, running on <span className="accent">your rules</span>.
               </h2>
-              <p className="spotlight-lead">
-                Assign three-, four-, and five-finger taps on the infotainment
-                screen to actions your Tesla hides deep in menus — pop the
-                glovebox, toggle the rear fan, and more, all from a quick
-                gesture. And when Autopilot or adaptive cruise engages, DashKit
-                silences the auto wipers so they stop swiping a dry windshield.
-              </p>
+              <div className="spotlight-point">
+                <div className="spotlight-point-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="12" r="2.5" />
+                    <path d="M3 12h6.5M14.5 12H21M12 14.5V21" />
+                  </svg>
+                </div>
+                <p className="spotlight-lead">
+                  The moment Autopilot or adaptive cruise engages, DashKit
+                  silences the auto wipers so they stop swiping a dry
+                  windshield, and hands them back the instant you take over.
+                </p>
+              </div>
+              <div className="spotlight-point">
+                <div className="spotlight-point-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 12h20M12 2v20" />
+                    <path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4" />
+                  </svg>
+                </div>
+                <p className="spotlight-lead">
+                  Climate can outlast you, too. Normally it shuts down soon
+                  after you walk away, but pick a duration in the DashPilot
+                  app and DashKit keeps the climate running for exactly that
+                  long after you leave the car. Lock up, run your errand, and
+                  come back to a cabin that&apos;s still cool in summer or warm
+                  in winter. When the timer runs out, DashKit switches it off
+                  on its own.
+                </p>
+              </div>
               <ul className="spotlight-list">
-                <li>
-                  <span>Three-finger tap</span> map it to an action like opening
-                  the glovebox
-                </li>
-                <li>
-                  <span>Four-finger tap</span> toggle the rear fan or any control
-                  you reach on the bus
-                </li>
-                <li>
-                  <span>Five-finger tap</span> another gesture, another
-                  action — your rules, your car
-                </li>
                 <li>
                   <span>Auto wipers, off</span> silenced the instant Autopilot or
                   ACC engages, restored when you take over
+                </li>
+                <li>
+                  <span>Climate stays on</span> keeps running for the time you
+                  set in the app after you leave the car, then shuts off
+                </li>
+                <li>
+                  <span>Multi-finger taps</span> three-, four-, and five-finger
+                  taps on the infotainment screen mapped to actions like the
+                  glovebox or rear fan
                 </li>
               </ul>
             </div>
             <div className="spotlight-demo" aria-hidden="true">
               <div className="demo-row">
-                <span className="demo-label">3-finger tap</span>
-                <span className="demo-state demo-state--on">GLOVEBOX</span>
-              </div>
-              <div className="demo-row">
-                <span className="demo-label">4-finger tap</span>
-                <span className="demo-state demo-state--on">REAR FAN</span>
+                <span className="demo-label">Autopilot</span>
+                <span className="demo-state demo-state--on">ENGAGED</span>
               </div>
               <div className="demo-row">
                 <span className="demo-label">Auto wipers</span>
                 <span className="demo-state demo-state--off">OFF</span>
+              </div>
+              <div className="demo-row">
+                <span className="demo-label">Climate keep-on</span>
+                <span className="demo-state demo-state--on">30 MIN</span>
+              </div>
+              <div className="demo-row">
+                <span className="demo-label">3-finger tap</span>
+                <span className="demo-state demo-state--on">GLOVEBOX</span>
               </div>
             </div>
           </div>
@@ -195,7 +220,7 @@ export default function Home() {
             <p>
               A compact, sealed module with two independent CAN interfaces, an
               RGB status LED, and Bluetooth Low Energy. It taps straight into the
-              Tesla harness and disappears behind the trim — no screens to bolt
+              Tesla harness and disappears behind the trim. No screens to bolt
               on, no clutter on the dash.
             </p>
             <ul className="spec-list">
@@ -222,7 +247,7 @@ export default function Home() {
             DashKit isn&apos;t a locked black box. The firmware and the
             integrations are open, so the people who actually drive these cars
             are the ones extending them. Every new automation, every decoded
-            signal, every supported model makes the device better for everyone —
+            signal, every supported model makes the device better for everyone,
             and nobody can take that away.
           </p>
 
@@ -231,7 +256,7 @@ export default function Home() {
               <h3>Open firmware</h3>
               <p>
                 Inspect it, build it, flash it. The device runs open software you
-                can read and trust — no hidden behavior on your car&apos;s bus.
+                can read and trust, with no hidden behavior on your car&apos;s bus.
               </p>
             </div>
             <div className="os-card">
@@ -305,7 +330,7 @@ export default function Home() {
           <h2>Open up your Tesla.</h2>
           <p className="hero-sub">
             {ORDERS_OPEN
-              ? "Orders are open — get the DashKit device and join the community building on top of it."
+              ? "Orders are open. Get the DashKit device and join the community building on top of it."
               : "The first batch ships end of August 2026. See what it costs and get a heads-up when ordering opens."}
           </p>
           <div className="cta-row cta-row--center">

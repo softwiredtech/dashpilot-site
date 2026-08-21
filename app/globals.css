@@ -139,9 +139,55 @@ nav {
   color: var(--text);
 }
 
+/* The toggle and the dropdown panel only exist at phone width, where the
+   inline links are hidden — they must never both be visible. */
+.nav-toggle,
+.mobile-menu {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .nav-links {
     display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin: -7px -7px -7px -4px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+
+  .nav-toggle:hover,
+  .nav-toggle.open {
+    color: var(--text);
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 18px 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-menu a {
+    padding: 12px 2px;
+    font-size: 15px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a.active {
+    color: var(--text);
   }
 }
 
@@ -1477,6 +1523,41 @@ footer {
   color: var(--text-dim);
   font-size: 16px;
   margin-bottom: 24px;
+}
+
+/* A lead paragraph with an icon chip in front — the chip matches the
+   feature-card icons, just smaller so the text stays the focus. */
+.spotlight-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.spotlight-point:last-of-type {
+  margin-bottom: 24px;
+}
+
+.spotlight-point .spotlight-lead {
+  margin-bottom: 0;
+}
+
+.spotlight-point-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+}
+
+.spotlight-point-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 .spotlight-list {

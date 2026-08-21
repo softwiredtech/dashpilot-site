@@ -257,7 +257,7 @@ export async function POST(req: NextRequest) {
         }),
         vehicle_model: vehicle.model.code,
         vehicle_variant: vehicle.variant.code,
-        harness: `Tesla ${vehicle.model.name} — ${vehicle.variant.name}`,
+        harness: `Tesla ${vehicle.model.name}, ${vehicle.variant.name}`,
       },
     });
 

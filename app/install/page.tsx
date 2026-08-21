@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 
 export const metadata: Metadata = {
-  title: "Install DashKit — Video guide & step-by-step",
+  title: "Install DashKit: Video guide & step-by-step",
   description:
     "How to install DashKit in your Tesla. Watch the install video or follow the written step-by-step guide to connect DashKit to the CAN harness and pair it with DashPilot.",
 };
@@ -65,7 +65,7 @@ const steps: Step[] = [
   {
     title: "Power up DashKit",
     detail:
-      "Plug in DashKit — a green LED indicates a successful power-up.",
+      "Plug in DashKit. A green LED indicates a successful power-up.",
   },
   {
     title: "Tidy up",
@@ -74,7 +74,7 @@ const steps: Step[] = [
   },
   {
     title: "Enjoy DashKit",
-    detail: "That's it — pair with DashPilot and enjoy the drive :)",
+    detail: "That's it. Pair with DashPilot and enjoy the drive :)",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function Install() {
           <p className="eyebrow">Installation</p>
           <h1>Install DashKit in about 2 minutes</h1>
           <p className="hero-sub hero-sub--left">
-            DashKit plugs inline into your Tesla&apos;s CAN harness — no cutting,
+            DashKit plugs inline into your Tesla&apos;s CAN harness. No cutting,
             no soldering. The whole install takes roughly two minutes. Watch the
             full walkthrough below, or follow the written steps if you&apos;d
             rather read.
@@ -102,7 +102,7 @@ export default function Install() {
             <p className="eyebrow">Before you start</p>
             <h2>Get the DashPilot app</h2>
             <p>
-              DashPilot is the companion app for DashKit — you&apos;ll use it to
+              DashPilot is the companion app for DashKit. You&apos;ll use it to
               set up your device after installing it in the car. Download it on
               your phone before you begin.
             </p>

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { ORDER_CTA_LABEL } from "@/lib/flags";
 
 export const metadata: Metadata = {
-  title: "DashKit Specs — Dual CAN-FD hardware for Tesla",
+  title: "DashKit Specs: Dual CAN-FD hardware for Tesla",
   description:
     "Technical specifications for DashKit: dual CAN-FD for Tesla, ESP32-S3, BLE 5, RGB status LED, 16 MB flash and over-the-air updates.",
 };
@@ -70,7 +70,7 @@ export default function Specs() {
             <p className="eyebrow">Specifications</p>
             <h1>DashKit hardware</h1>
             <p className="hero-sub">
-              A dual CAN-FD device for Tesla — small enough to vanish behind the
+              A dual CAN-FD device for Tesla, small enough to vanish behind the
               trim, open enough to do whatever you need it to.
             </p>
             <div className="cta-row cta-row--left">

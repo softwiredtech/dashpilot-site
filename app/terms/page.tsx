@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — DashKit",
+  title: "Terms & Conditions | DashKit",
 };
 
 const LAST_UPDATED = "31 July 2026";
@@ -28,7 +28,7 @@ export default function Terms() {
         <p>
           DashKit is currently sold as <strong>developer early access</strong>{" "}
           hardware. It is intended for development purposes and for people who
-          want to build on its open firmware — it is not a finished consumer
+          want to build on its open firmware; it is not a finished consumer
           product. Installation is hands-on, features are still evolving with
           the community, and software updates may change how the device works.
           By ordering you confirm you understand this. Your statutory rights,
@@ -51,7 +51,7 @@ export default function Terms() {
           with a valid VAT number from a member state other than Hungary are
           charged 0% VAT under the reverse-charge mechanism (Art. 196 EU VAT
           Directive) and account for VAT themselves. For deliveries to the UK,
-          US and Canada, prices are net of tax — any import duties or taxes
+          US and Canada, prices are net of tax; any import duties or taxes
           are collected from you by the carrier and are your responsibility.
           Payment is handled by Stripe; we never see your card details. The
           contract is concluded when your payment is confirmed.
@@ -76,7 +76,7 @@ export default function Terms() {
           payment method, within 14 days of receiving the return. You pay the
           cost of return shipping. Please return the device complete and in a
           condition that reflects normal inspection and testing. This guarantee
-          implements — and where you are an EU consumer, coexists with — your
+          implements (and, where you are an EU consumer, coexists with) your
           statutory 14-day right of withdrawal.
         </p>
 
@@ -96,7 +96,7 @@ export default function Terms() {
           DashKit connects to your vehicle&apos;s CAN buses. You are
           responsible for installing and using it in accordance with your local
           laws and your vehicle manufacturer&apos;s requirements, and for
-          keeping your attention on the road — never interact with the
+          keeping your attention on the road. Never interact with the
           DashPilot app while driving. To the extent permitted by law, we are
           not liable for indirect or consequential damages arising from use of
           the device; nothing in these terms limits liability that cannot be

@@ -74,12 +74,12 @@ export default function OrderPage() {
             </p>
 
             <ul className="prelaunch-list">
-              <li>DashKit device — dual CAN-FD, BLE 5, OTA updates</li>
+              <li>DashKit device: dual CAN-FD, BLE 5, OTA updates</li>
               <li>
-                Plug-and-play harness for your exact car — nothing to splice or
+                Plug-and-play harness for your exact car, nothing to splice or
                 solder
               </li>
-              <li>DashPilot companion app — free, no subscription</li>
+              <li>DashPilot companion app: free, no subscription</li>
               <li>Open firmware you can build on</li>
             </ul>
 
@@ -91,7 +91,7 @@ export default function OrderPage() {
                 Email me when orders open
               </a>
               <p className="form-hint">
-                No payments or pre-orders are being taken yet — ordering opens
+                No payments or pre-orders are being taken yet. Ordering opens
                 when the first batch ships.
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function OrderPage() {
       <div className="order-inner">
         <h1>Order DashKit</h1>
         <p className="order-price">
-          DashKit — {formattedPrice} excl. VAT
+          DashKit · {formattedPrice} excl. VAT
         </p>
 
         {error && <div className="form-error">{error}</div>}
@@ -299,7 +299,7 @@ export default function OrderPage() {
               {country?.market === "EU" && (
                 <p className="form-hint">
                   {reverseCharge
-                    ? "EU VAT number — the 0% reverse charge applies. We verify the number against VIES."
+                    ? "EU VAT number: the 0% reverse charge applies. We verify the number against VIES."
                     : "EU companies outside Hungary: enter your VAT number with the country prefix (e.g. DE123456789) to buy at 0% VAT under the reverse charge."}
                 </p>
               )}
@@ -447,7 +447,7 @@ export default function OrderPage() {
               {reverseCharge ? (
                 <>
                   <div className="order-summary-row">
-                    <span>VAT — reverse charge</span>
+                    <span>VAT (reverse charge)</span>
                     <span>{euro(0)}</span>
                   </div>
                   <p className="form-hint">
@@ -509,7 +509,7 @@ export default function OrderPage() {
 
           <p className="form-hint">
             You&apos;ll be redirected to Stripe&apos;s secure payment page.
-            14-day money-back guarantee — see the{" "}
+            14-day money-back guarantee. See the{" "}
             <a
               href="/terms"
               target="_blank"
