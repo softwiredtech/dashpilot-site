@@ -6,8 +6,6 @@ import { DiscordIcon } from "@/components/SocialIcons";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 import { DISCORD, GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
 
-import DeviceCarousel from "./components/DeviceCarousel";
-
 const OVERVIEW_VIDEO_ID = "J97PuWTH-S4";
 
 export default function Home() {
@@ -15,36 +13,136 @@ export default function Home() {
     <>
       {/* ---------- HERO ---------- */}
       <section className="hero">
-        <div className="container hero-grid">
-          <div className="hero-copy">
+        <div className="container">
+          <div className="hub-intro">
             <p className="eyebrow">For Tesla · 2× CAN</p>
             <h1>
               The open source <span className="accent">Bluetooth</span> dongle
               for your Tesla
             </h1>
             <p className="hero-sub">
-              DashKit plugs into your Tesla&apos;s CAN buses and opens them up to
-              you. Control your car, build your own automations, and stream live
-              data to your phone, all on open, community-built software.
-            </p>
-
-            <div className="cta-row cta-row--left">
-              <Link href="/order" className="cta-primary">
-                {ORDER_CTA_LABEL}
-              </Link>
-              <Link href="/specs" className="cta-secondary">
-                View specs
-              </Link>
-            </div>
-
-            <p className="hero-note">
-              {ORDERS_OPEN
-                ? "Ships to EU, UK, US & Canada · Open source"
-                : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
+              DashKit plugs into your Tesla&apos;s CAN buses and puts your car
+              on rules you write, all on open, community-built software.
             </p>
           </div>
 
-          <DeviceCarousel />
+          {/* Center: the device. Sides: the automations it unlocks, each
+              pointing back at the hardware that runs them. */}
+          <div className="hub">
+            <div className="hub-col hub-col--left">
+              <div className="hub-card">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 19c0-7 4-13 8-13s8 6 8 13" />
+                    <path d="M12 19 18 8" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">Wipers, off on Autopilot</p>
+                <p className="hub-card-desc">
+                  Auto wipers cut out the moment Autopilot or ACC engages,
+                  and hand back when you take over.
+                </p>
+              </div>
+
+              <div className="hub-card">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 3v18" />
+                    <path d="M3 12h18" />
+                    <path d="M18 8l-4 4 4 4" />
+                    <path d="M6 8l4 4-4 4" />
+                    <path d="M8 18l4-4 4 4" />
+                    <path d="M8 6l4 4 4-4" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">Climate keeps running</p>
+                <p className="hub-card-desc">
+                  Set a duration in the app and DashKit keeps the cabin
+                  conditioned after you leave, then switches off on its own.
+                </p>
+              </div>
+            </div>
+
+            <div className="hub-center">
+              <div className="hub-device">
+                <div className="hub-device-glow" aria-hidden="true" />
+                <div className="hub-device-frame">
+                  <Image
+                    src="/images/dashkit_top.png"
+                    alt="The DashKit device"
+                    fill
+                    sizes="200px"
+                    className="hub-device-photo"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="hub-col hub-col--right">
+              <div className="hub-card">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2.5" />
+                    <circle cx="8" cy="15" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="16" cy="15" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">Multi-touch triggers</p>
+                <p className="hub-card-desc">
+                  Three-, four-, and five-finger taps on the touchscreen
+                  mapped to actions like opening the glovebox.
+                </p>
+              </div>
+
+              <div className="hub-card">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="7" width="16" height="10" rx="2" />
+                    <path d="M19 10v4" />
+                    <path d="M9 9c-1.2 1.6-1.2 2.4 0 4M13 9c-1.2 1.6-1.2 2.4 0 4" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">Battery preheat</p>
+                <p className="hub-card-desc">
+                  Schedule a preheat from the app so the battery is warmed
+                  up and ready before you unplug and drive.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="cta-row cta-row--center">
+            <Link href="/order" className="cta-primary">
+              {ORDER_CTA_LABEL}
+            </Link>
+            <Link href="/specs" className="cta-secondary">
+              View specs
+            </Link>
+          </div>
+
+          <p className="hero-note" style={{ textAlign: "center" }}>
+            {ORDERS_OPEN
+              ? "Ships to EU, UK, US & Canada · Open source"
+              : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
+          </p>
         </div>
       </section>
 
