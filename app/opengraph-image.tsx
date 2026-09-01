@@ -66,12 +66,12 @@ export default function OpengraphImage() {
               { word: "for" },
               { word: "your" },
               { word: "Tesla", last: true },
-            ].map(({ word, accent, last }) => (
+            ].map(({ word, last }) => (
               <span
                 key={word}
                 style={{
                   marginRight: last ? 0 : 20,
-                  color: accent ? "#88E0A6" : "#f4f4f5",
+                  color: "#f4f4f5",
                 }}
               >
                 {word}
