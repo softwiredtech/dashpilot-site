@@ -356,27 +356,6 @@ nav {
   }
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: 56px;
-}
-
-.hero-copy {
-  max-width: 560px;
-}
-
-@media (max-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-  .hero-copy {
-    max-width: none;
-  }
-}
-
 .hero-media {
   position: relative;
 }
@@ -652,6 +631,215 @@ h1 .accent {
   color: var(--text-mute);
   text-transform: uppercase;
   letter-spacing: 0.12em;
+}
+
+/* ---------- HUB (hero feature diagram) ---------- */
+.hub-intro {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hub-intro .hero-sub {
+  margin: 0 auto;
+}
+
+.hub {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0 40px;
+  margin: 64px 0 48px;
+}
+
+.hub-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hub-card {
+  --card-accent: var(--accent);
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.hub-card--blue {
+  --card-accent: #7fb3f0;
+}
+
+.hub-card--cyan {
+  --card-accent: #7cd8e8;
+}
+
+.hub-card--violet {
+  --card-accent: #b3a0f5;
+}
+
+.hub-card--amber {
+  --card-accent: #f2b46b;
+}
+
+.hub-card:hover {
+  border-color: color-mix(in srgb, var(--card-accent) 40%, var(--border-strong));
+  transform: translateY(-2px);
+}
+
+.hub-col--left .hub-card {
+  text-align: right;
+}
+
+.hub-card-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 28%, transparent);
+  color: var(--card-accent);
+  margin-bottom: 12px;
+}
+
+.hub-card-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.hub-col--left .hub-card-icon {
+  margin-left: auto;
+}
+
+.hub-card-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.hub-card-desc {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.hub-arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 16px;
+  transform: translateY(-50%);
+  color: color-mix(in srgb, var(--card-accent) 30%, transparent);
+}
+
+.hub-arrow path {
+  color: var(--card-accent);
+}
+
+.hub-col--left .hub-arrow {
+  right: -40px;
+}
+
+.hub-col--right .hub-arrow {
+  left: -40px;
+}
+
+.hub-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-device {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.hub-device-glow {
+  position: absolute;
+  inset: -56px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.4;
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.hub-device-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-strong);
+}
+
+.hub-device-photo {
+  object-fit: cover;
+  object-position: center 59%;
+  transform: scale(1.4);
+}
+
+@media (max-width: 900px) {
+  /* Vertical hub: two cards on top, device in the middle, two below,
+     arrows rotated to keep pointing from the device out to each feature. */
+  .hub {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin: 40px 0 40px;
+  }
+
+  .hub-col {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hub-col--left .hub-card,
+  .hub-col--right .hub-card {
+    flex: 1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .hub-card-title {
+    font-size: 14px;
+  }
+
+  .hub-card-desc {
+    font-size: 13px;
+  }
+
+  .hub-device {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hub-arrow {
+    transform: rotate(90deg);
+  }
+
+  .hub-col--left .hub-arrow {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -34px;
+    margin-left: -20px;
+  }
+
+  .hub-col--right .hub-arrow {
+    left: 50%;
+    top: -34px;
+    margin-left: -20px;
+  }
 }
 
 /* ---------- SECTIONS ---------- */
