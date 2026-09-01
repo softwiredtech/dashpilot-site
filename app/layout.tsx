@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const TITLE = "DashKit: The open source Bluetooth dongle for your Tesla";
+const TITLE = "DashKit: The open-source commander for your Tesla";
 const DESCRIPTION =
   "DashKit plugs into your Tesla's CAN buses and opens them up to you. Control your car, build your own automations, and stream live data to your phone, all on open, community-built software.";
 

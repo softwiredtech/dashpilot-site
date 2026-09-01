@@ -16,10 +16,7 @@ export default function Home() {
         <div className="container">
           <div className="hub-intro">
             <p className="eyebrow">For Tesla · 2× CAN</p>
-            <h1>
-              The open source <span className="accent">Bluetooth</span> dongle
-              for your Tesla
-            </h1>
+            <h1>The open-source commander for your Tesla</h1>
             <p className="hero-sub">
               DashKit plugs into your Tesla&apos;s CAN buses and puts your car
               on rules you write, all on open, community-built software.
@@ -30,37 +27,34 @@ export default function Home() {
               pointing back at the hardware that runs them. */}
           <div className="hub">
             <div className="hub-col hub-col--left">
-              <div className="hub-card">
+              <div className="hub-card hub-card--blue">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
                   <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="hub-card-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 19c0-7 4-13 8-13s8 6 8 13" />
-                    <path d="M12 19 18 8" />
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="12" r="2.5" />
+                    <path d="M3 12h6.5M14.5 12H21M12 14.5V21" />
                   </svg>
                 </div>
-                <p className="hub-card-title">Wipers, off on Autopilot</p>
+                <p className="hub-card-title">Wipers off on Autopilot</p>
                 <p className="hub-card-desc">
-                  Auto wipers cut out the moment Autopilot or ACC engages,
-                  and hand back when you take over.
+                  Wipers set to off stay off when Autopilot engages. DashKit
+                  stops the car from switching them back to auto.
                 </p>
               </div>
 
-              <div className="hub-card">
+              <div className="hub-card hub-card--cyan">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
                   <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="hub-card-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 3v18" />
-                    <path d="M3 12h18" />
-                    <path d="M18 8l-4 4 4 4" />
-                    <path d="M6 8l4 4-4 4" />
-                    <path d="M8 18l4-4 4 4" />
-                    <path d="M8 6l4 4 4-4" />
+                    <path d="M2 12h20M12 2v20" />
+                    <path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4" />
                   </svg>
                 </div>
                 <p className="hub-card-title">Climate keeps running</p>
@@ -88,7 +82,7 @@ export default function Home() {
             </div>
 
             <div className="hub-col hub-col--right">
-              <div className="hub-card">
+              <div className="hub-card hub-card--violet">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
                   <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -96,9 +90,10 @@ export default function Home() {
                 <div className="hub-card-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="5" width="20" height="14" rx="2.5" />
-                    <circle cx="8" cy="15" r="1" fill="currentColor" stroke="none" />
-                    <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none" />
-                    <circle cx="16" cy="15" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="8" cy="14" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="12.5" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="16" cy="14" r="1" fill="currentColor" stroke="none" />
+                    <path d="M9.8 9.6a3 3 0 0 1 4.4 0" />
                   </svg>
                 </div>
                 <p className="hub-card-title">Multi-touch triggers</p>
@@ -108,7 +103,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="hub-card">
+              <div className="hub-card hub-card--amber">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
                   <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -160,7 +155,7 @@ export default function Home() {
             <div className="video-frame">
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${OVERVIEW_VIDEO_ID}`}
-                title="DashKit: an open-source Bluetooth dongle for your Tesla"
+                title="DashKit: the open-source commander for your Tesla"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
@@ -238,9 +233,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <p className="spotlight-lead">
-                  The moment Autopilot or adaptive cruise engages, DashKit
-                  silences the auto wipers so they stop swiping a dry
-                  windshield, and hands them back the instant you take over.
+                  Engage Autopilot or adaptive cruise with your wipers set to
+                  off, and the car normally forces them back to auto, swiping
+                  at a dry windshield. DashKit blocks that override, so off
+                  stays off until you say otherwise.
                 </p>
               </div>
               <div className="spotlight-point">
@@ -262,8 +258,8 @@ export default function Home() {
               </div>
               <ul className="spotlight-list">
                 <li>
-                  <span>Auto wipers, off</span> silenced the instant Autopilot or
-                  ACC engages, restored when you take over
+                  <span>Wipers stay off</span> your off setting holds when
+                  Autopilot or ACC engages, instead of being forced to auto
                 </li>
                 <li>
                   <span>Climate stays on</span> keeps running for the time you

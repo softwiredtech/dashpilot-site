@@ -659,6 +659,7 @@ h1 .accent {
 }
 
 .hub-card {
+  --card-accent: var(--accent);
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -667,8 +668,24 @@ h1 .accent {
   transition: border-color 0.2s, transform 0.2s;
 }
 
+.hub-card--blue {
+  --card-accent: #7fb3f0;
+}
+
+.hub-card--cyan {
+  --card-accent: #7cd8e8;
+}
+
+.hub-card--violet {
+  --card-accent: #b3a0f5;
+}
+
+.hub-card--amber {
+  --card-accent: #f2b46b;
+}
+
 .hub-card:hover {
-  border-color: var(--border-strong);
+  border-color: color-mix(in srgb, var(--card-accent) 40%, var(--border-strong));
   transform: translateY(-2px);
 }
 
@@ -677,21 +694,21 @@ h1 .accent {
 }
 
 .hub-card-icon {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
-  color: var(--accent);
-  margin-bottom: 10px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 28%, transparent);
+  color: var(--card-accent);
+  margin-bottom: 12px;
 }
 
 .hub-card-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
 }
 
 .hub-col--left .hub-card-icon {
@@ -718,11 +735,11 @@ h1 .accent {
   width: 40px;
   height: 16px;
   transform: translateY(-50%);
-  color: var(--accent-line);
+  color: color-mix(in srgb, var(--card-accent) 30%, transparent);
 }
 
 .hub-arrow path {
-  color: var(--accent);
+  color: var(--card-accent);
 }
 
 .hub-col--left .hub-arrow {
@@ -772,14 +789,33 @@ h1 .accent {
 }
 
 @media (max-width: 900px) {
+  /* Vertical hub: two cards on top, device in the middle, two below,
+     arrows rotated to keep pointing from the device out to each feature. */
   .hub {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
     margin: 40px 0 40px;
   }
 
-  .hub-center {
-    order: -1;
+  .hub-col {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hub-col--left .hub-card,
+  .hub-col--right .hub-card {
+    flex: 1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .hub-card-title {
+    font-size: 14px;
+  }
+
+  .hub-card-desc {
+    font-size: 13px;
   }
 
   .hub-device {
@@ -787,17 +823,22 @@ h1 .accent {
     height: 180px;
   }
 
-  .hub-col--left .hub-card,
-  .hub-col--right .hub-card {
-    text-align: left;
-  }
-
-  .hub-col--left .hub-card-icon {
-    margin-left: 0;
-  }
-
   .hub-arrow {
-    display: none;
+    transform: rotate(90deg);
+  }
+
+  .hub-col--left .hub-arrow {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -34px;
+    margin-left: -20px;
+  }
+
+  .hub-col--right .hub-arrow {
+    left: 50%;
+    top: -34px;
+    margin-left: -20px;
   }
 }
 
