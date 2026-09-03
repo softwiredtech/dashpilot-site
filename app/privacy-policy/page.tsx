@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | DashKit",
@@ -110,7 +111,10 @@ export default function PrivacyPolicy() {
         <p>
           DashPilot talks to your DashKit over a direct Bluetooth connection
           between the device and your phone. Vehicle data read over that
-          connection is not sent to us and we have no access to it.
+          connection is not sent to us and we have no access to it. The app
+          has its own privacy policy covering crash reporting and the optional
+          location feature:{" "}
+          <Link href="/dashpilot-privacy-policy">DashPilot privacy policy</Link>.
         </p>
 
         <h2>How long we keep it</h2>

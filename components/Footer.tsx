@@ -45,6 +45,9 @@ export default function Footer() {
               <li>
                 <Link href="/privacy-policy">Privacy policy</Link>
               </li>
+              <li>
+                <Link href="/dashpilot-privacy-policy">DashPilot app privacy</Link>
+              </li>
             </ul>
           </div>
 

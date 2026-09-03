@@ -1281,6 +1281,20 @@ h1 .accent {
   margin: 40px 0 12px;
 }
 
+.legal-inner h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 28px 0 8px;
+}
+
+.legal-inner code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  color: var(--text);
+}
+
 .legal-inner p,
 .legal-inner li {
   color: var(--text-dim);
