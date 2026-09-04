@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import { findVehicle } from "@/app/order/vehicles";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { findCountry, SHIPPING_EUR, type Country } from "@/lib/markets";
+import { unitPriceEur } from "@/lib/pricing";
 import {
   parseEuVat,
   qualifiesForReverseCharge,
@@ -108,9 +109,11 @@ export async function POST(req: NextRequest) {
       billing_city,
       billing_address,
       tax_number,
+      device_only,
       model,
       variant,
     } = await req.json();
+    const deviceOnly = device_only === true;
 
     if (
       !name ||
@@ -124,8 +127,7 @@ export async function POST(req: NextRequest) {
       !billing_zip ||
       !billing_city ||
       !billing_address ||
-      !model ||
-      !variant
+      (!deviceOnly && (!model || !variant))
     ) {
       return NextResponse.json(
         { error: "All fields are required." },
@@ -144,9 +146,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const vehicle = findVehicle(model, variant);
+    // Device-only orders ship without a harness, so there is no vehicle to
+    // validate; every other order must map to a harness we can actually ship.
+    const vehicle = deviceOnly ? null : findVehicle(model, variant);
 
-    if (!vehicle) {
+    if (!deviceOnly && !vehicle) {
       return NextResponse.json(
         {
           error:
@@ -156,7 +160,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (vehicle.variant.comingSoon) {
+    if (vehicle?.variant.comingSoon) {
       return NextResponse.json(
         {
           error:
@@ -166,7 +170,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const priceEur = Number(process.env.NEXT_PUBLIC_PRICE_EUR) || 139;
+    const priceEur = unitPriceEur(deviceOnly);
     const shippingEur = SHIPPING_EUR[country.market];
     const origin = req.nextUrl.origin;
 
@@ -208,8 +212,12 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: "eur",
             product_data: {
-              name: "DashKit",
-              description: `Dual CAN-FD device + DashPilot app (Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness)${
+              name: deviceOnly ? "DashKit (device only)" : "DashKit",
+              description: `Dual CAN-FD device + DashPilot app (${
+                vehicle
+                  ? `Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness`
+                  : "no harness"
+              })${
                 reverseCharge
                   ? " · Reverse charge: VAT to be accounted for by the recipient (Art. 196 EU VAT Directive)"
                   : ""
@@ -255,9 +263,14 @@ export async function POST(req: NextRequest) {
           // check before invoicing.
           vat_vies_status: viesStatus!,
         }),
-        vehicle_model: vehicle.model.code,
-        vehicle_variant: vehicle.variant.code,
-        harness: `Tesla ${vehicle.model.name}, ${vehicle.variant.name}`,
+        device_only: deviceOnly ? "true" : "false",
+        ...(vehicle
+          ? {
+              vehicle_model: vehicle.model.code,
+              vehicle_variant: vehicle.variant.code,
+              harness: `Tesla ${vehicle.model.name}, ${vehicle.variant.name}`,
+            }
+          : { harness: "none" }),
       },
     });
 

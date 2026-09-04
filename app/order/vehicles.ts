@@ -14,6 +14,13 @@ export type VehicleModel = {
   variants: VehicleVariant[];
 };
 
+/**
+ * Sentinel "model" code for a device without a harness. Lives alongside the
+ * real models so the picker can treat it as a step-1 choice that has no
+ * step-2 variant.
+ */
+export const DEVICE_ONLY = "device_only";
+
 export const VEHICLE_MODELS: VehicleModel[] = [
   {
     code: "model_3",

@@ -39,8 +39,9 @@ export default function Terms() {
         <h2>What you&apos;re buying</h2>
         <p>
           Your order covers the DashKit device, a plug-and-play harness for the
-          vehicle you select at checkout, and access to the free DashPilot
-          companion app. The firmware is open source and provided under its own
+          vehicle you select at checkout (unless you choose the device-only
+          option, which ships without a harness at a reduced price), and access
+          to the free DashPilot companion app. The firmware is open source and provided under its own
           licenses.
         </p>
 

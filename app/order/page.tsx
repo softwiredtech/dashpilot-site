@@ -4,9 +4,10 @@ import { useState, type FormEvent } from "react";
 
 import { ORDERS_OPEN } from "@/lib/flags";
 import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
+import { DEVICE_ONLY_DISCOUNT_EUR, unitPriceEur } from "@/lib/pricing";
 import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
 
-import { VEHICLE_MODELS } from "./vehicles";
+import { DEVICE_ONLY, VEHICLE_MODELS } from "./vehicles";
 
 const euro = (cents: number) =>
   `€${(cents / 100).toLocaleString("en-US", {
@@ -25,16 +26,18 @@ export default function OrderPage() {
   const [model, setModel] = useState("");
   const [variant, setVariant] = useState("");
 
+  const deviceOnly = model === DEVICE_ONLY;
   const selectedModel = VEHICLE_MODELS.find((m) => m.code === model);
   const selectedVariant = selectedModel?.variants.find(
     (v) => v.code === variant
   );
+  const productChosen = deviceOnly || Boolean(selectedVariant);
 
-  const price = process.env.NEXT_PUBLIC_PRICE_EUR || "139";
-  const formattedPrice = `€${Number(price).toLocaleString("en-US")}`;
+  const price = unitPriceEur(deviceOnly);
+  const formattedPrice = `€${price.toLocaleString("en-US")}`;
 
   const country = findCountry(shippingCountry);
-  const priceCents = Number(price) * 100;
+  const priceCents = price * 100;
   const shippingCents = country ? SHIPPING_EUR[country.market] * 100 : 0;
   // EU companies with a VAT number from another member state get the 0%
   // intra-community reverse charge. Mirrors the server's decision; the number
@@ -132,8 +135,9 @@ export default function OrderPage() {
         ? val("shipping_address")
         : val("billing_address"),
       ...(isCompany && { tax_number: val("tax_number") }),
-      model,
-      variant,
+      device_only: deviceOnly,
+      model: deviceOnly ? "" : model,
+      variant: deviceOnly ? "" : variant,
     };
 
     try {
@@ -161,7 +165,8 @@ export default function OrderPage() {
       <div className="order-inner">
         <h1>Order DashKit</h1>
         <p className="order-price">
-          DashKit · {formattedPrice} excl. VAT
+          DashKit{deviceOnly ? " (device only)" : ""} · {formattedPrice} excl.
+          VAT
         </p>
 
         {error && <div className="form-error">{error}</div>}
@@ -193,7 +198,13 @@ export default function OrderPage() {
                 <span className={`picker-badge ${model ? "done" : ""}`}>
                   {model ? "✓" : "1"}
                 </span>
-                <h2>{selectedModel ? selectedModel.name : "Select your model"}</h2>
+                <h2>
+                  {selectedModel
+                    ? selectedModel.name
+                    : deviceOnly
+                      ? "Device only"
+                      : "Select your model"}
+                </h2>
                 {model && (
                   <button
                     type="button"
@@ -223,6 +234,20 @@ export default function OrderPage() {
                       <span className="picker-card-title">{m.name}</span>
                     </button>
                   ))}
+                  <button
+                    type="button"
+                    className="picker-card"
+                    onClick={() => {
+                      setModel(DEVICE_ONLY);
+                      setVariant("");
+                    }}
+                  >
+                    <span className="picker-card-title">Device only</span>
+                    <span className="picker-card-desc">
+                      No harness. Save €{DEVICE_ONLY_DISCOUNT_EUR} if you
+                      already have one or plan to wire it yourself.
+                    </span>
+                  </button>
                 </div>
               )}
             </div>
@@ -437,7 +462,7 @@ export default function OrderPage() {
           {country && (
             <div className="order-summary">
               <div className="order-summary-row">
-                <span>DashKit</span>
+                <span>DashKit{deviceOnly ? " (device only)" : ""}</span>
                 <span>{euro(priceCents)}</span>
               </div>
               <div className="order-summary-row">
@@ -497,7 +522,7 @@ export default function OrderPage() {
             type="submit"
             className="cta-primary submit-btn"
             disabled={
-              loading || !acceptedTerms || !selectedVariant || !country
+              loading || !acceptedTerms || !productChosen || !country
             }
           >
             {loading
