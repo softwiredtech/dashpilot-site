@@ -73,7 +73,7 @@ export default function OrderPage() {
             </div>
             <p className="prelaunch-vat">
               VAT and shipping calculated at checkout · Ships to the EU, UK,
-              US &amp; Canada
+              US, Canada &amp; Australia
             </p>
 
             <ul className="prelaunch-list">

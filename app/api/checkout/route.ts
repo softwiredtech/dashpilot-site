@@ -140,7 +140,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "We currently only ship to the EU, the United Kingdom, the United States and Canada.",
+            "We currently only ship to the EU, the United Kingdom, the United States, Canada and Australia.",
         },
         { status: 400 }
       );
@@ -177,7 +177,7 @@ export async function POST(req: NextRequest) {
     // EU orders get the destination country's VAT on both the device and the
     // shipping — unless the buyer is a company with a VAT number from another
     // member state, in which case the intra-community reverse charge applies
-    // and 0% is charged. UK/US orders are charged net — import duties are
+    // and 0% is charged. UK/US/CA/AU orders are charged net — import duties are
     // collected from the customer by the carrier.
     const euVat =
       is_company && tax_number && country.market === "EU"

@@ -135,7 +135,7 @@ export default function Home() {
 
           <p className="hero-note" style={{ textAlign: "center" }}>
             {ORDERS_OPEN
-              ? "Ships to EU, UK, US & Canada · Open source"
+              ? "Ships to EU, UK, US, Canada & Australia · Open source"
               : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
           </p>
         </div>
