@@ -68,12 +68,14 @@ export const VEHICLE_MODELS: VehicleModel[] = [
         name: "Facelift / Juniper [Premium]",
         description:
           "Manufactured since early 2025, featuring leather seats and an RGB strip (NOT the Long Base 6-seater).",
+        comingSoon: true,
       },
       {
         code: "standard",
         name: "Model Y Standard [Fabric Seats]",
         description:
           "Manufactured after October 2025 without leather seats and no RGB strip.",
+        comingSoon: true,
       },
       {
         code: "six_seater_yl",
