@@ -16,7 +16,7 @@ export default function Home() {
         <div className="container">
           <div className="hub-intro">
             <p className="eyebrow">For Tesla · 2× CAN</p>
-            <h1>Customizable instrument cluster and controller for your Tesla</h1>
+            <h1>Custom dashboard and controller for your Tesla</h1>
             <p className="hero-sub">
               DashKit plugs into your Tesla&apos;s CAN buses and puts your car
               on rules you write, all on open, community-built software.
