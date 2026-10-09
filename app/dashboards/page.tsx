@@ -53,30 +53,6 @@ const apps: DashApp[] = [
   },
 ];
 
-type ThemePair = {
-  name: string;
-  dark: string;
-  light: string;
-};
-
-const themePairs: ThemePair[] = [
-  {
-    name: "Vanilla",
-    dark: "/dash-apps/preview_vanilla.jpg",
-    light: "/dash-apps/preview_vanilla_light.jpg",
-  },
-  {
-    name: "Ambient",
-    dark: "/dash-apps/preview_ambient.jpg",
-    light: "/dash-apps/preview_ambient_light.jpg",
-  },
-  {
-    name: "Retro",
-    dark: "/dash-apps/preview_retro.jpg",
-    light: "/dash-apps/preview_retro_light.jpg",
-  },
-];
-
 type Callout = {
   n: number;
   /* position of the marker, in % of the screenshot */
@@ -176,92 +152,71 @@ const callouts: Callout[] = [
   },
 ];
 
-type Feature = { title: string; description: string };
-
-const features: Feature[] = [
-  {
-    title: "Always-on blind spot monitoring",
-    description:
-      "Blind-spot detection with side indicators: a passive amber warning when a vehicle is alongside, escalating to a pulsing red alert when you signal into that side or drift out of your lane.",
-  },
-  {
-    title: "Autopilot / assist status",
-    description:
-      "Shows whether the car is driving itself, with colour-coded MADS (lane assist) and FULL (auto) states versus manual.",
-  },
-  {
-    title: "Turn signals",
-    description:
-      "Left and right blinker indicators mirror the car's turn signals in real time.",
-  },
-  {
-    title: "State of charge",
-    description:
-      "Battery charge shown as a percentage with a fill bar that turns red at 20% or below.",
-  },
-  {
-    title: "Battery temperature",
-    description:
-      "Average battery pack temperature, shown in °C or °F depending on your units.",
-  },
-  {
-    title: "Speed & gear",
-    description:
-      "A live speed readout in km/h or mph, alongside the current gear (P / R / N / D).",
-  },
-  {
-    title: "Speed limit & ACC set speed",
-    description:
-      "The current road speed limit and your adaptive-cruise set speed, with an overspeed warning when you exceed the limit.",
-  },
-  {
-    title: "Lane departure warning",
-    description:
-      "Left / right alerts when the car drifts out of its lane.",
-  },
-  {
-    title: "Speed camera warning",
-    description:
-      "Distance to an upcoming speed camera, surfaced as a warning as you approach.",
-  },
-  {
-    title: "Seatbelt & door warnings",
-    description:
-      "Alerts when a seatbelt is unbuckled while driving or a door is left open.",
-  },
-  {
-    title: "Steering angle",
-    description:
-      "A live steering-wheel indicator that reflects the wheel angle and changes colour when ADAS is active.",
-  },
-  {
-    title: "3D road view",
-    description:
-      "On the Vanilla dash, a rendered view of your car, its lane, surrounding traffic, upcoming traffic lights and stop signs.",
-  },
-  {
-    title: "Power & odometer",
-    description:
-      "A power bar showing discharge and regen, plus the vehicle's odometer reading.",
-  },
-];
-
 export default function Dashboards() {
   return (
     <>
-      {/* ---------- INTRO ---------- */}
-      <section className="section dash-intro">
+      {/* ---------- IN THE CAR ---------- */}
+      <section className="section dash-top">
         <div className="container">
-          <p className="eyebrow">Dashboards</p>
+          <p className="eyebrow">In the car</p>
           <h2>
-            Pick a dash. Or <span className="accent">build your own</span>.
+            Your phone becomes the <span className="accent">instrument cluster</span>
           </h2>
-          <p className="hero-sub hero-sub--left">
-            DashPilot turns your phone into a live dashboard for your car. It
-            ships with a growing set of modular dash apps. Swap between them
-            anytime, each with its own look but the same rich, real-time
-            telemetry off the bus.
+          <p className="dash-lead">
+            DashKit sits hidden behind the trim, reading the car&apos;s CAN
+            buses. It streams speed, gear, battery, blind spot and assist state
+            to your phone over Bluetooth, and DashPilot draws it right in your
+            line of sight, above the steering wheel instead of off to the side
+            on the center screen.
           </p>
+
+          <div className="incar">
+            <figure className="incar-video">
+              {/* Same reel as the home page. Phones get the 720p cut. */}
+              <video
+                poster="/media/dashkit-reel-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="A montage of real drives with DashPilot on the dash: swapping from Retro to Ambient at a red light and pulling away, a custom gauge grid dash on a city street, Ambient's big speed readout in mph, then Retro through a tunnel"
+              >
+                <source
+                  src="/media/dashkit-reel-1080.mp4"
+                  type="video/mp4"
+                  media="(min-width: 900px)"
+                />
+                <source src="/media/dashkit-reel-720.mp4" type="video/mp4" />
+              </video>
+              <figcaption>
+                Real drives, no renders. Swapping Retro for Ambient at the
+                lights, a custom gauge grid, Ambient in mph, and Retro through
+                a tunnel.
+              </figcaption>
+            </figure>
+
+            <div className="incar-photos">
+              <figure className="incar-photo">
+                <Image
+                  src="/images/dash-in-car-1.jpg"
+                  alt="A phone running DashPilot in a stand on a Tesla dashboard, showing speed, gear, battery and the speed limit"
+                  width={1600}
+                  height={1200}
+                  sizes="(max-width: 720px) 100vw, 540px"
+                />
+              </figure>
+              <figure className="incar-photo">
+                <Image
+                  src="/images/dash-in-car-light.jpg"
+                  alt="DashPilot in its light theme on a Tesla dashboard, showing pack voltage, regen limit, battery current and speed while driving into a tunnel"
+                  width={1600}
+                  height={1200}
+                  sizes="(max-width: 720px) 100vw, 540px"
+                />
+              </figure>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -304,48 +259,6 @@ export default function Dashboards() {
                   </ul>
                 </div>
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- THEMES ---------- */}
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Themes</p>
-          <h2>Light or dark, whatever the drive needs</h2>
-          <p className="dash-lead">
-            Every dash follows the app theme, so the same layout can go from a
-            deep black cluster at night to a bright, glare-proof panel at noon.
-            Same signals, same layout. A completely different car.
-          </p>
-
-          <div className="theme-grid">
-            {themePairs.map((pair) => (
-              <figure className="theme-pair" key={pair.name}>
-                <div className="theme-shots">
-                  {(
-                    [
-                      ["Dark", pair.dark],
-                      ["Light", pair.light],
-                    ] as const
-                  ).map(([label, src]) => (
-                    <div className="theme-shot" key={label}>
-                      <Image
-                        src={src}
-                        alt={`The ${pair.name} dash app in its ${label.toLowerCase()} theme`}
-                        width={2424}
-                        height={1080}
-                        className="app-shot-img"
-                        sizes="(max-width: 900px) 100vw, 340px"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <figcaption>
-                  {pair.name} <span>Dark / Light</span>
-                </figcaption>
-              </figure>
             ))}
           </div>
         </div>
@@ -396,29 +309,6 @@ export default function Dashboards() {
                 </li>
               ))}
             </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- FEATURES ---------- */}
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Live telemetry</p>
-          <h2>Everything DashPilot can read</h2>
-          <p className="dash-lead">
-            DashKit pulls these signals straight off your car&apos;s bus. Each
-            dash app surfaces its own selection. The minimalist dashes stay
-            clean and focused, while richer ones like Vanilla show nearly all of
-            it. Not every dash shows every readout.
-          </p>
-
-          <div className="os-grid dash-features">
-            {features.map((feature) => (
-              <div className="os-card" key={feature.title}>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -16,7 +16,7 @@ export default function Home() {
         <div className="container">
           <div className="hub-intro">
             <p className="eyebrow">For Tesla · 2× CAN</p>
-            <h1>The open-source commander for your Tesla</h1>
+            <h1>Customizable instrument cluster and controller for your Tesla</h1>
             <p className="hero-sub">
               DashKit plugs into your Tesla&apos;s CAN buses and puts your car
               on rules you write, all on open, community-built software.
@@ -27,6 +27,25 @@ export default function Home() {
               pointing back at the hardware that runs them. */}
           <div className="hub">
             <div className="hub-col hub-col--left">
+              <div className="hub-card hub-card--cyan">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="6" width="20" height="12" rx="2.5" />
+                    <path d="M8 14.5a4 4 0 0 1 8 0" />
+                    <path d="m12 14.5 1.6-2.2" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">Live dashboard</p>
+                <p className="hub-card-desc">
+                  Your phone becomes an instrument cluster above the wheel:
+                  speed, gear, battery, blind spot and Autopilot state, live.
+                </p>
+              </div>
+
               <div className="hub-card hub-card--blue">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
@@ -43,24 +62,6 @@ export default function Home() {
                 <p className="hub-card-desc">
                   Wipers set to off stay off when Autopilot engages. DashKit
                   stops the car from switching them back to auto.
-                </p>
-              </div>
-
-              <div className="hub-card hub-card--cyan">
-                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
-                  <line x1="38" y1="8" x2="8" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
-                  <path d="M14 2 6 8l8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <div className="hub-card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 12h20M12 2v20" />
-                    <path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4" />
-                  </svg>
-                </div>
-                <p className="hub-card-title">Climate keeps running</p>
-                <p className="hub-card-desc">
-                  Set a duration in the app and DashKit keeps the cabin
-                  conditioned after you leave, then switches off on its own.
                 </p>
               </div>
             </div>
@@ -82,6 +83,25 @@ export default function Home() {
             </div>
 
             <div className="hub-col hub-col--right">
+              <div className="hub-card hub-card--green">
+                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
+                  <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
+                  <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <div className="hub-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
+                    <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
+                    <path d="M9.8 4.4A2 2 0 1 1 11 8H2" />
+                  </svg>
+                </div>
+                <p className="hub-card-title">AC swing</p>
+                <p className="hub-card-desc">
+                  The dash vents sweep side to side like an oscillating fan,
+                  for the driver, the passenger or both.
+                </p>
+              </div>
+
               <div className="hub-card hub-card--violet">
                 <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
                   <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
@@ -100,25 +120,6 @@ export default function Home() {
                 <p className="hub-card-desc">
                   Three-, four-, and five-finger taps on the touchscreen
                   mapped to actions like opening the glovebox.
-                </p>
-              </div>
-
-              <div className="hub-card hub-card--amber">
-                <svg className="hub-arrow" viewBox="0 0 40 16" fill="none" aria-hidden="true">
-                  <line x1="2" y1="8" x2="32" y2="8" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
-                  <path d="M26 2l8 6-8 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <div className="hub-card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="7" width="16" height="10" rx="2" />
-                    <path d="M19 10v4" />
-                    <path d="M9 9c-1.2 1.6-1.2 2.4 0 4M13 9c-1.2 1.6-1.2 2.4 0 4" />
-                  </svg>
-                </div>
-                <p className="hub-card-title">Battery preheat</p>
-                <p className="hub-card-desc">
-                  Schedule a preheat from the app so the battery is warmed
-                  up and ready before you unplug and drive.
                 </p>
               </div>
             </div>
@@ -141,82 +142,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- FEATURES ---------- */}
-      <section className="section" id="features">
+      {/* ---------- ON THE ROAD ---------- */}
+      {/* Real driving footage, shown big and early so the first thing past the
+          hero is proof that it works in a real car. */}
+      <section className="section road">
         <div className="container">
-          <p className="eyebrow">What DashKit does</p>
-          <h2>
-            Three things: <span className="accent">Dashboard</span>,{" "}
-            <span className="accent">Automation</span>,{" "}
-            <span className="accent">Controls</span>.
-          </h2>
+          <div className="road-head">
+            <div>
+              <p className="eyebrow">Real footage, real cars</p>
+              <h2>
+                Your phone, now the <span className="accent">instrument cluster</span>.
+              </h2>
+            </div>
+            <Link href="/dashboards" className="cta-secondary">
+              See the dashboards →
+            </Link>
+          </div>
 
-          <div className="features-video">
-            <div className="video-frame">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${OVERVIEW_VIDEO_ID}`}
-                title="DashKit: the open-source commander for your Tesla"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
+          <figure className="road-video">
+            {/* Phones get the 720p cut, larger screens the 1080p one. */}
+            <video
+              poster="/media/dashkit-reel-poster.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="A montage of real drives with DashPilot on the dash: swapping from Retro to Ambient at a red light and pulling away, a custom gauge grid dash on a city street, Ambient's big speed readout in mph, then Retro through a tunnel"
+            >
+              <source
+                src="/media/dashkit-reel-1080.mp4"
+                type="video/mp4"
+                media="(min-width: 900px)"
               />
-            </div>
-          </div>
+              <source src="/media/dashkit-reel-720.mp4" type="video/mp4" />
+            </video>
+            <figcaption className="road-tag">Real drives · no renders</figcaption>
+          </figure>
 
-          <div className="feature-grid">
-            <div className="feature-card">
-              <div className="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2.5" />
-                  <path d="M9 6h6M9 10h6M9 14h3" />
-                </svg>
-              </div>
-              <p className="feature-tag">Dashboard</p>
-              <h3>Every signal, live on your phone</h3>
-              <p>
-                Pair over Bluetooth and turn your phone into a real-time
-                dashboard with the DashPilot app. Live gauges, custom readouts,
-                and every signal off the bus, rendered as you drive.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <div className="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
-                </svg>
-              </div>
-              <p className="feature-tag">Automation</p>
-              <h3>Your car reacts to context</h3>
-              <p>
-                Keep the auto wipers off the moment Autopilot or adaptive cruise
-                engages, keep the climate running after you leave the car, or
-                map multi-finger touch gestures to actions like opening the
-                glovebox or toggling the rear fan.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <div className="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="10" rx="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  <circle cx="12" cy="16" r="1.5" />
-                </svg>
-              </div>
-              <p className="feature-tag">Controls</p>
-              <h3>Reach controls the car already has</h3>
-              <p>
-                Read and send messages on both CAN buses. Lock and unlock,
-                trigger functions, and reach the controls your Tesla already has,
-                now under your command.
-              </p>
-            </div>
-          </div>
+          <p className="road-note">
+            DashKit reads the car&apos;s buses and DashPilot draws the dash on
+            your phone, right above the wheel. Speed, gear, battery, blind spot
+            and Autopilot state, live as you drive.
+          </p>
+          <a
+            href={`https://www.youtube.com/watch?v=${OVERVIEW_VIDEO_ID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="road-link"
+          >
+            Watch the full overview on YouTube →
+          </a>
         </div>
       </section>
 
       {/* ---------- SPOTLIGHT: AUTOMATIONS ---------- */}
-      <section className="section">
+      <section className="section" id="features">
         <div className="container">
           <div className="spotlight">
             <div className="spotlight-copy">
@@ -224,51 +205,27 @@ export default function Home() {
               <h2>
                 Your Tesla, running on <span className="accent">your rules</span>.
               </h2>
-              <div className="spotlight-point">
-                <div className="spotlight-point-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="9" />
-                    <circle cx="12" cy="12" r="2.5" />
-                    <path d="M3 12h6.5M14.5 12H21M12 14.5V21" />
-                  </svg>
-                </div>
-                <p className="spotlight-lead">
-                  Engage Autopilot or adaptive cruise with your wipers set to
-                  off, and the car normally forces them back to auto, swiping
-                  at a dry windshield. DashKit blocks that override, so off
-                  stays off until you say otherwise.
-                </p>
-              </div>
-              <div className="spotlight-point">
-                <div className="spotlight-point-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 12h20M12 2v20" />
-                    <path d="m20 16-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4" />
-                  </svg>
-                </div>
-                <p className="spotlight-lead">
-                  Climate can outlast you, too. Normally it shuts down soon
-                  after you walk away, but pick a duration in the DashPilot
-                  app and DashKit keeps the climate running for exactly that
-                  long after you leave the car. Lock up, run your errand, and
-                  come back to a cabin that&apos;s still cool in summer or warm
-                  in winter. When the timer runs out, DashKit switches it off
-                  on its own.
-                </p>
-              </div>
               <ul className="spotlight-list">
-                <li>
+                <li className="dot--blue">
                   <span>Wipers stay off</span> your off setting holds when
                   Autopilot or ACC engages, instead of being forced to auto
                 </li>
-                <li>
+                <li className="dot--cyan">
                   <span>Climate stays on</span> keeps running for the time you
                   set in the app after you leave the car, then shuts off
                 </li>
-                <li>
+                <li className="dot--green">
+                  <span>AC swing</span> sweeps the dash vents side to side,
+                  for the driver, the passenger or both
+                </li>
+                <li className="dot--amber">
+                  <span>Battery preheat</span> schedule it from the app so the
+                  battery is warm and ready before you unplug and drive
+                </li>
+                <li className="dot--violet">
                   <span>Multi-finger taps</span> three-, four-, and five-finger
                   taps on the infotainment screen mapped to actions like the
-                  glovebox or rear fan
+                  glovebox, rear fan or AC swing
                 </li>
               </ul>
             </div>
@@ -284,6 +241,10 @@ export default function Home() {
               <div className="demo-row">
                 <span className="demo-label">Climate keep-on</span>
                 <span className="demo-state demo-state--on">30 MIN</span>
+              </div>
+              <div className="demo-row">
+                <span className="demo-label">AC swing</span>
+                <span className="demo-state demo-state--on">SWEEPING</span>
               </div>
               <div className="demo-row">
                 <span className="demo-label">3-finger tap</span>
@@ -344,31 +305,6 @@ export default function Home() {
             signal, every supported model makes the device better for everyone,
             and nobody can take that away.
           </p>
-
-          <div className="os-grid">
-            <div className="os-card">
-              <h3>Open firmware</h3>
-              <p>
-                Inspect it, build it, flash it. The device runs open software you
-                can read and trust, with no hidden behavior on your car&apos;s bus.
-              </p>
-            </div>
-            <div className="os-card">
-              <h3>Community-driven</h3>
-              <p>
-                DashKit supports Tesla today, and more models land because the
-                community adds them. Contribute a fix or a whole integration and
-                ship it to everyone.
-              </p>
-            </div>
-            <div className="os-card">
-              <h3>Yours to extend</h3>
-              <p>
-                Write your own automations and dashboards. DashKit is a platform,
-                not a product you&apos;re locked out of.
-              </p>
-            </div>
-          </div>
 
           <div className="os-repos">
             <a

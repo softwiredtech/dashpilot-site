@@ -635,9 +635,13 @@ h1 .accent {
 
 /* ---------- HUB (hero feature diagram) ---------- */
 .hub-intro {
-  max-width: 640px;
+  max-width: 960px;
   margin: 0 auto;
   text-align: center;
+}
+
+.hub-intro h1 {
+  text-wrap: balance;
 }
 
 .hub-intro .hero-sub {
@@ -680,8 +684,8 @@ h1 .accent {
   --card-accent: #b3a0f5;
 }
 
-.hub-card--amber {
-  --card-accent: #f2b46b;
+.hub-card--green {
+  --card-accent: var(--accent);
 }
 
 .hub-card:hover {
@@ -1206,6 +1210,33 @@ h1 .accent {
   background: var(--bg-elev);
 }
 
+.partial-badge {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 3px 8px;
+  border: 1px solid rgba(242, 180, 107, 0.4);
+  border-radius: 6px;
+  background: rgba(242, 180, 107, 0.1);
+  color: #f2b46b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.partial-note {
+  padding: 12px 14px;
+  border: 1px solid rgba(242, 180, 107, 0.4);
+  border-radius: 10px;
+  background: rgba(242, 180, 107, 0.08);
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.partial-note strong {
+  color: #f2b46b;
+}
+
 .picker-card-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 600;
@@ -1624,80 +1655,94 @@ footer {
 }
 
 /* ---------- FEATURES ---------- */
-/* Overview video sits between the section heading and the feature cards —
-   narrower than the grid so it reads as a demo, not a hero. */
-.features-video {
-  max-width: 860px;
-  margin: -12px auto 56px;
+
+/* ---------- SPOTLIGHT (auto-wiper automation) ---------- */
+/* ---------- ON THE ROAD (home) ---------- */
+.road-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.road-head h2 {
+  margin-bottom: 0;
 }
 
-@media (max-width: 860px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
+.road-head .cta-secondary {
+  flex-shrink: 0;
+}
+
+.road-video {
+  position: relative;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elev);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.road-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.road-tag {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.road-note {
+  margin-top: 24px;
+  max-width: 680px;
+  color: var(--text-dim);
+  font-size: 16px;
+}
+
+.road-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.road-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .road-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .road-video {
+    border-radius: 14px;
+  }
+
+  .road-tag {
+    left: 10px;
+    bottom: 10px;
+    font-size: 11px;
   }
 }
 
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.feature-card:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-3px);
-}
-
-.feature-icon {
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-.feature-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.feature-card h3 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-}
-
-.feature-tag {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-.feature-card p {
-  color: var(--text-dim);
-  font-size: 15px;
-}
-
-/* ---------- SPOTLIGHT (auto-wiper automation) ---------- */
 .spotlight {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -1727,41 +1772,6 @@ footer {
   margin-bottom: 24px;
 }
 
-/* A lead paragraph with an icon chip in front — the chip matches the
-   feature-card icons, just smaller so the text stays the focus. */
-.spotlight-point {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.spotlight-point:last-of-type {
-  margin-bottom: 24px;
-}
-
-.spotlight-point .spotlight-lead {
-  margin-bottom: 0;
-}
-
-.spotlight-point-icon {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
-  color: var(--accent);
-}
-
-.spotlight-point-icon svg {
-  width: 18px;
-  height: 18px;
-}
-
 .spotlight-list {
   list-style: none;
   display: grid;
@@ -1769,6 +1779,7 @@ footer {
 }
 
 .spotlight-list li {
+  --dot: var(--accent);
   color: var(--text-dim);
   font-size: 15px;
   padding-left: 26px;
@@ -1783,8 +1794,8 @@ footer {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
+  background: color-mix(in srgb, var(--dot) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--dot) 24%, transparent);
 }
 
 .spotlight-list li::after {
@@ -1795,7 +1806,28 @@ footer {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--dot);
+}
+
+/* Same palette as the hero diagram, so a feature keeps its colour. */
+.spotlight-list .dot--blue {
+  --dot: #7fb3f0;
+}
+
+.spotlight-list .dot--green {
+  --dot: var(--accent);
+}
+
+.spotlight-list .dot--cyan {
+  --dot: #7cd8e8;
+}
+
+.spotlight-list .dot--amber {
+  --dot: #f2b46b;
+}
+
+.spotlight-list .dot--violet {
+  --dot: #b3a0f5;
 }
 
 .spotlight-list span {
@@ -1949,37 +1981,6 @@ footer {
   line-height: 1.6;
   max-width: 720px;
   margin-bottom: 48px;
-}
-
-.os-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 860px) {
-  .os-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.os-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 26px;
-}
-
-.os-card h3 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.os-card p {
-  color: var(--text-dim);
-  font-size: 15px;
 }
 
 /* The two public repos, sitting under the open-source cards as the obvious
@@ -2155,20 +2156,61 @@ footer {
 }
 
 /* ---------- DASHBOARDS PAGE ---------- */
-.dash-intro {
+/* First section on the page sits right under the nav, no divider */
+.dash-top {
   border-top: none;
   padding-top: 64px;
-  padding-bottom: 24px;
-}
-
-.dash-intro h2 {
-  margin-bottom: 20px;
 }
 
 .hero-sub--left {
   text-align: left;
   max-width: 640px;
   margin: 0;
+}
+
+/* Real footage and photos of DashPilot on a car's dash */
+.incar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.incar figure {
+  margin: 0;
+}
+
+.incar-video video,
+.incar-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+
+.incar-video video {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.incar-video figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.incar-photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 720px) {
+  .incar-photos {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .app-grid {
@@ -2253,68 +2295,6 @@ footer {
   line-height: 1.6;
   max-width: 680px;
   margin: -28px 0 44px;
-}
-
-.dash-features {
-  gap: 18px;
-}
-
-/* ---------- DASHBOARDS: LIGHT / DARK PAIRS ---------- */
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 900px) {
-  .theme-grid {
-    grid-template-columns: 1fr;
-    max-width: 460px;
-  }
-}
-
-.theme-pair {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.theme-shots {
-  display: flex;
-  flex-direction: column;
-}
-
-.theme-shot {
-  position: relative;
-  aspect-ratio: 2424 / 1080;
-  background: var(--bg-elev);
-}
-
-.theme-shot + .theme-shot {
-  border-top: 1px solid var(--border);
-}
-
-.theme-pair figcaption {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  border-top: 1px solid var(--border);
-  padding: 14px 18px;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.theme-pair figcaption span {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-mute);
 }
 
 /* ---------- DASHBOARDS: ANATOMY ---------- */

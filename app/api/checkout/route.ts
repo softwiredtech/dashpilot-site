@@ -218,6 +218,10 @@ export async function POST(req: NextRequest) {
                   ? `Tesla ${vehicle.model.name} · ${vehicle.variant.name} harness`
                   : "no harness"
               })${
+                vehicle?.variant.partialSupport
+                  ? " · Partial support: dashboard only, controls not supported yet"
+                  : ""
+              }${
                 reverseCharge
                   ? " · Reverse charge: VAT to be accounted for by the recipient (Art. 196 EU VAT Directive)"
                   : ""

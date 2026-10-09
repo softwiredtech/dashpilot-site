@@ -7,7 +7,7 @@ import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
 import { DEVICE_ONLY_DISCOUNT_EUR, unitPriceEur } from "@/lib/pricing";
 import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
 
-import { DEVICE_ONLY, VEHICLE_MODELS } from "./vehicles";
+import { DEVICE_ONLY, PARTIAL_SUPPORT_NOTE, VEHICLE_MODELS } from "./vehicles";
 
 const euro = (cents: number) =>
   `€${(cents / 100).toLocaleString("en-US", {
@@ -275,6 +275,14 @@ export default function OrderPage() {
                   )}
                 </div>
 
+                {selectedVariant?.partialSupport && (
+                  <div className="picker-body">
+                    <p className="partial-note" role="note">
+                      <strong>Partial support.</strong> {PARTIAL_SUPPORT_NOTE}
+                    </p>
+                  </div>
+                )}
+
                 {!variant && (
                   <div className="picker-body picker-grid">
                     {selectedModel.variants.map((v) => (
@@ -290,6 +298,11 @@ export default function OrderPage() {
                       >
                         <span className="picker-card-title">{v.name}</span>
                         <span className="picker-card-desc">{v.description}</span>
+                        {v.partialSupport && (
+                          <span className="partial-badge">
+                            Partial support: dashboard only, no controls yet
+                          </span>
+                        )}
                       </button>
                     ))}
                   </div>

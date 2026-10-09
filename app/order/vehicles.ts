@@ -6,7 +6,13 @@ export type VehicleVariant = {
   image?: string;
   /** Shown greyed out and not orderable yet. */
   comingSoon?: boolean;
+  /** Orderable, but flagged in the picker with PARTIAL_SUPPORT_NOTE. */
+  partialSupport?: boolean;
 };
+
+/** What "partial support" means for a variant, shown wherever it's flagged. */
+export const PARTIAL_SUPPORT_NOTE =
+  "The car dashboard is fully supported. Controls are not supported yet on this variant.";
 
 export type VehicleModel = {
   code: string;
@@ -68,7 +74,7 @@ export const VEHICLE_MODELS: VehicleModel[] = [
         name: "Facelift / Juniper [Premium]",
         description:
           "Manufactured since early 2025, featuring leather seats and an RGB strip (NOT the Long Base 6-seater).",
-        comingSoon: true,
+        partialSupport: true,
       },
       {
         code: "standard",

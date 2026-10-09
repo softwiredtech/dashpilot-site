@@ -30,14 +30,14 @@ export default function Header() {
         </Link>
         <div className="nav-right">
           <div className="nav-links">
-            <Link href="/specs" className={isActive("/specs")}>
-              Specs
+            <Link href="/dashboards" className={isActive("/dashboards")}>
+              Dashboards
             </Link>
             <Link href="/#features" className="">
               Features
             </Link>
-            <Link href="/dashboards" className={isActive("/dashboards")}>
-              Dashboards
+            <Link href="/specs" className={isActive("/specs")}>
+              Specs
             </Link>
             <Link href="/install" className={isActive("/install")}>
               Install
@@ -92,21 +92,21 @@ export default function Header() {
       {menuOpen && (
         <div className="mobile-menu" id="mobile-menu">
           <Link
-            href="/specs"
-            className={isActive("/specs")}
-            onClick={closeMenu}
-          >
-            Specs
-          </Link>
-          <Link href="/#features" onClick={closeMenu}>
-            Features
-          </Link>
-          <Link
             href="/dashboards"
             className={isActive("/dashboards")}
             onClick={closeMenu}
           >
             Dashboards
+          </Link>
+          <Link href="/#features" onClick={closeMenu}>
+            Features
+          </Link>
+          <Link
+            href="/specs"
+            className={isActive("/specs")}
+            onClick={closeMenu}
+          >
+            Specs
           </Link>
           <Link
             href="/install"
