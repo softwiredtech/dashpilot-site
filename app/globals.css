@@ -2464,6 +2464,33 @@ footer {
   line-height: 1.6;
 }
 
+.install-note {
+  margin: -24px 0 48px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+}
+
+.install-note h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.install-note p {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.install-note strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .app-badges {
   display: flex;
   flex-wrap: wrap;

@@ -139,6 +139,15 @@ export default function Install() {
           </div>
         </div>
 
+        <div className="install-note">
+          <h3>Driving the new generation Model Y (Juniper)?</h3>
+          <p>
+            After pairing, open <strong>Settings</strong> in the DashPilot app
+            and select <strong>Juniper</strong> as your vehicle so DashKit
+            reads the right signals from your car.
+          </p>
+        </div>
+
         <div className="video-frame">
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
