@@ -12,17 +12,48 @@ export default function Home() {
   return (
     <>
       {/* ---------- HERO ---------- */}
+      {/* Full-bleed photo with the title set over it, left-aligned on desktop
+          and split top/bottom on phones so the device stays visible. */}
       <section className="hero">
-        <div className="container">
-          <div className="hub-intro">
-            <p className="eyebrow">For Tesla · 2× CAN</p>
-            <h1>Custom dashboard and controller for your Tesla</h1>
+        <Image
+          src="/images/dashkit-armrest.jpg"
+          alt="DashKit sitting on a Tesla's center armrest, status LED lit green"
+          fill
+          sizes="100vw"
+          className="hero-bg"
+          priority
+        />
+        <div className="hero-shade" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <p className="hero-kicker">For Tesla · 2× CAN</p>
+            <h1>Open source controller for your Tesla</h1>
             <p className="hero-sub">
-              DashKit plugs into your Tesla&apos;s CAN buses and puts your car
-              on rules you write, all on open, community-built software.
+              DashKit runs automations, powers dashboards on your phone,
+              unlocks controls your Tesla doesn&apos;t expose, and much more.
             </p>
           </div>
+          <div className="hero-actions">
+            <div className="cta-row cta-row--left">
+              <Link href="/order" className="cta-primary">
+                {ORDER_CTA_LABEL}
+              </Link>
+              <Link href="/specs" className="cta-secondary">
+                View specs
+              </Link>
+            </div>
+            <p className="hero-note">
+              {ORDERS_OPEN
+                ? "Ships to EU, UK, US, Canada & Australia · Open source"
+                : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
+            </p>
+          </div>
+        </div>
+      </section>
 
+      {/* ---------- HUB ---------- */}
+      <section className="section hub-section">
+        <div className="container">
           {/* Center: the device. Sides: the automations it unlocks, each
               pointing back at the hardware that runs them. */}
           <div className="hub">
@@ -124,21 +155,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div className="cta-row cta-row--center">
-            <Link href="/order" className="cta-primary">
-              {ORDER_CTA_LABEL}
-            </Link>
-            <Link href="/specs" className="cta-secondary">
-              View specs
-            </Link>
-          </div>
-
-          <p className="hero-note" style={{ textAlign: "center" }}>
-            {ORDERS_OPEN
-              ? "Ships to EU, UK, US, Canada & Australia · Open source"
-              : "Works with Tesla · 2× CAN · BLE 5 · First batch ships end of August 2026"}
-          </p>
         </div>
       </section>
 
