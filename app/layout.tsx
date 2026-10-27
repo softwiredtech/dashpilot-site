@@ -1,4 +1,6 @@
+import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/Footer";
+import GoogleTag from "@/components/GoogleTag";
 import Header from "@/components/Header";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -51,6 +53,10 @@ const UMAMI_SRC =
 // Keep dev servers and preview deploys out of the numbers.
 const UMAMI_ENABLED =
   process.env.NODE_ENV === "production" && process.env.VERCEL_ENV !== "preview";
+// Same rule for Google Ads, which also needs cookie consent (see GoogleTag).
+// NEXT_PUBLIC_ADS_DEBUG=true turns it on locally to test the banner and tag.
+const GOOGLE_ADS_ENABLED =
+  UMAMI_ENABLED || process.env.NEXT_PUBLIC_ADS_DEBUG === "true";
 
 export default function RootLayout({
   children,
@@ -70,6 +76,12 @@ export default function RootLayout({
             strategy="afterInteractive"
             defer
           />
+        )}
+        {GOOGLE_ADS_ENABLED && (
+          <>
+            <GoogleTag />
+            <CookieBanner />
+          </>
         )}
       </body>
     </html>

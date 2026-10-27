@@ -2,7 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 
+import { readConsent } from "@/lib/consent";
 import { ORDERS_OPEN } from "@/lib/flags";
+import { BEGIN_CHECKOUT_LABEL, trackConversion } from "@/lib/gtag";
 import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
 import { DEVICE_ONLY_DISCOUNT_EUR, unitPriceEur } from "@/lib/pricing";
 import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
@@ -153,6 +155,9 @@ export default function OrderPage() {
         throw new Error(result.error || "Something went wrong with your order.");
       }
 
+      if (readConsent() === "granted") {
+        trackConversion(BEGIN_CHECKOUT_LABEL, { value: price, currency: "EUR" });
+      }
       window.location.href = result.url;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error.");

@@ -1,21 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
 
 import { findVehicle } from "@/app/order/vehicles";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { findCountry, SHIPPING_EUR, type Country } from "@/lib/markets";
 import { unitPriceEur } from "@/lib/pricing";
+import { getStripe } from "@/lib/stripe";
 import {
   parseEuVat,
   qualifiesForReverseCharge,
   type ParsedEuVat,
 } from "@/lib/vat";
-
-let stripe: Stripe | null = null;
-function getStripe(): Stripe {
-  stripe ??= new Stripe(process.env.STRIPE_SECRET_KEY!);
-  return stripe;
-}
 
 /**
  * One Stripe TaxRate per EU destination country, created lazily and reused.
