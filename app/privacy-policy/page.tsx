@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy | DashKit",
 };
 
-const LAST_UPDATED = "28 July 2026";
+const LAST_UPDATED = "27 October 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -30,8 +30,8 @@ export default function PrivacyPolicy() {
 
         <h2>What we collect</h2>
         <p>
-          <strong>Browsing this site.</strong> We set no cookies of our own and
-          run no advertising or cross-site tracking. We use{" "}
+          <strong>Browsing this site.</strong> Without your consent we set no
+          cookies and run no advertising or cross-site tracking. We use{" "}
           <a href="https://umami.is" target="_blank" rel="noreferrer">
             Umami
           </a>{" "}
@@ -40,6 +40,28 @@ export default function PrivacyPolicy() {
           referrer, country, browser and device type. It does not store your IP
           address. Our hosting provider keeps standard server logs (IP address,
           browser user agent, requested page) for security and troubleshooting.
+        </p>
+        <p id="cookies">
+          <strong>Advertising cookies, only if you accept them.</strong> We
+          advertise DashKit on Google (including YouTube). If you click
+          &quot;Accept&quot; on our cookie banner, we load the Google tag, which
+          sets cookies so Google Ads can tell us which ads brought visitors
+          here and whether they went on to order. It can also let us show our
+          ads again to people who have visited this site. Google receives your
+          IP address, browser details, the pages you view here and, if you
+          order, the order value and an order reference (never your name,
+          address or email). If you click &quot;Reject&quot; or don&apos;t
+          answer, the Google tag is never loaded. You can change your choice
+          at any time with the &quot;Cookie settings&quot; link at the bottom of
+          every page. Google&apos;s use of this data is described in its{" "}
+          <a
+            href="https://policies.google.com/technologies/ads"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            advertising policy
+          </a>
+          .
         </p>
         <p>
           <strong>If you email or call us.</strong> We keep your message and
@@ -77,15 +99,25 @@ export default function PrivacyPolicy() {
             asked us to. You can withdraw it at any time by replying to any
             message from us.
           </li>
+          <li>
+            <strong>Consent:</strong> advertising cookies and ad measurement,
+            if you accepted them on the cookie banner. Withdraw it at any time
+            under &quot;Cookie settings&quot;.
+          </li>
         </ul>
 
         <h2>Who else sees it</h2>
         <p>
-          We do not sell personal data and we do not share it for advertising.
-          We use a small number of processors to run the business, and only give
-          each one what it needs:
+          We do not sell personal data. Apart from the Google Ads measurement
+          you can opt into above, we do not share it for advertising. We use a
+          small number of processors to run the business, and only give each
+          one what it needs:
         </p>
         <ul>
+          <li>
+            <strong>Google:</strong> ad measurement and remarketing, only with
+            your cookie consent.
+          </li>
           <li>
             <strong>Stripe:</strong> payment processing and fraud prevention.
           </li>

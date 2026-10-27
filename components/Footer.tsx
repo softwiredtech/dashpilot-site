@@ -8,6 +8,7 @@ import {
   YOUTUBE,
 } from "@/lib/links";
 
+import CookieSettingsLink from "./CookieSettingsLink";
 import GithubIcon from "./GithubIcon";
 import Logo from "./Logo";
 import { DiscordIcon, XIcon, YoutubeIcon } from "./SocialIcons";
@@ -47,6 +48,9 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/dashpilot-privacy-policy">DashPilot app privacy</Link>
+              </li>
+              <li>
+                <CookieSettingsLink />
               </li>
             </ul>
           </div>
