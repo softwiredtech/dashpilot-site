@@ -8,7 +8,9 @@
 export const GOOGLE_ADS_ID =
   process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "AW-18389147141";
 
-export const PURCHASE_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL;
+/** "DashKit purchase" conversion action. */
+export const PURCHASE_LABEL =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL ?? "te61CNXhz6sdEIW80MBE";
 /** Optional secondary conversion, fired when the buyer is sent to Stripe. */
 export const BEGIN_CHECKOUT_LABEL =
   process.env.NEXT_PUBLIC_GOOGLE_ADS_BEGIN_CHECKOUT_LABEL;
