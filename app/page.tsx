@@ -38,9 +38,9 @@ export default function Home() {
               <Link href="/order" className="cta-primary">
                 {ORDER_CTA_LABEL}
               </Link>
-              <Link href="/specs" className="cta-secondary">
-                View specs
-              </Link>
+              <a href="#features" className="cta-secondary">
+                Features
+              </a>
             </div>
             <p className="hero-note">
               {ORDERS_OPEN
@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       {/* ---------- HUB ---------- */}
-      <section className="section hub-section">
+      <section className="section hub-section" id="features">
         <div className="container">
           {/* Center: the device. Sides: the automations it unlocks, each
               pointing back at the hardware that runs them. */}
@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* ---------- SPOTLIGHT: AUTOMATIONS ---------- */}
-      <section className="section" id="features">
+      <section className="section" id="automations">
         <div className="container">
           <div className="spotlight">
             <div className="spotlight-copy">
