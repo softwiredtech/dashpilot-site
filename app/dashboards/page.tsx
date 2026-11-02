@@ -155,8 +155,46 @@ const callouts: Callout[] = [
 export default function Dashboards() {
   return (
     <>
+      {/* ---------- HERO ---------- */}
+      {/* Full-screen photo of the dash in use, title on the left over the
+          wheel rim on desktop, split top/bottom around the phone on mobile. */}
+      <section className="dash-hero">
+        <Image
+          src="/images/dash-hero.jpg"
+          alt="A phone running DashPilot in a stand on a Tesla dashboard, seen through the steering wheel"
+          fill
+          sizes="100vw"
+          className="dash-hero-bg"
+          priority
+        />
+        <div className="dash-hero-shade" aria-hidden="true" />
+        <div className="dash-hero-inner">
+          <div className="dash-hero-copy">
+            <h1>DashKit</h1>
+            <p className="dash-hero-sub">
+              A fully customizable instrument cluster for your Tesla, right on your phone
+            </p>
+          </div>
+          <div className="dash-hero-actions">
+            <Link href="/order" className="cta-primary dash-hero-cta">
+              {ORDER_CTA_LABEL}
+            </Link>
+            <p className="dash-hero-note">
+              {ORDERS_OPEN
+                ? "Ships to EU, UK, US, Canada & Australia"
+                : "First batch ships end of August 2026"}
+            </p>
+          </div>
+        </div>
+        <a href="#in-the-car" className="dash-hero-scroll" aria-label="Scroll to see more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </a>
+      </section>
+
       {/* ---------- IN THE CAR ---------- */}
-      <section className="section dash-top">
+      <section className="section dash-top" id="in-the-car">
         <div className="container">
           <p className="eyebrow">In the car</p>
           <h2>

@@ -2283,9 +2283,180 @@ footer {
 
 /* ---------- DASHBOARDS PAGE ---------- */
 /* First section on the page sits right under the nav, no divider */
+/* ---------- DASHBOARDS HERO ---------- */
+/* Full-screen photo under the sticky nav. The phone sits right of centre in
+   the shot, so the copy goes left on desktop and above/below it on phones. */
+.dash-hero {
+  --header-h: 75px;
+  position: relative;
+  min-height: 560px;
+  height: calc(100svh - var(--header-h));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dash-hero-bg {
+  object-fit: cover;
+  object-position: 62% 45%;
+  z-index: -2;
+}
+
+.dash-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 10, 12, 0.78) 0%, rgba(10, 10, 12, 0.35) 38%, rgba(10, 10, 12, 0) 55%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0) 70%, var(--bg) 100%);
+}
+
+.dash-hero-inner {
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.dash-hero-copy {
+  max-width: 520px;
+}
+
+.dash-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 18px;
+}
+
+.dash-hero-sub {
+  font-size: 22px;
+  line-height: 1.4;
+  color: rgba(244, 244, 245, 0.88);
+  text-wrap: balance;
+}
+
+.dash-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dash-hero-cta {
+  padding: 18px 44px;
+  font-size: 18px;
+  box-shadow: 0 10px 40px rgba(136, 224, 166, 0.28);
+}
+
+/* Nudge to scroll: a chevron at the bottom centre that bobs gently. */
+.dash-hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  translate: -50% 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: rgba(244, 244, 245, 0.8);
+  animation: dash-hero-bob 2s ease-in-out infinite;
+  transition: color 0.2s;
+}
+
+.dash-hero-scroll:hover {
+  color: var(--accent);
+}
+
+.dash-hero-scroll svg {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes dash-hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-hero-scroll { animation: none; }
+}
+
+.dash-hero-note {
+  font-size: 14px;
+  color: rgba(244, 244, 245, 0.66);
+}
+
+@media (min-width: 1360px) {
+  .dash-hero-inner { padding: 64px 64px; }
+  .dash-hero h1 { font-size: 88px; }
+  .dash-hero-sub { font-size: 26px; }
+}
+
+/* Phones and portrait tablets: title above the phone, button below it over
+   the dark wheel. */
+@media (max-width: 749px), (max-aspect-ratio: 1/1) {
+  .dash-hero {
+    min-height: 600px;
+  }
+
+  .dash-hero-bg {
+    object-position: 70% 50%;
+  }
+
+  .dash-hero-shade {
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.8) 0%, rgba(10, 10, 12, 0.35) 28%, rgba(10, 10, 12, 0) 45%, rgba(10, 10, 12, 0) 62%, rgba(10, 10, 12, 0.6) 82%, var(--bg) 100%);
+  }
+
+  .dash-hero-inner {
+    justify-content: space-between;
+    text-align: center;
+    padding: 40px 16px 64px;
+  }
+
+  .dash-hero-copy {
+    max-width: none;
+  }
+
+  .dash-hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  .dash-hero-sub {
+    font-size: 17px;
+  }
+
+  .dash-hero-actions {
+    align-items: center;
+  }
+
+  .dash-hero-cta {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .dash-hero-scroll {
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dash-hero {
+    --header-h: 65px;
+  }
+}
+
 .dash-top {
   border-top: none;
   padding-top: 64px;
+  /* Clears the sticky nav when the hero's scroll arrow jumps here. */
+  scroll-margin-top: 64px;
 }
 
 .hero-sub--left {
