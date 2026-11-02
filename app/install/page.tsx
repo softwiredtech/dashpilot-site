@@ -153,6 +153,9 @@ export default function Install() {
             src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
             title="How to install DashKit"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            // YouTube refuses to play embeds that arrive without a referrer
+            // (error 153), so don't leave this to the browser's default.
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>
