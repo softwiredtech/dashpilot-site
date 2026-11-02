@@ -2295,6 +2295,12 @@ footer {
   isolation: isolate;
 }
 
+.dash-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
 .dash-hero-bg {
   object-fit: cover;
   object-position: 62% 45%;
@@ -2405,8 +2411,24 @@ footer {
     min-height: 600px;
   }
 
+  .dash-hero {
+    background: var(--bg);
+  }
+
+  /* Zoomed out: instead of covering the whole tall screen (which crops the
+     landscape photo down to just the phone), the photo sits in a band through
+     the middle and fades into the background above and below. */
+  .dash-hero-media {
+    inset: auto 0;
+    top: 50%;
+    height: 56%;
+    translate: 0 -50%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  }
+
   .dash-hero-bg {
-    object-position: 70% 50%;
+    object-position: 62% 50%;
   }
 
   .dash-hero-shade {
