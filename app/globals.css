@@ -2283,9 +2283,180 @@ footer {
 
 /* ---------- DASHBOARDS PAGE ---------- */
 /* First section on the page sits right under the nav, no divider */
+/* ---------- DASHBOARDS HERO ---------- */
+/* Full-screen photo under the sticky nav. The phone sits right of centre in
+   the shot, so the copy goes left on desktop and above/below it on phones. */
+.dash-hero {
+  --header-h: 75px;
+  position: relative;
+  min-height: 560px;
+  height: calc(100svh - var(--header-h));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dash-hero-bg {
+  object-fit: cover;
+  object-position: 62% 45%;
+  z-index: -2;
+}
+
+.dash-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 10, 12, 0.78) 0%, rgba(10, 10, 12, 0.35) 38%, rgba(10, 10, 12, 0) 55%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0) 70%, var(--bg) 100%);
+}
+
+.dash-hero-inner {
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.dash-hero-copy {
+  max-width: 520px;
+}
+
+.dash-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 18px;
+}
+
+.dash-hero-sub {
+  font-size: 22px;
+  line-height: 1.4;
+  color: rgba(244, 244, 245, 0.88);
+  text-wrap: balance;
+}
+
+.dash-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dash-hero-cta {
+  padding: 18px 44px;
+  font-size: 18px;
+  box-shadow: 0 10px 40px rgba(136, 224, 166, 0.28);
+}
+
+/* Nudge to scroll: a chevron at the bottom centre that bobs gently. */
+.dash-hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  translate: -50% 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: rgba(244, 244, 245, 0.8);
+  animation: dash-hero-bob 2s ease-in-out infinite;
+  transition: color 0.2s;
+}
+
+.dash-hero-scroll:hover {
+  color: var(--accent);
+}
+
+.dash-hero-scroll svg {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes dash-hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-hero-scroll { animation: none; }
+}
+
+.dash-hero-note {
+  font-size: 14px;
+  color: rgba(244, 244, 245, 0.66);
+}
+
+@media (min-width: 1360px) {
+  .dash-hero-inner { padding: 64px 64px; }
+  .dash-hero h1 { font-size: 88px; }
+  .dash-hero-sub { font-size: 26px; }
+}
+
+/* Phones and portrait tablets: title above the phone, button below it over
+   the dark wheel. */
+@media (max-width: 749px), (max-aspect-ratio: 1/1) {
+  .dash-hero {
+    min-height: 600px;
+  }
+
+  .dash-hero-bg {
+    object-position: 70% 50%;
+  }
+
+  .dash-hero-shade {
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.8) 0%, rgba(10, 10, 12, 0.35) 28%, rgba(10, 10, 12, 0) 45%, rgba(10, 10, 12, 0) 62%, rgba(10, 10, 12, 0.6) 82%, var(--bg) 100%);
+  }
+
+  .dash-hero-inner {
+    justify-content: space-between;
+    text-align: center;
+    padding: 40px 16px 64px;
+  }
+
+  .dash-hero-copy {
+    max-width: none;
+  }
+
+  .dash-hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  .dash-hero-sub {
+    font-size: 17px;
+  }
+
+  .dash-hero-actions {
+    align-items: center;
+  }
+
+  .dash-hero-cta {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .dash-hero-scroll {
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dash-hero {
+    --header-h: 65px;
+  }
+}
+
 .dash-top {
   border-top: none;
   padding-top: 64px;
+  /* Clears the sticky nav when the hero's scroll arrow jumps here. */
+  scroll-margin-top: 64px;
 }
 
 .hero-sub--left {
@@ -2339,80 +2510,228 @@ footer {
   }
 }
 
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+/* Dash apps showcase: an Android phone cycling through the dashes, with
+   spec-sheet callouts pointing at the readouts each one draws. */
+.showcase {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-@media (max-width: 720px) {
-  .app-grid {
-    grid-template-columns: 1fr;
-  }
+.showcase-stage {
+  position: relative;
+  aspect-ratio: 1000 / 621;
+  container-type: inline-size;
 }
 
-.app-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+.showcase-phone {
+  position: absolute;
+  background: linear-gradient(180deg, #1d1d22, #0c0c0f);
+  border-radius: 5.3% / 11.1%;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10),
+    inset 0 0 0 3px #050506,
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 120px rgba(136, 224, 166, 0.06);
+}
+
+/* Side keys, on the phone's top edge now that it's turned landscape. */
+.showcase-btn {
+  position: absolute;
+  bottom: 100%;
+  height: 0.7cqw;
+  border-radius: 2px 2px 0 0;
+  background: #26262c;
+}
+
+.showcase-btn--vol {
+  right: 22%;
+  width: 11%;
+}
+
+.showcase-btn--power {
+  right: 13%;
+  width: 6%;
+}
+
+.showcase-screen {
+  position: absolute;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.2s, transform 0.2s;
+  background: #000;
+  border-radius: 3.5% / 7.7%;
 }
 
-.app-card:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-3px);
+.showcase-shot {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
 }
 
-.app-shot {
-  aspect-ratio: 2424 / 1080;
-  background: var(--bg-elev);
-  border-bottom: 1px solid var(--border);
+.showcase-shot.is-active {
+  opacity: 1;
 }
 
-.app-shot-img {
+.showcase-camera {
+  position: absolute;
+  left: 1.6%;
+  top: 50%;
+  width: 1.5%;
+  aspect-ratio: 1;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: #050506;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.showcase-lines {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  overflow: visible;
+  pointer-events: none;
 }
 
-.app-body {
-  padding: 24px 26px 26px;
+/* The outgoing lines are gone before the next set fades in. */
+.showcase-set {
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.app-body h3 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
+.showcase-set.is-active {
+  opacity: 1;
+  transition: opacity 0.45s ease 0.3s;
 }
 
-.app-body p {
-  color: var(--text-dim);
-  font-size: 15px;
-  margin-bottom: 18px;
+.showcase-labels {
+  animation: showcase-fade-in 0.45s ease 0.3s both;
 }
 
-.app-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+@keyframes showcase-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* A faint dark edge keeps the line readable over the light dash. */
+.showcase-line-halo {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.18);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.showcase-line {
+  fill: none;
+  stroke: rgba(244, 244, 245, 0.5);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.showcase-dot {
+  fill: #f4f4f5;
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 1;
+}
+
+.showcase-dot-ring {
+  fill: rgba(244, 244, 245, 0.18);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.showcase-set.is-active .showcase-dot-ring {
+  animation: showcase-pulse 1.8s ease-out infinite;
+}
+
+@keyframes showcase-pulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.showcase-labels {
   list-style: none;
 }
 
-.app-tag {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
+/* Each label owns a fixed column (slots are 20% apart) and wraps inside it
+   rather than spilling into its neighbour. */
+.showcase-label {
+  position: absolute;
+  width: 19%;
+  translate: -50% 0;
+  text-align: center;
+  line-height: 1.2;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(11px, 1.55cqw, 16px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(244, 244, 245, 0.82);
+}
+
+.showcase-label-short {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .showcase-label-long { display: none; }
+  .showcase-label-short { display: inline; }
+}
+
+.showcase-pager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.showcase-pager-dot {
+  position: relative;
+  width: 36px;
+  height: 4px;
+  padding: 0;
+  border: none;
   border-radius: 999px;
-  padding: 5px 11px;
+  background: rgba(244, 244, 245, 0.16);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Bigger tap target than the visible bar. */
+.showcase-pager-dot::before {
+  content: "";
+  position: absolute;
+  inset: -12px -2px;
+}
+
+.showcase-pager-dot span {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: var(--accent);
+}
+
+.showcase-pager-dot.is-active span {
+  transform: scaleX(1);
+}
+
+.showcase-pager-dot.is-active span.is-running {
+  animation: showcase-progress linear forwards;
+}
+
+@keyframes showcase-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Reduced motion: slides still advance, just as a cut instead of a fade. */
+@media (prefers-reduced-motion: reduce) {
+  .showcase-set.is-active .showcase-dot-ring { animation: none; }
+  .showcase-shot,
+  .showcase-set { transition: none; }
+  .showcase-labels { animation: none; }
 }
 
 .dash-lead {
@@ -2421,97 +2740,6 @@ footer {
   line-height: 1.6;
   max-width: 680px;
   margin: -28px 0 44px;
-}
-
-/* ---------- DASHBOARDS: ANATOMY ---------- */
-.anatomy {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.anatomy-figure {
-  position: relative;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.anatomy-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.anatomy-pin {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(18px, 2.1vw, 26px);
-  height: clamp(18px, 2.1vw, 26px);
-  border-radius: 999px;
-  background: var(--accent);
-  color: #06110b;
-  box-shadow: 0 0 0 2px rgba(6, 17, 11, 0.55), 0 0 14px var(--accent-glow);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: clamp(9px, 1.05vw, 13px);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.anatomy-legend {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px 28px;
-  list-style: none;
-  counter-reset: none;
-}
-
-@media (max-width: 900px) {
-  .anatomy-legend {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .anatomy-legend {
-    grid-template-columns: 1fr;
-  }
-}
-
-.anatomy-legend li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--text-dim);
-}
-
-.anatomy-legend strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.anatomy-legend-n {
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin-top: 1px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid var(--accent-line);
-  color: var(--accent);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
 }
 
 /* ---------- INSTALL PAGE ---------- */

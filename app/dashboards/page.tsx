@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import DashShowcase from "@/components/DashShowcase";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 
 export const metadata: Metadata = {
@@ -10,153 +11,49 @@ export const metadata: Metadata = {
     "DashPilot turns your phone into a live car dashboard. Swap between dash apps (Vanilla, Ambient, Analog and Retro), each in light and dark, each with blind spot monitoring, assist status, battery telemetry and more.",
 };
 
-type DashApp = {
-  name: string;
-  image: string;
-  aspect: [number, number];
-  description: string;
-  tags: string[];
-};
-
-const apps: DashApp[] = [
-  {
-    name: "Vanilla",
-    image: "/dash-apps/preview_vanilla.jpg",
-    aspect: [2424, 1080],
-    description:
-      "The full picture: a live 3D road view with your car, its lane and surrounding traffic, wrapped in speed, gear, steering, battery and limit readouts.",
-    tags: ["3D road view", "Blind spot", "Light & dark"],
-  },
-  {
-    name: "Ambient",
-    image: "/dash-apps/preview_ambient.jpg",
-    aspect: [2424, 1080],
-    description:
-      "Stripped to the bone. One huge speed readout on a surface that breathes colour: green when you're under the limit, amber and red when you're not.",
-    tags: ["Minimalist", "Reactive glow", "Light & dark"],
-  },
-  {
-    name: "Analog",
-    image: "/dash-apps/preview_analog.jpg",
-    aspect: [2424, 1080],
-    description:
-      "A classic needle speedometer in a machined bezel, with a power sweep, the PRND selector and a rim that tracks your assist state.",
-    tags: ["Analog gauge", "Needle sweep", "PRND"],
-  },
-  {
-    name: "Retro",
-    image: "/dash-apps/preview_retro.jpg",
-    aspect: [2424, 1080],
-    description:
-      "Fourteen-segment displays with ghosted off-segments and a CRT glow, flanked by a blind-spot LED tape running down each side.",
-    tags: ["14-segment LED", "CRT glow", "Light & dark"],
-  },
-];
-
-type Callout = {
-  n: number;
-  /* position of the marker, in % of the screenshot */
-  x: number;
-  y: number;
-  title: string;
-  description: string;
-};
-
-const callouts: Callout[] = [
-  {
-    n: 1,
-    x: 21.5,
-    y: 17.5,
-    title: "Speed",
-    description: "Live road speed in km/h or mph.",
-  },
-  {
-    n: 2,
-    x: 5.9,
-    y: 22,
-    title: "Power & regen",
-    description: "Fills upward under power, downward when you're regenerating.",
-  },
-  {
-    n: 3,
-    x: 16.5,
-    y: 42.3,
-    title: "Gear",
-    description: "P / R / N / D, straight off the bus.",
-  },
-  {
-    n: 4,
-    x: 16.5,
-    y: 58.6,
-    title: "Steering angle",
-    description:
-      "The wheel turns with yours, and goes blue when the car is steering itself.",
-  },
-  {
-    n: 5,
-    x: 16.5,
-    y: 90,
-    title: "Odometer",
-    description: "Total distance, as the car reports it.",
-  },
-  {
-    n: 6,
-    x: 63.5,
-    y: 9.5,
-    title: "Phone & car battery",
-    description: "Handset charge, pack state of charge and pack temperature.",
-  },
-  {
-    n: 7,
-    x: 91.3,
-    y: 37,
-    title: "Speed limit",
-    description: "The limit for the road you're on, red once you're over it.",
-  },
-  {
-    n: 8,
-    x: 65.5,
-    y: 21,
-    title: "Traffic light ahead",
-    description: "The next light and the colour it's showing.",
-  },
-  {
-    n: 9,
-    x: 47,
-    y: 11.8,
-    title: "Turn signal",
-    description: "Mirrors the car's blinkers in real time.",
-  },
-  {
-    n: 10,
-    x: 58.5,
-    y: 47,
-    title: "Your car & lane",
-    description: "Your car rendered inside the lane the camera is tracking.",
-  },
-  {
-    n: 11,
-    x: 31,
-    y: 69.6,
-    title: "Blind spot monitoring",
-    description:
-      "Surrounding traffic, with pulsing waves around a vehicle sitting in your blind spot.",
-  },
-  {
-    n: 12,
-    x: 2.6,
-    y: 62,
-    title: "Side alert",
-    description:
-      "The whole edge glows amber, then red if you signal into that side or drift out of your lane.",
-  },
-];
-
 export default function Dashboards() {
   return (
     <>
+      {/* ---------- HERO ---------- */}
+      {/* Full-screen photo of the dash in use, title on the left over the
+          wheel rim on desktop, split top/bottom around the phone on mobile. */}
+      <section className="dash-hero">
+        <Image
+          src="/images/dash-hero.jpg"
+          alt="A phone running DashPilot in a stand on a Tesla dashboard, seen through the steering wheel"
+          fill
+          sizes="100vw"
+          className="dash-hero-bg"
+          priority
+        />
+        <div className="dash-hero-shade" aria-hidden="true" />
+        <div className="dash-hero-inner">
+          <div className="dash-hero-copy">
+            <h1>DashKit</h1>
+            <p className="dash-hero-sub">
+              A fully customizable instrument cluster for your Tesla, right on your phone
+            </p>
+          </div>
+          <div className="dash-hero-actions">
+            <Link href="/order" className="cta-primary dash-hero-cta">
+              {ORDER_CTA_LABEL}
+            </Link>
+            <p className="dash-hero-note">
+              {ORDERS_OPEN
+                ? "Ships to EU, UK, US, Canada & Australia"
+                : "First batch ships end of August 2026"}
+            </p>
+          </div>
+        </div>
+        <a href="#in-the-car" className="dash-hero-scroll" aria-label="Scroll to see more">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </a>
+      </section>
+
       {/* ---------- IN THE CAR ---------- */}
-      <section className="section dash-top">
+      <section className="section dash-top" id="in-the-car">
         <div className="container">
           <p className="eyebrow">In the car</p>
           <h2>
@@ -221,7 +118,7 @@ export default function Dashboards() {
       </section>
 
       {/* ---------- DASH APPS ---------- */}
-      <section className="section">
+      <section className="section" id="dash-apps">
         <div className="container">
           <p className="eyebrow">Dash apps</p>
           <h2>
@@ -234,82 +131,7 @@ export default function Dashboards() {
             from forking one or building your own.
           </p>
 
-          <div className="app-grid">
-            {apps.map((app) => (
-              <article className="app-card" key={app.name}>
-                <div className="app-shot">
-                  <Image
-                    src={app.image}
-                    alt={`The ${app.name} dash app running in DashPilot`}
-                    width={app.aspect[0]}
-                    height={app.aspect[1]}
-                    className="app-shot-img"
-                    sizes="(max-width: 720px) 100vw, 540px"
-                  />
-                </div>
-                <div className="app-body">
-                  <h3>{app.name}</h3>
-                  <p>{app.description}</p>
-                  <ul className="app-tags">
-                    {app.tags.map((tag) => (
-                      <li className="app-tag" key={tag}>
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- ANATOMY ---------- */}
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Anatomy</p>
-          <h2>What you&apos;re actually looking at</h2>
-          <p className="dash-lead">
-            Vanilla shows nearly everything DashKit reads. Here it is mid-alert:
-            a car sitting in the left blind spot, the whole left edge lit up
-            in warning.
-          </p>
-
-          <div className="anatomy">
-            <div className="anatomy-figure">
-              <Image
-                src="/dash-apps/anatomy_vanilla.jpg"
-                alt="The Vanilla dash app with each readout numbered and labelled below"
-                width={2424}
-                height={1080}
-                className="anatomy-img"
-                sizes="(max-width: 900px) 100vw, 1100px"
-              />
-              {callouts.map((c) => (
-                <span
-                  className="anatomy-pin"
-                  key={c.n}
-                  style={{ left: `${c.x}%`, top: `${c.y}%` }}
-                  aria-hidden="true"
-                >
-                  {c.n}
-                </span>
-              ))}
-            </div>
-
-            <ol className="anatomy-legend">
-              {callouts.map((c) => (
-                <li key={c.n}>
-                  <span className="anatomy-legend-n" aria-hidden="true">
-                    {c.n}
-                  </span>
-                  <span>
-                    <strong>{c.title}</strong> {c.description}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <DashShowcase />
         </div>
       </section>
 
