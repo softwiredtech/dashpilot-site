@@ -55,17 +55,9 @@ export default function Dashboards() {
       {/* ---------- IN THE CAR ---------- */}
       <section className="section dash-top" id="in-the-car">
         <div className="container">
-          <p className="eyebrow">In the car</p>
           <h2>
             Your phone becomes the <span className="accent">instrument cluster</span>
           </h2>
-          <p className="dash-lead">
-            DashKit sits hidden behind the trim, reading the car&apos;s CAN
-            buses. It streams speed, gear, battery, blind spot and assist state
-            to your phone over Bluetooth, and DashPilot draws it right in your
-            line of sight, above the steering wheel instead of off to the side
-            on the center screen.
-          </p>
 
           <div className="incar">
             <figure className="incar-video">
