@@ -159,14 +159,16 @@ export default function Dashboards() {
       {/* Full-screen photo of the dash in use, title on the left over the
           wheel rim on desktop, split top/bottom around the phone on mobile. */}
       <section className="dash-hero">
-        <Image
-          src="/images/dash-hero.jpg"
-          alt="A phone running DashPilot in a stand on a Tesla dashboard, seen through the steering wheel"
-          fill
-          sizes="100vw"
-          className="dash-hero-bg"
-          priority
-        />
+        <div className="dash-hero-media">
+          <Image
+            src="/images/dash-hero.jpg"
+            alt="A phone running DashPilot in a stand on a Tesla dashboard, seen through the steering wheel"
+            fill
+            sizes="(max-width: 749px) 160vw, 100vw"
+            className="dash-hero-bg"
+            priority
+          />
+        </div>
         <div className="dash-hero-shade" aria-hidden="true" />
         <div className="dash-hero-inner">
           <div className="dash-hero-copy">
