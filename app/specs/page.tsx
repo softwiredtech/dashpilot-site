@@ -74,7 +74,7 @@ export default function Specs() {
               trim, open enough to do whatever you need it to.
             </p>
             <div className="cta-row cta-row--left">
-              <Link href="/order" className="cta-primary">
+              <Link href="/order" className="cta-primary" data-event="order-cta" data-event-location="specs">
                 {ORDER_CTA_LABEL}
               </Link>
             </div>

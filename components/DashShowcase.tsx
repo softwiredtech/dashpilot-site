@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { track } from "@/lib/analytics";
+
 /* The stage is drawn in a 1000 × STAGE_H coordinate space: one row of
    callout labels on top, the phone below it. Everything is placed in % of the
    stage, so it scales as one piece down to phone widths. */
@@ -214,7 +216,10 @@ export default function DashShowcase() {
             aria-selected={i === active}
             aria-label={`Show dash ${i + 1} of ${dashes.length}`}
             className={`showcase-pager-dot${i === active ? " is-active" : ""}`}
-            onClick={() => setActive(i)}
+            onClick={() => {
+              setActive(i);
+              track("dash-select", { dash: i + 1 });
+            }}
           >
             {/* Fills over the slide's duration while it's auto-playing. */}
             <span

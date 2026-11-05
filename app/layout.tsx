@@ -1,3 +1,4 @@
+import Analytics from "@/components/Analytics";
 import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/Footer";
 import GoogleTag from "@/components/GoogleTag";
@@ -69,6 +70,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
         {UMAMI_ENABLED && (
           <Script
             src={UMAMI_SRC}

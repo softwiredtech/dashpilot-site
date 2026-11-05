@@ -54,7 +54,13 @@ export default function Header() {
             <span>Discord</span>
           </a>
           <GithubMenu />
-          <Link href="/order" className="nav-cta" aria-label={ORDER_CTA_LABEL}>
+          <Link
+            href="/order"
+            className="nav-cta"
+            aria-label={ORDER_CTA_LABEL}
+            data-event="order-cta"
+            data-event-location="nav"
+          >
             {/* Both labels ship and CSS picks one, so the swap happens at the
                 real viewport width instead of after a client-side measure. */}
             <span className="nav-cta-long">{ORDER_CTA_LABEL}</span>

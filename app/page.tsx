@@ -35,10 +35,10 @@ export default function Home() {
           </div>
           <div className="hero-actions">
             <div className="cta-row cta-row--left">
-              <Link href="/order" className="cta-primary">
+              <Link href="/order" className="cta-primary" data-event="order-cta" data-event-location="home-hero">
                 {ORDER_CTA_LABEL}
               </Link>
-              <a href="#features" className="cta-secondary">
+              <a href="#features" className="cta-secondary" data-event="features-cta">
                 Features
               </a>
             </div>
@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       {/* ---------- HUB ---------- */}
-      <section className="section hub-section" id="features">
+      <section className="section hub-section" id="features" data-section="features">
         <div className="container">
           {/* Center: the device. Sides: the automations it unlocks, each
               pointing back at the hardware that runs them. */}
@@ -161,7 +161,7 @@ export default function Home() {
       {/* ---------- ON THE ROAD ---------- */}
       {/* Real driving footage, shown big and early so the first thing past the
           hero is proof that it works in a real car. */}
-      <section className="section road">
+      <section className="section road" data-section="footage">
         <div className="container">
           <div className="road-head">
             <div>
@@ -170,7 +170,7 @@ export default function Home() {
                 Your phone, now the <span className="accent">instrument cluster</span>.
               </h2>
             </div>
-            <Link href="/dashboards" className="cta-secondary">
+            <Link href="/dashboards" className="cta-secondary" data-event="dashboards-cta" data-event-location="home">
               See the dashboards →
             </Link>
           </div>
@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* ---------- SPOTLIGHT: AUTOMATIONS ---------- */}
-      <section className="section" id="automations">
+      <section className="section" id="automations" data-section="automations">
         <div className="container">
           <div className="spotlight">
             <div className="spotlight-copy">
@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* ---------- DEVICE / INSTALL ---------- */}
-      <section className="section">
+      <section className="section" data-section="hardware">
         <div className="container split">
           <div className="split-media">
             <div className="device-frame device-frame--wide">
@@ -299,7 +299,7 @@ export default function Home() {
               <li><span>BLE 5</span> wireless link to DashPilot on your phone</li>
               <li><span>ESP32-S3</span> with 16&nbsp;MB flash and OTA updates</li>
             </ul>
-            <Link href="/specs" className="cta-secondary">
+            <Link href="/specs" className="cta-secondary" data-event="specs-cta" data-event-location="home">
               Full specifications →
             </Link>
           </div>
@@ -307,7 +307,7 @@ export default function Home() {
       </section>
 
       {/* ---------- OPEN SOURCE ---------- */}
-      <section className="section os-section" id="open-source">
+      <section className="section os-section" id="open-source" data-section="open-source">
         <div className="container os-inner">
           <p className="eyebrow">Why DashKit is different</p>
           <h2>
@@ -371,7 +371,7 @@ export default function Home() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="section final-cta">
+      <section className="section final-cta" data-section="final-cta">
         <div className="container">
           <h2>Open up your Tesla.</h2>
           <p className="hero-sub">
@@ -380,7 +380,7 @@ export default function Home() {
               : "The first batch ships end of August 2026. See what it costs and get a heads-up when ordering opens."}
           </p>
           <div className="cta-row cta-row--center">
-            <Link href="/order" className="cta-primary">
+            <Link href="/order" className="cta-primary" data-event="order-cta" data-event-location="home-bottom">
               {ORDER_CTA_LABEL}
             </Link>
             <a

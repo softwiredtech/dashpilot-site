@@ -37,7 +37,12 @@ export default function Dashboards() {
             </p>
           </div>
           <div className="dash-hero-actions">
-            <Link href="/order" className="cta-primary dash-hero-cta">
+            <Link
+              href="/order"
+              className="cta-primary dash-hero-cta"
+              data-event="order-cta"
+              data-event-location="dashboards-hero"
+            >
               {ORDER_CTA_LABEL}
             </Link>
             <p className="dash-hero-note">
@@ -47,7 +52,12 @@ export default function Dashboards() {
             </p>
           </div>
         </div>
-        <a href="#in-the-car" className="dash-hero-scroll" aria-label="Scroll to see more">
+        <a
+          href="#in-the-car"
+          className="dash-hero-scroll"
+          aria-label="Scroll to see more"
+          data-event="scroll-arrow"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6" />
           </svg>
@@ -55,7 +65,7 @@ export default function Dashboards() {
       </section>
 
       {/* ---------- IN THE CAR ---------- */}
-      <section className="section dash-top" id="in-the-car">
+      <section className="section dash-top" id="in-the-car" data-section="in-the-car">
         <div className="container">
           <h2>
             Your phone becomes the <span className="accent">instrument cluster</span>
@@ -89,7 +99,7 @@ export default function Dashboards() {
       </section>
 
       {/* ---------- DASH APPS ---------- */}
-      <section className="section" id="dash-apps">
+      <section className="section" id="dash-apps" data-section="dash-apps">
         <div className="container">
           <p className="eyebrow">Dash apps</p>
           <h2>
@@ -108,7 +118,7 @@ export default function Dashboards() {
       {/* Car -> DashKit -> phone in one row that fits a phone screen, then
           the order button. The DashKit puck is drawn from the top-down
           product shot, LED and all. */}
-      <section className="section how" id="how-it-works">
+      <section className="section how" id="how-it-works" data-section="how-it-works">
         <div className="container">
           <h2>
             DashKit reads the car. <span className="accent">DashPilot shows it.</span>
@@ -151,10 +161,20 @@ export default function Dashboards() {
           </div>
 
           <div className="cta-row cta-row--center how-actions">
-            <Link href="/order" className="cta-primary">
+            <Link
+              href="/order"
+              className="cta-primary"
+              data-event="order-cta"
+              data-event-location="dashboards-bottom"
+            >
               {ORDER_CTA_LABEL}
             </Link>
-            <Link href="/install" className="cta-secondary">
+            <Link
+              href="/install"
+              className="cta-secondary"
+              data-event="install-cta"
+              data-event-location="dashboards"
+            >
               See how to install
             </Link>
           </div>
@@ -166,6 +186,26 @@ export default function Dashboards() {
         </div>
       </section>
 
+      {/* ---------- QUESTIONS ---------- */}
+      <section className="section final-cta" data-section="questions">
+        <div className="container">
+          <h2>Have a question?</h2>
+          <p className="hero-sub">
+            Not sure it fits your car, or curious about something else? Drop
+            us a line.
+          </p>
+          <div className="cta-row cta-row--center">
+            <a
+              href="mailto:info@softwiredtech.com?subject=Question%20about%20DashKit"
+              className="cta-secondary"
+              data-event="question-email"
+              data-event-location="dashboards"
+            >
+              Write to us
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

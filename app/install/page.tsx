@@ -148,7 +148,7 @@ export default function Install() {
           </p>
         </div>
 
-        <div className="video-frame">
+        <div className="video-frame" data-section="video">
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
             title="How to install DashKit"
@@ -160,7 +160,7 @@ export default function Install() {
           />
         </div>
 
-        <div className="install-steps">
+        <div className="install-steps" data-section="written-steps">
           <p className="eyebrow">Step by step</p>
           <h2>Prefer to read?</h2>
           <ol className="step-list">
@@ -183,10 +183,10 @@ export default function Install() {
               : "Don't have DashKit yet? The first batch ships end of August 2026."}
           </p>
           <div className="cta-row">
-            <Link href="/order" className="cta-primary">
+            <Link href="/order" className="cta-primary" data-event="order-cta" data-event-location="install">
               {ORDER_CTA_LABEL}
             </Link>
-            <Link href="/specs" className="cta-secondary">
+            <Link href="/specs" className="cta-secondary" data-event="specs-cta" data-event-location="install">
               View specs
             </Link>
           </div>

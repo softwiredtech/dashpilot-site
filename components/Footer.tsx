@@ -15,7 +15,7 @@ import { DiscordIcon, XIcon, YoutubeIcon } from "./SocialIcons";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer data-section="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">

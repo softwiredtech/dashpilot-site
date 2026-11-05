@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 
+import { track } from "@/lib/analytics";
 import { readConsent } from "@/lib/consent";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { BEGIN_CHECKOUT_LABEL, trackConversion } from "@/lib/gtag";
@@ -27,6 +28,7 @@ export default function OrderPage() {
   const [taxNumber, setTaxNumber] = useState("");
   const [model, setModel] = useState("");
   const [variant, setVariant] = useState("");
+  const formStarted = useRef(false);
 
   const deviceOnly = model === DEVICE_ONLY;
   const selectedModel = VEHICLE_MODELS.find((m) => m.code === model);
@@ -155,12 +157,19 @@ export default function OrderPage() {
         throw new Error(result.error || "Something went wrong with your order.");
       }
 
+      track("checkout-start", {
+        product: deviceOnly ? DEVICE_ONLY : `${model}-${variant}`,
+        country: shippingCountry,
+        buyer: isCompany ? "company" : "individual",
+      });
       if (readConsent() === "granted") {
         trackConversion(BEGIN_CHECKOUT_LABEL, { value: price, currency: "EUR" });
       }
       window.location.href = result.url;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error.");
+      const message = err instanceof Error ? err.message : "Unknown error.";
+      track("checkout-error", { error: message.slice(0, 200) });
+      setError(message);
       setLoading(false);
     }
   }
@@ -176,19 +185,34 @@ export default function OrderPage() {
 
         {error && <div className="form-error">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="order-form">
+        <form
+          onSubmit={handleSubmit}
+          className="order-form"
+          // First time any field gets focus: the visitor started filling it in.
+          onFocus={(e) => {
+            if (formStarted.current || !e.target.matches("input, select")) return;
+            formStarted.current = true;
+            track("order-form-start");
+          }}
+        >
           {/* Buyer type toggle */}
           <div className="toggle-group">
             <button
               type="button"
-              onClick={() => setIsCompany(false)}
+              onClick={() => {
+                if (isCompany) track("order-buyer-type", { type: "individual" });
+                setIsCompany(false);
+              }}
               className={`toggle-btn ${!isCompany ? "active" : ""}`}
             >
               Individual
             </button>
             <button
               type="button"
-              onClick={() => setIsCompany(true)}
+              onClick={() => {
+                if (!isCompany) track("order-buyer-type", { type: "company" });
+                setIsCompany(true);
+              }}
               className={`toggle-btn ${isCompany ? "active" : ""}`}
             >
               Company
@@ -232,6 +256,7 @@ export default function OrderPage() {
                       type="button"
                       className="picker-card"
                       onClick={() => {
+                        track("order-model", { model: m.code });
                         setModel(m.code);
                         setVariant("");
                       }}
@@ -243,6 +268,7 @@ export default function OrderPage() {
                     type="button"
                     className="picker-card"
                     onClick={() => {
+                      track("order-model", { model: DEVICE_ONLY });
                       setModel(DEVICE_ONLY);
                       setVariant("");
                     }}
@@ -298,6 +324,11 @@ export default function OrderPage() {
                         aria-disabled={v.comingSoon || undefined}
                         title={v.comingSoon ? "Coming soon" : undefined}
                         onClick={() => {
+                          // Clicks on "coming soon" variants show demand.
+                          track(
+                            v.comingSoon ? "order-variant-coming-soon" : "order-variant",
+                            { model, variant: v.code }
+                          );
                           if (!v.comingSoon) setVariant(v.code);
                         }}
                       >
@@ -369,7 +400,10 @@ export default function OrderPage() {
                 name="shipping_country"
                 required
                 value={shippingCountry}
-                onChange={(e) => setShippingCountry(e.target.value)}
+                onChange={(e) => {
+                  track("order-country", { country: e.target.value });
+                  setShippingCountry(e.target.value);
+                }}
               >
                 <option value="" disabled>
                   Select your country
