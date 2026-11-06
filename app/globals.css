@@ -2303,7 +2303,7 @@ footer {
 
 .dash-hero-bg {
   object-fit: cover;
-  object-position: 62% 45%;
+  object-position: 50% 50%;
   z-index: -2;
 }
 
@@ -2427,8 +2427,11 @@ footer {
     mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
   }
 
+  /* Zoomed in on the phone so the dash reads at phone size. */
   .dash-hero-bg {
-    object-position: 62% 50%;
+    object-position: 50% 50%;
+    scale: 1.45;
+    transform-origin: 50% 51%;
   }
 
   .dash-hero-shade {

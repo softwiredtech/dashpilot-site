@@ -42,6 +42,17 @@ type Dash = {
 
 const dashes: Dash[] = [
   {
+    image: "/dash-apps/showcase-3.jpg",
+    alt: "The light Vanilla dash: a 3D road view with the car on a green Autopilot path, a pickup in the left blind spot, speed, gear, battery and the speed limit",
+    callouts: [
+      { label: "Speed", short: "Speed", x: 14.7, y: 16 },
+      { label: "Blind spot monitor", short: "Blind spot", x: 26.9, y: 59 },
+      { label: "Autopilot state", short: "Autopilot", x: 49.5, y: 30 },
+      { label: "Battery & temperature", short: "Battery", x: 84.6, y: 9.2 },
+      { label: "Speed limit", short: "Limit", x: 90.7, y: 17 },
+    ],
+  },
+  {
     image: "/dash-apps/showcase-1.jpg",
     alt: "A dash with two neon arc gauges for speed and power around a top-down view of the car, a car in the right blind spot and Assist on",
     callouts: [
@@ -61,17 +72,6 @@ const dashes: Dash[] = [
       { label: "Speed", short: "Speed", x: 46, y: 41 },
       { label: "Autopilot state", short: "Autopilot", x: 74.7, y: 47.5 },
       { label: "Battery", short: "Battery", x: 93.5, y: 45 },
-    ],
-  },
-  {
-    image: "/dash-apps/showcase-3.jpg",
-    alt: "The light Vanilla dash: a 3D road view with the car on a green Autopilot path, a pickup in the left blind spot, speed, gear, battery and the speed limit",
-    callouts: [
-      { label: "Speed", short: "Speed", x: 14.7, y: 16 },
-      { label: "Blind spot monitor", short: "Blind spot", x: 26.9, y: 59 },
-      { label: "Autopilot state", short: "Autopilot", x: 49.5, y: 30 },
-      { label: "Battery & temperature", short: "Battery", x: 84.6, y: 9.2 },
-      { label: "Speed limit", short: "Limit", x: 90.7, y: 17 },
     ],
   },
   {

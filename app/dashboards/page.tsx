@@ -20,10 +20,10 @@ export default function Dashboards() {
       <section className="dash-hero">
         <div className="dash-hero-media">
           <Image
-            src="/images/dash-hero.jpg"
-            alt="A phone running DashPilot in a stand on a Tesla dashboard, seen through the steering wheel"
+            src="/images/dash-hero-2.jpg"
+            alt="A phone running DashPilot with a 3D model of the car, in a stand on a Tesla dashboard, seen through the steering wheel"
             fill
-            sizes="(max-width: 749px) 160vw, 100vw"
+            sizes="(max-width: 749px) 250vw, 100vw"
             className="dash-hero-bg"
             priority
           />
@@ -53,7 +53,7 @@ export default function Dashboards() {
           </div>
         </div>
         <a
-          href="#in-the-car"
+          href="#dash-apps"
           className="dash-hero-scroll"
           aria-label="Scroll to see more"
           data-event="scroll-arrow"
@@ -64,11 +64,27 @@ export default function Dashboards() {
         </a>
       </section>
 
+      {/* ---------- DASH APPS ---------- */}
+      <section className="section dash-top" id="dash-apps" data-section="dash-apps">
+        <div className="container">
+          <p className="eyebrow">Dash apps</p>
+          <h2>
+            Choose the dash <span className="accent">you like most</span>
+          </h2>
+          <p className="dash-lead">
+            The app is built to be extended with new dash styles, and we keep
+            adding more with every update.
+          </p>
+
+          <DashShowcase />
+        </div>
+      </section>
+
       {/* ---------- IN THE CAR ---------- */}
-      <section className="section dash-top" id="in-the-car" data-section="in-the-car">
+      <section className="section" id="in-the-car" data-section="in-the-car">
         <div className="container">
           <h2>
-            Your phone becomes the <span className="accent">instrument cluster</span>
+            See it <span className="accent">in the car</span>
           </h2>
         </div>
 
@@ -96,22 +112,6 @@ export default function Dashboards() {
             a custom gauge grid, Ambient in mph, and Retro through a tunnel.
           </figcaption>
         </figure>
-      </section>
-
-      {/* ---------- DASH APPS ---------- */}
-      <section className="section" id="dash-apps" data-section="dash-apps">
-        <div className="container">
-          <p className="eyebrow">Dash apps</p>
-          <h2>
-            Choose the dash <span className="accent">you like most</span>
-          </h2>
-          <p className="dash-lead">
-            The app is built to be extended with new dash styles, and we keep
-            adding more with every update.
-          </p>
-
-          <DashShowcase />
-        </div>
       </section>
 
       {/* ---------- HOW IT WORKS + ORDER ---------- */}
