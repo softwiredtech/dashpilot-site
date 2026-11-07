@@ -28,11 +28,10 @@ export default function Home() {
         <div className="hero-inner">
           <div className="hero-copy">
             <OfferPill location="home-hero" />
-            <p className="hero-kicker">For Tesla · 2× CAN</p>
-            <h1>Open source controller for your Tesla</h1>
+            <h1>DashKit</h1>
             <p className="hero-sub">
-              DashKit runs automations, powers dashboards on your phone,
-              unlocks controls your Tesla doesn&apos;t expose, and much more.
+              Runs automations, powers dashboards on your phone, unlocks
+              controls your Tesla doesn&apos;t expose, and much more.
             </p>
           </div>
           <div className="hero-actions">
