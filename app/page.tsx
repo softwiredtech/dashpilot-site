@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import GithubIcon from "@/components/GithubIcon";
+import OfferPill from "@/components/OfferPill";
 import { DiscordIcon } from "@/components/SocialIcons";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 import { DISCORD, GITHUB_APP, GITHUB_FIRMWARE } from "@/lib/links";
@@ -26,6 +27,7 @@ export default function Home() {
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-inner">
           <div className="hero-copy">
+            <OfferPill location="home-hero" />
             <p className="hero-kicker">For Tesla · 2× CAN</p>
             <h1>Open source controller for your Tesla</h1>
             <p className="hero-sub">

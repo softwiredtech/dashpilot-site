@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { findVehicle } from "@/app/order/vehicles";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { findCountry, SHIPPING_EUR, type Country } from "@/lib/markets";
-import { unitPriceEur } from "@/lib/pricing";
+import { OFFER_ACTIVE, OFFER_PERCENT, unitPriceEur } from "@/lib/pricing";
 import { getStripe } from "@/lib/stripe";
 import {
   parseEuVat,
@@ -216,6 +216,8 @@ export async function POST(req: NextRequest) {
                   ? " · Partial support: dashboard only, controls not supported yet"
                   : ""
               }${
+                OFFER_ACTIVE ? ` · Special offer: ${OFFER_PERCENT}% off` : ""
+              }${
                 reverseCharge
                   ? " · Reverse charge: VAT to be accounted for by the recipient (Art. 196 EU VAT Directive)"
                   : ""
@@ -262,6 +264,7 @@ export async function POST(req: NextRequest) {
           vat_vies_status: viesStatus!,
         }),
         device_only: deviceOnly ? "true" : "false",
+        ...(OFFER_ACTIVE && { offer_percent: String(OFFER_PERCENT) }),
         ...(vehicle
           ? {
               vehicle_model: vehicle.model.code,

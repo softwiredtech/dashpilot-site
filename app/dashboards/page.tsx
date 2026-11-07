@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import DashShowcase from "@/components/DashShowcase";
+import OfferPill from "@/components/OfferPill";
 import { ORDER_CTA_LABEL, ORDERS_OPEN } from "@/lib/flags";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function Dashboards() {
         <div className="dash-hero-shade" aria-hidden="true" />
         <div className="dash-hero-inner">
           <div className="dash-hero-copy">
+            <OfferPill location="dashboards-hero" />
             <h1>DashKit</h1>
             <p className="dash-hero-sub">
               A fully customizable instrument cluster for your Tesla, right on your phone

@@ -437,6 +437,240 @@ nav {
   color: rgba(244, 244, 245, 0.6);
 }
 
+/* ---------- SPECIAL OFFER ---------- */
+/* Solid accent chip ("20% off"), reused on the hero pill and the order page. */
+.offer-chip {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #0a0a0c;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Struck-through pre-offer price. */
+.price-was {
+  color: var(--text-mute);
+  font-weight: 400;
+  text-decoration-thickness: 1px;
+}
+
+.order-summary .price-was {
+  margin-right: 8px;
+}
+
+.prelaunch-price .price-was {
+  font-size: 22px;
+}
+
+.offer-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(136, 224, 166, 0.55);
+  background:
+    linear-gradient(90deg, rgba(136, 224, 166, 0.2), rgba(136, 224, 166, 0.07)),
+    rgba(10, 10, 12, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 0 4px rgba(136, 224, 166, 0.06),
+    0 8px 32px rgba(136, 224, 166, 0.18);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+/* A slow sheen that crosses the pill every few seconds. */
+.offer-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent 30%, rgba(200, 255, 220, 0.28) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: offer-sheen 6s ease-in-out 1.2s infinite;
+}
+
+@keyframes offer-sheen {
+  0% { transform: translateX(-100%); }
+  30%, 100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-pill::after { animation: none; }
+}
+
+.offer-pill:hover {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 4px rgba(136, 224, 166, 0.1),
+    0 10px 36px rgba(136, 224, 166, 0.3);
+  transform: translateY(-1px);
+}
+
+.offer-pill .offer-chip {
+  padding: 4px 10px;
+  font-size: 12px;
+  box-shadow: 0 0 14px rgba(136, 224, 166, 0.55);
+}
+
+.offer-pill-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.offer-pill-price {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.offer-pill-price s {
+  color: var(--text-dim);
+  font-weight: 400;
+  text-decoration-thickness: 1px;
+  margin-left: 2px;
+}
+
+.offer-pill-arrow {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.offer-pill:hover .offer-pill-arrow {
+  transform: translateX(2px);
+}
+
+/* Order page: highlighted card under the price line. */
+.offer-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: -12px 0 28px;
+  padding: 14px 18px 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(136, 224, 166, 0.45);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(136, 224, 166, 0.22) 0%, rgba(136, 224, 166, 0.04) 60%),
+    var(--bg-elev);
+  box-shadow: 0 10px 40px rgba(136, 224, 166, 0.12);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.offer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent 30%, rgba(200, 255, 220, 0.12) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: offer-sheen 7s ease-in-out 0.8s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-card::after { animation: none; }
+}
+
+.offer-card-badge {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #0a0a0c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 22px rgba(136, 224, 166, 0.45);
+}
+
+.offer-card-percent {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.offer-card-off {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.offer-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.offer-card-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.offer-card-desc {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.offer-card-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.offer-card-now {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.offer-card-price s {
+  font-size: 13px;
+  color: var(--text-mute);
+  text-decoration-thickness: 1px;
+}
+
+@media (max-width: 480px) {
+  .offer-card { gap: 12px; padding: 12px 14px 12px 12px; }
+  .offer-card-badge { width: 50px; height: 50px; }
+  .offer-card-percent { font-size: 19px; }
+  .offer-card-title { font-size: 15px; }
+  .offer-card-desc { font-size: 12.5px; }
+  .offer-card-now { font-size: 17px; }
+}
+
 @media (min-width: 1360px) {
   .hero h1 { font-size: 42px; }
   .hero-inner { padding: 64px 64px; }

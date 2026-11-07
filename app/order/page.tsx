@@ -7,7 +7,12 @@ import { readConsent } from "@/lib/consent";
 import { ORDERS_OPEN } from "@/lib/flags";
 import { BEGIN_CHECKOUT_LABEL, trackConversion } from "@/lib/gtag";
 import { COUNTRIES, findCountry, SHIPPING_EUR } from "@/lib/markets";
-import { DEVICE_ONLY_DISCOUNT_EUR, unitPriceEur } from "@/lib/pricing";
+import {
+  listPriceEur,
+  OFFER_ACTIVE,
+  OFFER_PERCENT,
+  unitPriceEur,
+} from "@/lib/pricing";
 import { parseEuVat, qualifiesForReverseCharge } from "@/lib/vat";
 
 import { DEVICE_ONLY, PARTIAL_SUPPORT_NOTE, VEHICLE_MODELS } from "./vehicles";
@@ -39,6 +44,10 @@ export default function OrderPage() {
 
   const price = unitPriceEur(deviceOnly);
   const formattedPrice = `€${price.toLocaleString("en-US")}`;
+  const listPrice = listPriceEur(deviceOnly);
+  const formattedListPrice = `€${listPrice.toLocaleString("en-US")}`;
+  // What skipping the harness saves at today's prices, offer included.
+  const deviceOnlySaving = unitPriceEur(false) - unitPriceEur(true);
 
   const country = findCountry(shippingCountry);
   const priceCents = price * 100;
@@ -73,6 +82,7 @@ export default function OrderPage() {
           <div className="prelaunch-card">
             <div className="prelaunch-price">
               <span className="prelaunch-amount">{formattedPrice}</span>
+              {OFFER_ACTIVE && <s className="price-was">{formattedListPrice}</s>}
               <span className="prelaunch-unit">excl. VAT</span>
             </div>
             <p className="prelaunch-vat">
@@ -179,9 +189,33 @@ export default function OrderPage() {
       <div className="order-inner">
         <h1>Order DashKit</h1>
         <p className="order-price">
-          DashKit{deviceOnly ? " (device only)" : ""} · {formattedPrice} excl.
-          VAT
+          DashKit{deviceOnly ? " (device only)" : ""} · {formattedPrice}
+          {OFFER_ACTIVE && (
+            <>
+              {" "}
+              <s className="price-was">{formattedListPrice}</s>
+            </>
+          )}{" "}
+          excl. VAT
         </p>
+        {OFFER_ACTIVE && (
+          <div className="offer-card">
+            <span className="offer-card-badge">
+              <span className="offer-card-percent">{OFFER_PERCENT}%</span>
+              <span className="offer-card-off">off</span>
+            </span>
+            <div className="offer-card-body">
+              <p className="offer-card-title">Special offer</p>
+              <p className="offer-card-desc">
+                You save €{listPrice - price}. Already applied, no code needed.
+              </p>
+            </div>
+            <div className="offer-card-price">
+              <span className="offer-card-now">{formattedPrice}</span>
+              <s>{formattedListPrice}</s>
+            </div>
+          </div>
+        )}
 
         {error && <div className="form-error">{error}</div>}
 
@@ -275,7 +309,7 @@ export default function OrderPage() {
                   >
                     <span className="picker-card-title">Device only</span>
                     <span className="picker-card-desc">
-                      No harness. Save €{DEVICE_ONLY_DISCOUNT_EUR} if you
+                      No harness. Save €{deviceOnlySaving} if you
                       already have one or plan to wire it yourself.
                     </span>
                   </button>
@@ -515,7 +549,12 @@ export default function OrderPage() {
             <div className="order-summary">
               <div className="order-summary-row">
                 <span>DashKit{deviceOnly ? " (device only)" : ""}</span>
-                <span>{euro(priceCents)}</span>
+                <span>
+                  {OFFER_ACTIVE && (
+                    <s className="price-was">{euro(listPrice * 100)}</s>
+                  )}
+                  {euro(priceCents)}
+                </span>
               </div>
               <div className="order-summary-row">
                 <span>Shipping ({country.name})</span>
