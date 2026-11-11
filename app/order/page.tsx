@@ -217,6 +217,18 @@ export default function OrderPage() {
           </div>
         )}
 
+        <div className="in-the-box">
+          <p className="in-the-box-title">In the box</p>
+          <ul>
+            <li>DashKit device</li>
+            {/* Device-only orders ship without the harness. */}
+            {!deviceOnly && (
+              <li>Model-specific harness</li>
+            )}
+            <li>Install guide</li>
+          </ul>
+        </div>
+
         {error && <div className="form-error">{error}</div>}
 
         <form

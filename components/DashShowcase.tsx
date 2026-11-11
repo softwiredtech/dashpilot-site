@@ -42,6 +42,17 @@ type Dash = {
 
 const dashes: Dash[] = [
   {
+    image: "/dash-apps/showcase-4.jpg",
+    alt: "The Felina dash: a needle speedometer with the speed limit, a battery and power gauge, the gear selector, and a car in the left blind spot with Assist on",
+    callouts: [
+      { label: "Battery", short: "Battery", x: 18.9, y: 35.8 },
+      { label: "Speed gauge", short: "Speed", x: 33.5, y: 31 },
+      { label: "Speed limit", short: "Limit", x: 55.3, y: 11.5 },
+      { label: "Blind spot monitor", short: "Blind spot", x: 76.6, y: 42.5 },
+      { label: "Autopilot state", short: "Autopilot", x: 79.6, y: 63 },
+    ],
+  },
+  {
     image: "/dash-apps/showcase-3.jpg",
     alt: "The light Vanilla dash: a 3D road view with the car on a green Autopilot path, a pickup in the left blind spot, speed, gear, battery and the speed limit",
     callouts: [
@@ -72,17 +83,6 @@ const dashes: Dash[] = [
       { label: "Speed", short: "Speed", x: 46, y: 41 },
       { label: "Autopilot state", short: "Autopilot", x: 74.7, y: 47.5 },
       { label: "Battery", short: "Battery", x: 93.5, y: 45 },
-    ],
-  },
-  {
-    image: "/dash-apps/showcase-4.jpg",
-    alt: "The Analog dash: a needle speedometer with the speed limit, a battery and power gauge, the gear selector, and a car in the left blind spot with Assist on",
-    callouts: [
-      { label: "Battery", short: "Battery", x: 18.9, y: 35.8 },
-      { label: "Speed gauge", short: "Speed", x: 33.5, y: 31 },
-      { label: "Speed limit", short: "Limit", x: 55.3, y: 11.5 },
-      { label: "Blind spot monitor", short: "Blind spot", x: 76.6, y: 42.5 },
-      { label: "Autopilot state", short: "Autopilot", x: 79.6, y: 63 },
     ],
   },
 ];

@@ -1421,6 +1421,45 @@ h1 .accent {
   margin-bottom: 10px;
 }
 
+.in-the-box {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.in-the-box-title {
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.in-the-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.in-the-box li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.in-the-box li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
 .order-summary {
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -2663,7 +2702,9 @@ footer {
 
   /* Zoomed in on the phone so the dash reads at phone size. */
   .dash-hero-bg {
-    object-position: 50% 50%;
+    /* The phone sits right of center in the photo; this brings it to the
+       middle of a portrait screen. */
+    object-position: 61% 50%;
     scale: 1.45;
     transform-origin: 50% 51%;
   }

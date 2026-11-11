@@ -21,8 +21,8 @@ export default function Dashboards() {
       <section className="dash-hero">
         <div className="dash-hero-media">
           <Image
-            src="/images/dash-hero-2.jpg"
-            alt="A phone running DashPilot with a 3D model of the car, in a stand on a Tesla dashboard, seen through the steering wheel"
+            src="/images/dash-hero-3.jpg"
+            alt="A phone running the Felina dash in DashPilot, in a stand on a Tesla dashboard, seen past the steering wheel"
             fill
             sizes="(max-width: 749px) 250vw, 100vw"
             className="dash-hero-bg"
