@@ -2677,46 +2677,49 @@ footer {
   .dash-hero-sub { font-size: 26px; }
 }
 
-/* Phones and portrait tablets: title above the phone, button below it over
-   the dark wheel. */
+/* Phones and portrait tablets: title above the photo, button below it. */
 @media (max-width: 749px), (max-aspect-ratio: 1/1) {
+  /* Stacked: title, then the photo, then the button. The photo gets its own
+     band between them (instead of sitting under the text), so the subtitle
+     always reads on the plain background. The band fades into the background
+     above and below. */
   .dash-hero {
     min-height: 600px;
-  }
-
-  .dash-hero {
     background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px 16px 64px;
+    text-align: center;
   }
 
-  /* Zoomed out: instead of covering the whole tall screen (which crops the
-     landscape photo down to just the phone), the photo sits in a band through
-     the middle and fades into the background above and below. */
+  .dash-hero-inner {
+    display: contents;
+  }
+
+  .dash-hero-copy { order: 1; }
   .dash-hero-media {
-    inset: auto 0;
-    top: 50%;
-    height: 56%;
-    translate: 0 -50%;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+    order: 2;
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 260px;
+    margin: 0 -16px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%);
   }
+  .dash-hero-actions { order: 3; }
 
-  /* Zoomed in on the phone so the dash reads at phone size. */
   .dash-hero-bg {
     /* The phone sits right of center in the photo; this brings it to the
-       middle of a portrait screen. */
-    object-position: 61% 50%;
-    scale: 1.45;
+       middle of a portrait screen. A light zoom keeps some car around it. */
+    object-position: 63% 50%;
+    scale: 1.1;
     transform-origin: 50% 51%;
   }
 
   .dash-hero-shade {
-    background: linear-gradient(180deg, rgba(10, 10, 12, 0.8) 0%, rgba(10, 10, 12, 0.35) 28%, rgba(10, 10, 12, 0) 45%, rgba(10, 10, 12, 0) 62%, rgba(10, 10, 12, 0.6) 82%, var(--bg) 100%);
-  }
-
-  .dash-hero-inner {
-    justify-content: space-between;
-    text-align: center;
-    padding: 40px 16px 64px;
+    display: none;
   }
 
   .dash-hero-copy {
