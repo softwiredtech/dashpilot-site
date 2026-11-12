@@ -6,4 +6,4 @@ export const GITHUB_APP = "https://github.com/softwiredtech/dashpilot";
  *  gets nav + section placement; the rest live in the footer. */
 export const DISCORD = "https://discord.gg/naTZgwVqvA";
 export const YOUTUBE = "https://www.youtube.com/@SoftwiredTechnologies";
-export const X_TWITTER = "https://x.com/softwiredtech";
+export const X_TWITTER = "https://x.com/dashkitdevice";
